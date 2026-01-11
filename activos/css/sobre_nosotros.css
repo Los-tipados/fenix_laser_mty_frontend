@@ -1,0 +1,131 @@
+/* Para toda la página */
+:root{
+  --red: #C62828;
+  --orange: #E86C1A;
+  --gold: #F2A23A;
+  --offwhite: #F2F0F1;
+  --gray: #4A4A4A;
+  --slate: #383F51;
+  --night: #1F1C2D;
+  --brown: #853728;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo */
+body{
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--night),
+    var(--brown)
+  );
+}
+
+/* Título */
+h1{
+  color: var(--offwhite);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Card transparente */
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+/* Igualar alturas (el texto manda) */
+.altura-card {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Row: fuerza mismo alto */
+.altura-card {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Columnas */
+.altura-card > div {
+  display: flex;
+}
+
+/* Texto manda la altura */
+.card-body {
+  color: var(--offwhite);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+}
+
+/* Video */
+.video-loop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.contenedor-video {
+    position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.contenedor-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.35)
+  );
+  pointer-events: none;
+}
+
+.titulo-nosotros {
+  text-align: center;   /* centra horizontal */
+  margin-top: 3rem;     /* separación desde arriba */
+  margin-bottom: 3rem;  /* separación con la card */
+}
+
+@media (max-width: 768px) {
+  .video-loop {
+    height: 180px;       /* controla el alto */
+  }
+
+  .altura-card {
+    flex-direction: column;
+  }
+
+  .altura-card > div {
+    width: 100%;
+  }
+}
+
+.card-centrada {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.subtitulo-nosotros {
+    color: var(--offwhite);
+    text-align: center;   /* centra horizontal */
+    margin-top: 3rem;     /* separación desde arriba */
+    margin-bottom: 1rem;  /* separación con la card */
+}
+
+.palabra-destacada {
+    color: var(--orange)
+}
