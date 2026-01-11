@@ -1,131 +1,196 @@
-/* Para toda la página */
-:root{
-  --red: #C62828;
-  --orange: #E86C1A;
-  --gold: #F2A23A;
-  --offwhite: #F2F0F1;
-  --gray: #4A4A4A;
-  --slate: #383F51;
-  --night: #1F1C2D;
-  --brown: #853728;
-}
+/* Estilos específicos para la pagina "Sobre Nosotros" */
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fondo */
-body{
-  min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    var(--night),
-    var(--brown)
-  );
-}
-
-/* Título */
-h1{
+/* =========================
+   TÍTULOS
+========================= */
+.titulo-nosotros {
   color: var(--offwhite);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 1px;
+  text-align: center;
+  margin: 3rem 0 1.5rem;
 }
 
-/* Card transparente */
-.card {
-  background-color: transparent;
-  border: none;
+.subtitulo-nosotros {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-/* Igualar alturas (el texto manda) */
-.altura-card {
-  display: flex;
-  align-items: stretch;
+.titulo-ceo {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-/* Row: fuerza mismo alto */
-.altura-card {
+.palabra-destacada {
+  color: var(--orange);
+}
+
+/* =========================
+   SECCIÓN NOSOTROS
+========================= */
+
+/* Fila principal */
+.fila-nosotros {
   display: flex;
   align-items: stretch;
 }
 
 /* Columnas */
-.altura-card > div {
+.fila-nosotros > div {
   display: flex;
 }
 
-/* Texto manda la altura */
-.card-body {
+/* Texto (MANDA LA ALTURA) */
+.col-texto {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
   color: var(--offwhite);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 2rem;
 }
 
-/* Video */
-.video-loop {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
+/* Contenedor del video */
 .contenedor-video {
-    position: relative;
   width: 100%;
+  display: flex;
+  align-items: stretch;
   border-radius: 16px;
   overflow: hidden;
 }
 
-.contenedor-video::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.15),
-    rgba(0,0,0,0.35)
-  );
-  pointer-events: none;
+/* VIDEO → SIN ALTURA FORZADA */
+.video-loop {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.titulo-nosotros {
-  text-align: center;   /* centra horizontal */
-  margin-top: 3rem;     /* separación desde arriba */
-  margin-bottom: 3rem;  /* separación con la card */
-}
-
-@media (max-width: 768px) {
-  .video-loop {
-    height: 180px;       /* controla el alto */
+/* Desktop: video más pequeño que su columna */
+@media (min-width: 769px) {
+  .contenedor-video {
+    display: flex;
+    justify-content: center;   /* centra horizontal */
+    align-items: center;       /* centra vertical */
   }
 
-  .altura-card {
+  .video-loop {
+    width: 70%;                /* 👈 ajusta aquí (70–85%) */
+    max-width: 420px;          /* límite elegante */
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* =========================
+   MOBILE NOSOTROS
+========================= */
+@media (max-width: 768px) {
+  .fila-nosotros {
     flex-direction: column;
   }
 
-  .altura-card > div {
-    width: 100%;
+  .contenedor-video {
+    height: 200px;       /* CONTROL REAL EN MÓVIL */
+  }
+
+  .video-loop {
+    height: 100%;
+  }
+
+  .col-texto {
+    padding: 1.5rem;
   }
 }
 
-.card-centrada {
-  max-width: 540px;
-  margin: 0 auto;
+/* =========================
+   NUESTRA HISTORIA
+========================= */
+.titulos-centrados {
+  text-align: center;
+  color: var(--offwhite);
 }
 
-.subtitulo-nosotros {
-    color: var(--offwhite);
-    text-align: center;   /* centra horizontal */
-    margin-top: 3rem;     /* separación desde arriba */
-    margin-bottom: rem;  /* separación con la card */
+.imagen-historia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
-.palabra-destacada {
-    color: var(--orange)
+.contenedor-imagen {
+  width: 70%;
+  max-width: 420px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* =========================
+   MOBILE NUESTRA HISTORIA
+========================= */
+
+@media (max-width: 768px) {
+  .contenedor-imagen {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+
+/* =========================
+   CARDS TRANSPARENTES
+========================= */
+.card {
+  background-color: transparent;
+  border: none;
+  color: var(--offwhite);
+}
+
+
+/* =========================
+Sección CEO
+========================= */
+
+.contenedor-imagen-ceo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;           /* mismo valor que video e historia */
+  max-width: 420px;     /* mismo límite elegante */
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;       /* centra dentro de la columna */
+}
+
+.imagen-ceo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+    .seccion-ceo {
+        flex-direction: column;
+    }
+    
+    .contenedor-imagen-ceo {
+        width: 100%;
+    height: 200px;
+    aspect-ratio: auto;
+  }
+}
+
+/* =========================
+   HR PERSONALIZADO
+========================= */
+
+hr {
+    height: 6px;
+    background-color: var(--offwhite);
+    border: none; /* Quita el borde por defecto */
+    width: 80%;
+    margin: 20px auto; /* Centra la línea */
+    }
