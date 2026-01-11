@@ -1,0 +1,57 @@
+/* Estilos aplicables para todo el proyecto */
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+  --red: #C62828;
+  --orange: #E86C1A;
+  --gold: #F2A23A;
+  --offwhite: #F2F0F1;
+  --gray: #4A4A4A;
+  --slate: #383F51;
+  --night: #1F1C2D;
+  --brown: #853728;
+  --fuente-principal: 'Montserrat', sans-serif;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   FONDO
+========================= */
+body{
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--night),
+    var(--brown)
+  );
+  font-family: var(--fuente-principal);
+    font-weight: 400; /* Normal */
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+h1{
+  color: var(--offwhite);
+  font-family: var(--fuente-principal);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-principal);
+    font-weight: 700; /* Negrita para títulos */
+    color: var(--offwhite);
+}

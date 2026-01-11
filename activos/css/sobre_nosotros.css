@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Para toda la página */
 :root{
   --red: #C62828;
@@ -28,10 +29,19 @@ body{
 
 /* Título */
 h1{
+=======
+/* Estilos específicos para la pagina "Sobre Nosotros" */
+
+/* =========================
+   TÍTULOS
+========================= */
+.titulo-nosotros {
+>>>>>>> feature/nosotros-pagina
   color: var(--offwhite);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 1px;
+<<<<<<< HEAD
 }
 
 /* Card transparente */
@@ -48,11 +58,40 @@ h1{
 
 /* Row: fuerza mismo alto */
 .altura-card {
+=======
+  text-align: center;
+  margin: 3rem 0 1.5rem;
+}
+
+.subtitulo-nosotros {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.titulo-ceo {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.palabra-destacada {
+  color: var(--orange);
+}
+
+/* =========================
+   SECCIÓN NOSOTROS
+========================= */
+
+/* Fila principal */
+.fila-nosotros {
+>>>>>>> feature/nosotros-pagina
   display: flex;
   align-items: stretch;
 }
 
 /* Columnas */
+<<<<<<< HEAD
 .altura-card > div {
   display: flex;
 }
@@ -78,10 +117,30 @@ h1{
 .contenedor-video {
     position: relative;
   width: 100%;
+=======
+.fila-nosotros > div {
+  display: flex;
+}
+
+/* Texto (MANDA LA ALTURA) */
+.col-texto {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  color: var(--offwhite);
+}
+
+/* Contenedor del video */
+.contenedor-video {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+>>>>>>> feature/nosotros-pagina
   border-radius: 16px;
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 .contenedor-video::after {
   content: "";
   position: absolute;
@@ -129,3 +188,139 @@ h1{
 .palabra-destacada {
     color: var(--orange)
 }
+=======
+/* VIDEO → SIN ALTURA FORZADA */
+.video-loop {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Desktop: video más pequeño que su columna */
+@media (min-width: 769px) {
+  .contenedor-video {
+    display: flex;
+    justify-content: center;   /* centra horizontal */
+    align-items: center;       /* centra vertical */
+  }
+
+  .video-loop {
+    width: 70%;                /* 👈 ajusta aquí (70–85%) */
+    max-width: 420px;          /* límite elegante */
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* =========================
+   MOBILE NOSOTROS
+========================= */
+@media (max-width: 768px) {
+  .fila-nosotros {
+    flex-direction: column;
+  }
+
+  .contenedor-video {
+    height: 200px;       /* CONTROL REAL EN MÓVIL */
+  }
+
+  .video-loop {
+    height: 100%;
+  }
+
+  .col-texto {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================
+   NUESTRA HISTORIA
+========================= */
+.titulos-centrados {
+  text-align: center;
+  color: var(--offwhite);
+}
+
+.imagen-historia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.contenedor-imagen {
+  width: 70%;
+  max-width: 420px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   MOBILE NUESTRA HISTORIA
+========================= */
+
+@media (max-width: 768px) {
+  .contenedor-imagen {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+
+/* =========================
+   CARDS TRANSPARENTES
+========================= */
+.card {
+  background-color: transparent;
+  border: none;
+  color: var(--offwhite);
+}
+
+
+/* =========================
+Sección CEO
+========================= */
+
+.contenedor-imagen-ceo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;           /* mismo valor que video e historia */
+  max-width: 420px;     /* mismo límite elegante */
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;       /* centra dentro de la columna */
+}
+
+.imagen-ceo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+    .seccion-ceo {
+        flex-direction: column;
+    }
+    
+    .contenedor-imagen-ceo {
+        width: 100%;
+    height: 200px;
+    aspect-ratio: auto;
+  }
+}
+
+/* =========================
+   HR PERSONALIZADO
+========================= */
+
+hr {
+    height: 6px;
+    background-color: var(--offwhite);
+    border: none; /* Quita el borde por defecto */
+    width: 80%;
+    margin: 20px auto; /* Centra la línea */
+    }
+>>>>>>> feature/nosotros-pagina
