@@ -14,6 +14,7 @@
   --night: #1F1C2D;
   --brown: #853728;
   --fuente-principal: 'Montserrat', sans-serif;
+  --letraformularios: #D7D7D7;
 }
 
 /* =========================
@@ -54,4 +55,24 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-principal);
     font-weight: 700; /* Negrita para títulos */
     color: var(--offwhite);
+}
+p{
+    color: var(--offwhite);
+
+
+}
+
+
+.form-label {
+    color: var(--offwhite);
+}
+
+.form-text
+ {
+    color: var(--offwhite);
+}
+
+.div.mb-3.form-check{
+      color: var(--offwhite);
+
 }
