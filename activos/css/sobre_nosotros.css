@@ -154,6 +154,10 @@
 Sección CEO
 ========================= */
 
+.titulo-ceo {
+  margin-bottom: 2.5rem; /* separa el título del hr */
+}
+
 .contenedor-imagen-ceo {
   display: flex;
   justify-content: center;
@@ -172,15 +176,15 @@ Sección CEO
 }
 
 @media (max-width: 768px) {
-    .seccion-ceo {
-        flex-direction: column;
-    }
+  .seccion-ceo {
+  flex-direction: column;
+}
     
-    .contenedor-imagen-ceo {
-        width: 100%;
-    height: 200px;
-    aspect-ratio: auto;
-  }
+.contenedor-imagen-ceo {
+  width: 100%;
+  height: 200px;
+  aspect-ratio: auto;
+}
 }
 
 /* =========================
@@ -191,6 +195,21 @@ hr {
     height: 6px;
     background-color: var(--offwhite);
     border: none; /* Quita el borde por defecto */
-    width: 80%;
-    margin: 20px auto; /* Centra la línea */
+    width: 90%;
+    margin: auto; /* Centra la línea */
+    margin-top: 0;         /* evita que se pegue */
+    margin-bottom: 3rem;  /* separa del contenido de abajo */
     }
+
+
+    .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
