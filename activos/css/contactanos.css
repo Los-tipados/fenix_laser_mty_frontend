@@ -1,4 +1,21 @@
-.body{
-    align-items: center;
-    justify-items: center;
+/* Estilos específicos para la pagina "Contáctanos" */
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.titulo-contactanos{
+     color: var(--offwhite);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 3rem 0 1.5rem;
 }
+
+.subtitulo-contactanos{
+    color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
