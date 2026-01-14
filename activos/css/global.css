@@ -17,6 +17,19 @@
   --letraformularios: #D7D7D7;
 }
 
+nav {
+  background: linear-gradient(
+    90deg,
+    var(--night),
+    var(--brown)
+  );
+}
+
+a {
+font-family: var(--fuente-principal);
+font-style: var(--offwhites);
+}
+
 /* =========================
    RESET
 ========================= */
