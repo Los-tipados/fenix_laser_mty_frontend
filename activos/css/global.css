@@ -69,10 +69,14 @@ p{
 
 .form-text
  {
-    color: var(--offwhite);
+      color: var(--offwhite);
+
 }
 
 .div.mb-3.form-check{
       color: var(--offwhite);
 
 }
+
+
+
