@@ -1,0 +1,23 @@
+.custom-navbar {
+  background: linear-gradient(90deg, #1F1C2D, #853728);
+
+}
+
+.custom-navbar .nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0 8px;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffb703;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+

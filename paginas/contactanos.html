@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos | Fénix Láser</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../activos/css/contactanos.css">
+    <link rel="stylesheet" href="../activos/css/global.css">
+    <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+</head>
+
+<body>
+<header class="header-container text-center">
+        <h1 class="titulo-contactanos">Contáctanos</h1>
+        <p class="subtitulo-contactanos">
+            ¡Siempre estaremos encantados de ayudarte!<br>
+            Aquí tienes algunas formas de contactarnos.
+        </p>
+    </header>
+
+    <div class="container main-content">
+        <div class="row g-5">
+            <div class="col-12 col-lg-6">
+                <h2 class="subtitulo-seccion">Envíanos un mensaje</h2>
+                <div class="formulario-card">
+                    <form id="contactForm" action="https://formspree.io/f/mlggeqbj" method="POST">
+                        <div id="formAlert" class="mb-3" aria-live="polite"></div>
+                        
+                         <div class="mb-3">
+                            <label name="Nombre_completo" class="form-label">Nombre Completo *</label>
+                            <input id="fullName" type="text" class="form-control" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico *</label>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="tu@email.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono *</label>
+                            <input id="phone" class="form-control" name="telefono" placeholder="+52 55 1234 5678" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mensaje</label>
+                            <textarea id="message" class="form-control" name="mensaje" rows="4" placeholder="Mensaje..."></textarea>
+                        </div>
+
+                        <button id="btn-submit" class="btn-submit" type="submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
+                <h2 class="subtitulo-seccion ">Información de contacto</h2>
+
+                <div class="card-glass contact-info-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <ul class="lista-contacto contacto-textos">
+                                <li>
+                                    <span class="icon"><i class="bi bi-envelope"></i></i></span>
+                                    <div><strong>Email</strong><br>info@fenixlaser.com</div>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="bi bi-telephone"></i></i></span>
+                                    <div><strong>Teléfono</strong><br>+52 (55) 1234-5678</div>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="bi bi-geo-alt"></i></i></span>
+                                    <div><strong>Ubicación</strong><br>Monterrey, Nuevo León</div>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="bi bi-alarm"></i></span>
+                                    <div><strong>Horario</strong><br>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00 - 14:00</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mapa-contenedor">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14382.47602283737!2d-100.31!3d25.67!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1700000000000" 
+                                    style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-glass cotizar-card text-center">
+                    <h2>¿Listo para cotizar?</h2>
+                    <p>Obtén una cotización personalizada para tu proyecto de grabado láser.</p>
+                    <button type="button" class="btn-solicitar">Solicitar Cotización</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../activos/js/contactanos.js"></script>
+    <script src="../activos/js/navbar.js"></script>
+</body>
+
+</html>
