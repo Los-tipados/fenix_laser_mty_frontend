@@ -10,12 +10,17 @@
 
     <link rel="stylesheet" href="../activos/css/global.css">
     <link rel="stylesheet" href="../activos/css/cotizacion.css">
+    <!-- Estilos de la barra de navegación -->
+    <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-<!--          Aqui inicia la seccion de Cotización          -->
+    <!-- Barra de navegación -->
+    <div id="navbar"></div>
+
+    <!--          Aqui inicia la seccion de Cotización          -->
     <div>
         <!-- Título -->
         <h1 class="titulo-cotizacion">Solicita tu cotización</h1>
@@ -26,69 +31,74 @@
         </h4>
 
 
-    <div class="container my-5">
-    <div class="cotizacion-card p-4 p-md-5">
-        <form>
-            <div class="section-title mb-4">
-                <i class="bi bi-file-text me-2"></i> Información de contacto
-            </div>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Nombre Completo *</label>
-                    <input type="text" class="form-control input-custom" placeholder="Tu nombre">
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Empresa (Opcional)</label>
-                    <input type="text" class="form-control input-custom" placeholder="Nombre de tu empresa">
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Correo Electrónico *</label>
-                    <input type="email" class="form-control input-custom" placeholder="tu@email.com">
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Teléfono *</label>
-                    <input type="tel" class="form-control input-custom" placeholder="+52 55 1234 5678">
-                </div>
-            </div>
+        <div class="container my-5">
+            <div class="cotizacion-card p-4 p-md-5">
+                <form>
+                    <div class="section-title mb-4">
+                        <i class="bi bi-file-text me-2"></i> Información de contacto
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Nombre Completo *</label>
+                            <input type="text" class="form-control input-custom" placeholder="Tu nombre">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Empresa (Opcional)</label>
+                            <input type="text" class="form-control input-custom" placeholder="Nombre de tu empresa">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Correo Electrónico *</label>
+                            <input type="email" class="form-control input-custom" placeholder="tu@email.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Teléfono *</label>
+                            <input type="tel" class="form-control input-custom" placeholder="+52 55 1234 5678">
+                        </div>
+                    </div>
 
-            <div class="section-title mt-5 mb-4">
-                <i class="bi bi-box-seam"></i> Detalles del Proyecto
-            </div>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Tipo de producto *</label>
-                    <select class="form-select input-custom">
-                        <option selected disabled>Selecciona un producto.</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label label-custom">Cantidad aproximada</label>
-                    <select class="form-select input-custom">
-                        <option selected disabled>Selecciona cantidad</option>
-                    </select>
-                </div>
-                <div class="col-12">
-                    <label class="form-label label-custom">Descripción del proyecto *</label>
-                    <textarea class="form-control input-custom" rows="4" placeholder="Describe tu proyecto: cantidad de piezas, dimensiones, tipo de diseño, fecha de entrega deseada..."></textarea>
-                </div>
-            </div>
+                    <div class="section-title mt-5 mb-4">
+                        <i class="bi bi-box-seam"></i> Detalles del Proyecto
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Tipo de producto *</label>
+                            <select class="form-select input-custom">
+                                <option selected disabled>Selecciona un producto.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Cantidad aproximada</label>
+                            <select class="form-select input-custom">
+                                <option selected disabled>Selecciona cantidad</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label label-custom">Descripción del proyecto *</label>
+                            <textarea class="form-control input-custom" rows="4"
+                                placeholder="Describe tu proyecto: cantidad de piezas, dimensiones, tipo de diseño, fecha de entrega deseada..."></textarea>
+                        </div>
+                    </div>
 
-            <div class="mt-4">
-                <label class="form-label label-custom"><i class="bi bi-paperclip"></i> Archivos de referencia (opcional)</label>
-                <div class="upload-area text-center p-4">
-                    <i class="bi bi-file-earmark-plus fs-2"></i>
-                    <p class="mb-0 mt-2">Haz clic o arrastra tus archivos aquí.</p>
-                    <small>PNG, JPG, PDF, AI, SVG, PDF (máx. 10 MB cada uno, hasta 5 archivos)</small>
-                </div>
+                    <div class="mt-4">
+                        <label class="form-label label-custom"><i class="bi bi-paperclip"></i> Archivos de referencia
+                            (opcional)</label>
+                        <div class="upload-area text-center p-4">
+                            <i class="bi bi-file-earmark-plus fs-2"></i>
+                            <p class="mb-0 mt-2">Haz clic o arrastra tus archivos aquí.</p>
+                            <small>PNG, JPG, PDF, AI, SVG, PDF (máx. 10 MB cada uno, hasta 5 archivos)</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit w-100 mt-5 py-3">Solicitar cotización</button>
+                    <p class="text-center mt-3 text-white-50 small">Te responderemos en menos de 24 horas hábiles.</p>
+                </form>
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-submit w-100 mt-5 py-3">Solicitar cotización</button>
-            <p class="text-center mt-3 text-white-50 small">Te responderemos en menos de 24 horas hábiles.</p>
-        </form>
-    </div>
-</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Barra de navegación -->
+        <script src="../activos/js/navbar.js"></script>
 
 </body>
+
 </html>
