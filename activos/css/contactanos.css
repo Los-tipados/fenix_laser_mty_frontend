@@ -1,21 +1,147 @@
-/* Estilos específicos para la pagina "Contáctanos" */
-
-/* =========================
-   TÍTULOS
-========================= */
-
-.titulo-contactanos{
-     color: var(--offwhite);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-align: center;
-  margin: 3rem 0 1.5rem;
+/* --- CABECERA --- */
+.titulo-contactanos {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-top: 50px;
 }
 
-.subtitulo-contactanos{
-    color: var(--offwhite);
-  text-align: center;
-  margin-bottom: 3rem;
+.subtitulo-contactanos {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 40px;
 }
 
+.subtitulo-seccion {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* --- TARJETA DE FORMULARIO (IZQUIERDA) --- */
+.formulario-card {
+    background-color: var(--offwhite);
+    border-radius: 15px;
+    padding: 40px;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    background-color: transparent;
+}
+
+.btn-submit {
+    background: #E86C1A;
+    border: none;
+    color: white;
+    padding: 10px 35px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: block;
+    margin: 20px auto 0;
+    transition: transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    transform: scale(1.05);
+}
+
+/* --- TARJETAS GLASSMORPISM (DERECHA) --- */
+.card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.lista-contacto {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-contacto li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.lista-contacto .icon {
+    font-size: 1.5rem;
+    color: var(--orange-main);
+    line-height: 1;
+}
+
+.mapa-contenedor {
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+/* --- SECCIÓN COTIZAR --- */
+.cotizar-card h2 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.btn-solicitar {
+    background: #E86C1A;
+    border: none;
+    color: white;
+    padding: 8px 30px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-solicitar:hover {
+    transform: scale(1.05);
+}
+.contacto-textos{
+  color: var(--offwhite);
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+    .mapa-contenedor {
+        margin-top: 20px;
+    }
+    .titulo-contactanos {
+        font-size: 2.5rem;
+    }
+}
+
+.btn-submit{
+    background: #E86C1A;
+}
+
+.bi-alarm{
+    color: #E86C1A;
+}
+
+.bi-geo-alt{
+    color: #E86C1A;
+}
+
+.bi-telephone{
+    color: #E86C1A;
+}
+
+.bi-envelope{
+    color: #E86C1A;
+}

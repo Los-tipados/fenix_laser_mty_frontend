@@ -1,88 +1,88 @@
-(() => {
-    const form = document.getElementById("contactForm");
-    const statusEl = document.getElementById("formStatus");
+const form = document.getElementById("contactForm");
+const alertBox = document.getElementById("formAlert");
+const btnSend = document.getElementById("btn-submit");
 
-    if (!form) return;
+function showAlert(message, type = "ok") {
+  alertBox.textContent = message;
+  alertBox.style.color = type === "ok" ? "#1F1C2D" : "#b00020";
+  alertBox.style.background = type === "ok" ? "rgba(242,162,58,0.25)" : "rgba(255,107,107,0.18)";
+  alertBox.style.border = type === "ok" ? "1px solid rgba(242,162,58,0.28)" : "1px solid rgba(255,107,107,0.28)";
+  alertBox.style.padding = "10px 12px";
+  alertBox.style.borderRadius = "10px";
+}
 
-    //Reglas simples de validación
-    const isValidName = (v) => /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{2,}$/.test(v.trim());
-    const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
-    const isValidPhone = (v) => {
-        const digits = v.replace(/\D/g, "");
-        return digits.length >= 10 && digits.length <= 15;
-    };
-    const isValidMessage = (v) => v.trim().length >= 10;
+function clearAlert() {
+  alertBox.textContent = "";
+  alertBox.removeAttribute("style");
+}
 
-    const fields = {
-        nombre: { test: isValidName, msg: "Ingresa tu nombre (mínimo 2 letras)." },
-        email: { test: isValidEmail, msg: "Ingresa un correo electrónico válido." },
-        telefono: { test: isValidPhone, msg: "Ingresa un número de teléfono válido (10-15 dígitos)." },
-        mensaje: { test: isValidMessage, msg: "El mensaje debe tener al menos 10 caracteres." },
-    };
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
-    const setValidMessage = (input, ok, msg) => {
-        const feedback = input.parentElement?.querySelector(".invalid-feedback");
-        if (!ok) {
-            input.classList.add("is-invalid");
-            input.classList.remove("is-valid");
-            if (feedback && msg) feedback.textContent = msg;
-            } else {
-                input.classList.remove("is-invalid");
-                input.classList.add("is-valid");
-            }
-    };
-    
-    Object.keys(fields).forEach((id) => {
-        const input = document.getElementById(id);
-        if (!input) return;
-        input.addEventListener("input", () => {
-            const ok = fields[id].test(input.value);
-            setValidity(input, ok, fields[id].msg);
-            });
-  });
+function normalizePhone(phone) {
+  return phone.replace(/[^\d+]/g, "");
+}
 
-  form.addEventListener("submit", async (e) => {
-     e.preventDefault();
-    statusEl.textContent = "";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  clearAlert();
 
-    let allOk=true;
+  const endpoint = form.action; // https://formspree.io/f/mlggeqbj
+  if (!endpoint) {
+    showAlert("Falta configurar el endpoint de Formspree.", "error");
+    return;
+  }
 
-    Object.keys(fields).forEach((id) => {
-        const input = document.getElementById(id);
-        if (!input) return;
-        const ok = fields[id].test(input.value);
-        setValidity(input, ok, fields[id].msg);
-        if (!ok) allOk = false;
-         });
+  const fullName = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-         if (!allOk) {
-            statusEl.textContent = "Revisa los campos marcados antes de enviar.";
-            return;
-         }
 
-         try {
-            statusEl.textContent = "Enviando...";
-            const data = new FormData(form);
+  if (fullName.length < 3) {
+    showAlert("Por favor escribe tu nombre completo (mínimo 3 caracteres).", "error");
+    return;
+  }
 
-            const res = await fetch(form.action, {
-                 method: "POST",
-                  body: data,
-                  headers: { Accept: "application/json" },
-                });
+  if (!isValidEmail(email)) {
+    showAlert("Por favor escribe un correo válido (ej: nombre@correo.com).", "error");
+    return;
+  }
 
-                if (res.ok) {
-                    form.reset();
+  const cleanPhone = normalizePhone(phone);
+  if (cleanPhone.length < 10) {
+    showAlert("Por favor escribe un teléfono válido con lada (mínimo 10 dígitos).", "error");
+    return;
+  }
 
-                    Object.keys(fields).forEach((id) => {
-                        const input = document.getElementById(id);
-                        if (input) input.classList.remove("is-valid", "is-invalid");
-                        });
-                        statusEl.textContent = "¡Listo! Tu mensaje fue enviado correctamente.";
-                } else {
-                    statusEl.textContent = "Ocurrió un error al enviar. Inténtalo de nuevo.";
-                    }
-                    } catch (err) {
-                        statusEl.textContent = "No se pudo conectar. Revisa tu internet e inténtalo de nuevo.";
-                    }
+  try {
+    btnSend.disabled = true;
+    btnSend.textContent = "Enviando...";
+
+    const formData = new FormData(form);
+
+    const res = await fetch(endpoint, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
     });
-})();
+
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      showAlert("¡Mensaje enviado! Te contactaremos pronto ", "ok");
+      form.reset();
+    } else {
+      const msg =
+        data?.errors?.[0]?.message ||
+        "No se pudo enviar. Intenta de nuevo en unos minutos.";
+      showAlert(msg, "error");
+    }
+  } catch (err) {
+    showAlert("Error de red. Revisa tu conexión e intenta otra vez.", "error");
+  } finally {
+    btnSend.disabled = false;
+    btnSend.textContent = "Enviar Mensaje";
+  }
+});
