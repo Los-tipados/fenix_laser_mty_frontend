@@ -5,7 +5,6 @@
 border-bottom: 1px solid #ffffff; /* grosor, estilo y color */
 }
 
-
 .custom-navbar .nav-link {
   color: #ffffff;
   font-weight: 500;
@@ -54,47 +53,12 @@ svg:hover {
   color: var(--orange);
 }
 
-/* Por defecto: Botones, ocultar iconos */
-.btn-login, 
-.btn-register {
-  display: inline-block;
-}
 
-.icon-login {
-  display: none;
-}
-
-.login-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon-group{
-  display: none;
-}
-
-/* Pantallas pequeñas: Ocultar botones, mostrar iconos */
-@media (max-width: 991px) {
-  .btn-login, 
-  .btn-register
+/* Pantallas pequeñas: botones en columna */
+@media (max-width: 325px) {
+  .d-flex
    {
-    display: none;
-  }
-
-  .icon-group{
     display: flex;
-    gap: 15px;
-  }
-
-  .icon-user,
-  .icon-cart {
-    display: inline-block;
-  }
-
-  .container-fluid {
-    display: flex;
-    flex-wrap: inherit;
-    justify-content: end;
+    flex-direction: column;
   }
 }
