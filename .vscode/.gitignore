@@ -1,0 +1,8 @@
+# Archivo de logs 
+*.log 
+logs/ 
+
+#Diretorio de dependencias 
+
+
+#Archivo temporales 
