@@ -36,6 +36,8 @@ body{
 
     color: white;
     /* Cambia el color del texto a blanco */
+
+    margin: 6rem 0 1.5rem;
 }
 
 .form-control{
