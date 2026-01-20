@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --brand-brown: #3d1b13;
+            --brand-orange: #f28131;
+            --brand-orange-dark: #d66d28;
+        }
+
+        body { 
+            background-color: var(--brand-brown); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .main-card { 
+            border-radius: 2rem; 
+            overflow: hidden; 
+            border: none; 
+        }
+
+        .summary-section { 
+            background-color: #f8f9fa; 
+            border-left: 1px solid #dee2e6; 
+        }
+
+        .btn-pay { 
+            background-color: var(--brand-orange); 
+            color: white; 
+            border: none; 
+            border-radius: 2rem; 
+            padding: 12px; 
+            font-weight: bold; 
+            transition: all 0.3s ease;
+        }
+
+        .btn-pay:hover { 
+            background-color: var(--brand-orange-dark); 
+            color: white; 
+            transform: translateY(-1px);
+        }
+
+        .coupon-badge { 
+            background-color: var(--brand-orange); 
+            color: white; 
+            border-radius: 1rem; 
+            padding: 2px 15px; 
+        }
+
+        .qty-control { 
+            max-width: 100px; 
+            background: #f1f1f1; 
+            border-radius: 20px; 
+        }
+
+        .payment-icons img { 
+            height: 25px; 
+            margin: 0 5px; 
+            filter: grayscale(20%); 
+        }
+
+        /* Ajuste para que el main ocupe el espacio necesario */
+        main {
+            display: block;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center py-5">
+
+    <main class="container">
+        <div class="card main-card shadow-lg">
+            <div class="row g-0">
+                
+                <div class="col-lg-8 p-4 p-md-5 bg-white">
+                    
+                    <div class="row align-items-center mb-4 pb-4 border-bottom">
+                        <div class="col-3 col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded-3" alt="Cuchillos">
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <h6 class="fw-bold mb-1 text-dark">Kit de cuchillos</h6>
+                            <p class="text-muted small mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="col-3 col-md-2 text-end">
+                            <span class="fw-bold text-dark">$399.00</span>
+                        </div>
+                        <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
+                            <div class="d-flex align-items-center qty-control px-2 py-1">
+                                <button class="btn btn-sm p-0 border-0 text-dark"><i class="bi bi-dash"></i></button>
+                                <span class="mx-2 text-dark">1</span>
+                                <button class="btn btn-sm p-0 border-0 text-dark"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <i class="bi bi-heart-fill text-danger ms-3" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center mb-4 pb-4 border-bottom">
+                        <div class="col-3 col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded-3" alt="Madera">
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <h6 class="fw-bold mb-1 text-dark">Grabado de Madera</h6>
+                            <p class="text-muted small mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero.</p>
+                        </div>
+                        <div class="col-3 col-md-2 text-end">
+                            <span class="fw-bold text-dark">$1,000.00</span>
+                        </div>
+                        <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
+                            <div class="d-flex align-items-center qty-control px-2 py-1">
+                                <button class="btn btn-sm p-0 border-0 text-dark"><i class="bi bi-dash"></i></button>
+                                <span class="mx-2 text-dark">1</span>
+                                <button class="btn btn-sm p-0 border-0 text-dark"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <i class="bi bi-heart-fill text-danger ms-3" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: var(--brand-orange);">
+                            <i class="bi bi-arrow-left me-2"></i>Back to shopping
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 summary-section p-4 p-md-5">
+                    <h2 class="text-center fw-bold mb-5 text-dark">Resumen</h2>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted small">Artículos</span>
+                        <span class="text-muted fw-bold small">Price</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-2 small text-dark">
+                        <span>Kit de cuchillos</span>
+                        <span>$399.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 small text-dark">
+                        <span>Grabado de Madera</span>
+                        <span>$1000.00</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-4 border-bottom pb-2">
+                        <span class="fw-bold text-dark">Total de productos:</span>
+                        <span class="fw-bold text-dark">$1,000.00</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1 small text-dark">
+                            <span>Código de descuento</span>
+                            <span class="coupon-badge">HAPPY <i class="bi bi-check"></i></span>
+                        </div>
+                        <p class="text-end text-muted mb-0" style="font-size: 0.75rem;">Felicidades! Tienes 10% de descuento</p>
+                        <div class="text-end fw-bold text-dark">$246.00</div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4 pt-3 border-top">
+                        <h5 class="fw-bold text-dark">Precio Final:</h5>
+                        <h5 class="fw-bold text-dark">$1,31366.00</h5>
+                    </div>
+
+                    <button class="btn btn-pay w-100 mb-4 shadow-sm">Pagar</button>
+
+                    <div class="payment-icons d-flex justify-content-center flex-wrap gap-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

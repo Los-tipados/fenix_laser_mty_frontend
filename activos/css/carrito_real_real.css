@@ -1,0 +1,62 @@
+
+
+        .contenedor-carrito {
+            background-color: var(--offwhite);
+            border-radius: 2rem;
+            overflow: hidden;
+            border: none;
+        }
+
+        .columna-productos {
+            background-color: var(--offwhite);
+            padding: 2rem;
+        }
+
+        .columna-resumen {
+            background-color: var(--offwhite);
+            border-left: 1px solid #dee2e6;
+            padding: 2rem;
+        }
+
+        .item-producto {
+            border-bottom: 1px solid #eeeeee;
+            padding: 1.5rem 0;
+            transition: background-color 0.3s;
+        }
+
+        /* Al pasar el mouse por un producto se ilumina un poco */
+        .item-producto:hover {
+            background-color: #fafafa;
+        }
+
+        .selector-cantidad {
+            background-color: #f1f1f1;
+            border-radius: 50px;
+            padding: 5px 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .boton-principal-pago {
+            background-color: #f28131;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .boton-principal-pago:hover {
+            background-color: #d66d28;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .etiqueta-descuento {
+            background-color: #f28131;
+            color: white;
+            border-radius: 20px;
+            padding: 2px 12px;
+            font-size: 0.8rem;
+        }

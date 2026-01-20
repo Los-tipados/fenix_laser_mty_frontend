@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    /*<style>
+        /* Variables para facilitar cambios globales */
+        :root {
+            --primary-color: #f28131;
+            --primary-hover: #d66d28;
+            --bg-dark: #3d1b13;
+        }
+
+        body { background-color: var(--bg-dark); font-family: sans-serif; padding-top: 3rem; padding-bottom: 3rem; }
+        /* Contenedores Principales */
+        .main-card {
+            border-radius: 2rem;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+        }
+
+        .cart-section {
+            background-color: white;
+            padding: 2.5rem;
+        }
+
+        .summary-section {
+            background-color: #f8f9fa;
+            border-left: 1px solid #dee2e6;
+            padding: 2.5rem;
+        }
+
+        /* Item del Carrito (Agrupa las clases de fila y bordes) */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Controles de Cantidad */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            max-width: 100px;
+        }
+
+        /* Filas de Resumen (Evita repetir d-flex justify-content...) */
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-total {
+            border-top: 1px solid #dee2e6;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 1.25rem;
+        }
+
+        /* Botones y Badges */
+        .btn-pay {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 2rem;
+            padding: 12px;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-pay:hover {
+            background-color: var(--primary-hover);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .coupon-badge {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 1rem;
+            padding: 2px 15px;
+            font-size: 0.8rem;
+        }
+
+        .payment-icons img {
+            height: 25px;
+            margin: 0 5px;
+            filter: grayscale(20%);
+        }*/
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="card main-card">
+            <div class="row g-0">
+
+                                     
+                <!-- Seccion productos izquierda-->
+                <div class="col-lg-8 cart-section">
+
+                    <div class="row cart-item">
+
+
+                        <div class="col-3 col-md-2">
+                            <img src="../activos/imagenes/fondos/fondo-bat.png" class="img-fluid rounded-3" alt="Cuchillos">
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <h6 class="fw-bold mb-1">Kit de cuchillos</h6>
+                            <p class="text-muted small mb-0">Lorem ipsum dolor sit amet, ddddddddddsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdd </p>
+                        </div>
+                        <div class="col-3 col-md-2 text-end">
+                            <span class="fw-bold">$399.00</span>
+                        </div>
+
+                        <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
+                            <div class="qty-control">
+                                <button class="btn btn-sm p-0 border-0"><i class="bi bi-dash"></i></button>
+                                <span class="mx-2">1</span>
+                                <button class="btn btn-sm p-0 border-0"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <i class="bi bi-heart-fill text-danger ms-3"></i>
+                        </div>
+
+
+                    </div>
+
+
+                     <!-- Producto 2 -->
+                    <div class="row cart-item">
+                        <div class="col-3 col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded-3" alt="Madera">
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <h6 class="fw-bold mb-1">Grabado de Madera</h6>
+                            <p class="text-muted small mb-0">Personalización incluida en relieve.</p>
+                        </div>
+                        <div class="col-3 col-md-2 text-end">
+                            <span class="fw-bold">$1,000.00</span>
+                        </div>
+                        <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
+                            <div class="qty-control">
+                                <button class="btn btn-sm p-0 border-0"><i class="bi bi-dash"></i></button>
+                                <span class="mx-2">1</span>
+                                <button class="btn btn-sm p-0 border-0"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <i class="bi bi-heart-fill text-danger ms-3"></i>
+                        </div>
+                    </div>
+                    <!-- Producto 2 final -->
+
+
+
+            
+
+
+
+                </div>
+                <!-- Seccion productos izquierda final-->
+
+
+                <div class="col-lg-4 summary-section">
+                    <h2 class="text-center fw-bold mb-5">Resumen</h2>
+
+                    
+
+                    <div class="summary-row text-muted fw-bold">
+                        <span>Artículos</span>
+                        <span>Precio</span>
+                    </div>
+
+                   
+
+
+                    <!-- producto 1 precio -->
+                    <div class="summary-row small">
+                        <span>Kit de cuchillos</span>
+                        <span>$399.00</span>
+                    </div>
+                    <!-- producto 1 precio -->
+
+
+                     <!-- producto 2 precio -->
+                    <div class="summary-row small">
+                        <span>Grabado de Madera</span>
+                        <span>$1000.00</span>
+                        
+                    </div>
+                     <!-- producto 2 precio -->
+                    
+
+                    
+
+                    <div class="my-4">
+                        <div class="summary-row small">
+                            <span>Código de descuento</span>
+                            <span class="coupon-badge">HAPPY <i class="bi bi-check"></i></span>
+                        </div>
+                        <p class="text-end text-muted mb-0" style="font-size: 0.75rem;">¡Felicidades! Tienes 10% de
+                            descuento</p>
+                        <div class="text-end fw-bold">-$139.90</div>
+                    </div>
+
+                    <div class="summary-row summary-total fw-bold">
+                        <span>Precio Final:</span>
+                        <span>$1,259.10</span>
+                    </div>
+
+                    <button class="btn btn-pay my-4 shadow">Pagar ahora</button>
+
+                    <div class="payment-icons d-flex justify-content-center flex-wrap gap-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+                            alt="Amex">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                            alt="Mastercard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
