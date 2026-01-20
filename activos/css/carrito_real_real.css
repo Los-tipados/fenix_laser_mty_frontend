@@ -75,4 +75,19 @@
              border-bottom: 1px solid var(--night);
             
         }
+
+        .container{
+            padding-top: 3%;
+        }
+
+        .boton-volver{
+            background: #E86C1A;
+            border: none;
+            color: white;
+            padding: 8px 30px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            font-weight: 600;
+        }
         

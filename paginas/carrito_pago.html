@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmación y Pago</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../activos/css/global.css">
+  <link rel="stylesheet" href="../activos/css/carrito_pago.css">
+  <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+</head>
+<body>
+<body class="fondo-pagina">
+    <body>
+    <!-- Barra de navegación -->
+    <div id="navbar"></div>
+    
+  <div class="container my-5">
+    <div class="row g-4">
+
+      <!-- Columna izquierda: Confirmación y Pago -->
+      <div class="col-md-7 confirmacion">
+        <div class="card">
+          <div class="card-body">
+
+            <h5 class="mb-4">Confirmación y Pago</h5>
+
+            <!-- Método de pago -->
+            <h6>Método de Pago</h6>
+
+            <div class="btn-group mb-3" role="group">
+              <button type="button" class="btn btn-outline-secondary">Paypal</button>
+              <button type="button" class="btn btn-outline-secondary">Credit Card</button>
+            </div>
+
+            <!-- Formulario -->
+            <form>
+
+              <div class="mb-3">
+                <label class="form-label">Tarjeta</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Titular de la tarjeta</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Fecha de expiración</label>
+                  <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">CVC</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">
+                  Guardar tarjeta
+                </label>
+              </div>
+
+            </form>
+
+            <!-- Dirección de envío -->
+            <h6 class="mt-4">Dirección de envío</h6>
+            <p class="text-muted">Contenido de la dirección aquí</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Detalles de precio -->
+      <div class="col-md-5">
+        <div class="card h-100">
+          <div class="card-body">
+
+            <h6 class="mb-3">Detalles de Precio</h6>
+
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>$20 x 2</span>
+                <span>$40</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Descuento</span>
+                <span>$0.00</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Envío</span>
+                <span>$28.94</span>
+              </li>
+            </ul>
+
+            <div class="d-flex justify-content-between fw-bold mb-3">
+              <span>Total</span>
+              <span>$68.94</span>
+            </div>
+
+            <button class="btn btn-primary w-100">
+              Confirmar Pago
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../activos/js/barra_navegacion.js"></script>
+</body>
+</html>
