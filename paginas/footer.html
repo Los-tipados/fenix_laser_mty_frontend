@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Footer</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -14,25 +14,107 @@
     <link rel="stylesheet" href="../activos/css/global.css" />
     <!-- Se importo el CSS del footer -->
     <link rel="stylesheet" href="../activos/css/footer.css" />
+    <!-- Se importo Bootstrap iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
   </head>
+  <!-- Inicio de cuerpo, Separación por cards-->
   <body>
-    <footer class="footer-custom-bg py-5">
-      <div class="container">
-        <div class="card-group">
-          <div class="card footer-custom-bg">
-            <div class="card-body">
-              <h5 class="card-title">Contactanos</h5>
-              <p class="card-text">
-                fenixlaser@gmail.com <br />
-                +52 812 696 66 07 <br />
-                1620, Alfonso Reyes, Monterrey, Mexico
-              </p>
+    <!-- FOOTER: sección inferior de la página -->
+    <footer class="footer-personalizado py-5">
+      <!-- 
+    footer-personalizado: clase CSS propia para estilos personalizados
+    py-5: clase Bootstrap que agrega padding vertical (arriba y abajo)
+  -->
+      <!-- Contenedor fluido que ocupa todo el ancho de la pantalla -->
+      <div class="container-fluid px-md-6">
+        <!-- 
+      px-md-6: padding horizontal a partir de pantallas medianas
+    -->
+        <!-- Fila de Bootstrap -->
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <!-- 
+    row: fila del sistema de grid de Bootstrap
+    row-cols-1: 1 columna en pantallas pequeñas
+    row-cols-md-4: 4 columnas en pantallas medianas o grandes
+    g-4: espacio (gap) entre columnas
+  -->
+
+          <!-- ================= COLUMNA 1 ================= -->
+          <div class="col">
+            <!-- 
+      col: define una columna dentro de la fila
+    -->
+
+            <!-- Primera tarjeta del footer -->
+            <div class="card footer-personalizado border-0 h-100">
+              <!-- 
+        card: componente de Bootstrap
+        border-0: elimina el borde de la card
+        h-100: ocupa el 100% de la altura disponible
+      -->
+
+              <div class="card-cuerpo">
+                <!-- Contenedor interno del contenido de la card -->
+
+                <!-- Título de la sección -->
+                <h5 class="card-titulo">Contactanos</h5>
+
+                <!-- Texto con información de contacto -->
+                <p class="card-texto">
+                  fenixlaser@gmail.com <br />
+                  <!-- <br /> hace un salto de línea -->
+                  +52 812 696 66 07 <br />
+                  1620, Alfonso Reyes, Monterrey, Mexico
+                </p>
+
+                <!-- Contenedor de iconos de redes sociales -->
+                <div class="contenedor-iconos">
+                  <!-- Icono de Facebook -->
+                  <div>
+                    <a href="#" style="color: var(--offwhite)">
+                      <!-- 
+                href="#": enlace (aún sin URL real)
+                style: color usando una variable CSS
+              -->
+                      <i class="bi bi-facebook"></i>
+                      <!-- Icono de Bootstrap Icons -->
+                    </a>
+                  </div>
+
+                  <!-- Icono de LinkedIn -->
+                  <div>
+                    <a href="#" style="color: var(--offwhite)">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                  </div>
+
+                  <!-- Icono de Twitter -->
+                  <div>
+                    <a href="#" style="color: var(--offwhite)">
+                      <i class="bi bi-twitter"></i>
+                    </a>
+                  </div>
+
+                  <!-- Icono de Instagram -->
+                  <div>
+                    <a href="#" style="color: var(--offwhite)">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card footer-custom-bg">
-            <div class="card-body">
-              <h5 class="card-title">Productos</h5>
-              <p class="card-text">
+
+          <!-- ================= COLUMNA 2 ================= -->
+          <div class="card footer-personalizado border-0 h-100">
+            <!-- Card para la sección de productos -->
+            <div class="card-cuerpo">
+              <h5 class="card-titulo">Productos</h5>
+              <p class="card-texto">
                 Galería<br />
                 Catalogo<br />
                 Personalización<br />
@@ -40,12 +122,15 @@
               </p>
             </div>
           </div>
-          <div class="card footer-custom-bg">
-            <div class="card-body">
-              <h5 class="card-title">Sobre Nosotros</h5>
-              <p class="card-text">
+
+          <!-- ================= COLUMNA 3 ================= -->
+          <div class="card footer-personalizado border-0">
+            <!-- Card para información de la empresa -->
+            <div class="card-cuerpo">
+              <h5 class="card-titulo">Sobre Nosotros</h5>
+              <p class="card-texto">
                 Nosotros<br />
-                Quienes somos<br />
+                Quiénes somos<br />
                 Misión Visión<br />
                 Integrantes<br />
                 Login<br />
@@ -53,9 +138,22 @@
               </p>
             </div>
           </div>
-          <div class="card footer-custom-bg">
-            <h5 class="card-title">Ubicación</h5>
-            <img src="..." class="card-img-bottom" alt="Ubicación del local" />
+
+          <!-- ================= COLUMNA 4 ================= -->
+          <div class="card footer-personalizado border-0">
+            <!-- Card para mostrar la ubicación -->
+            <h5 class="card-titulo">Ubicación</h5>
+
+            <!-- Imagen del mapa o ubicación del negocio -->
+            <img
+              src="https://lh3.googleusercontent.com/u/0/d/1qpi3rFNEl-whj5qYK4Y2-H34QOBKCzNo"
+              class="card-imagen"
+              alt="Ubicación del local"
+            />
+            <!-- 
+                src: URL de la imagen
+      alt: texto alternativo (accesibilidad)
+    -->
           </div>
         </div>
       </div>
