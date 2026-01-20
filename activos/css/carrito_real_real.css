@@ -7,6 +7,13 @@
             border: none;
         }
 
+
+        h2, h3, h4, h5, h6 {
+        font-family: var(--fuente-principal);
+        font-weight: 700; /* Negrita para títulos */
+        color: var(--night);
+        }
+
         .columna-productos {
             background-color: var(--offwhite);
             padding: 2rem;
@@ -14,12 +21,15 @@
 
         .columna-resumen {
             background-color: var(--offwhite);
-            border-left: 1px solid #dee2e6;
+            border-left: 1px solid var(--night);
             padding: 2rem;
-        }
 
+            border-bottom: var(--night);
+        }
+        
+        
         .item-producto {
-            border-bottom: 1px solid #eeeeee;
+            border-bottom: 1px solid var(--night);
             padding: 1.5rem 0;
             transition: background-color 0.3s;
         }
@@ -38,13 +48,14 @@
         }
 
         .boton-principal-pago {
-            background-color: #f28131;
-            color: white;
-            border-radius: 50px;
-            font-weight: bold;
-            padding: 12px;
+            background: #E86C1A;
             border: none;
-            transition: transform 0.2s;
+            color: white;
+            padding: 8px 30px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            font-weight: 600;
         }
 
         .boton-principal-pago:hover {
@@ -60,3 +71,8 @@
             padding: 2px 12px;
             font-size: 0.8rem;
         }
+        .divisores-div{
+             border-bottom: 1px solid var(--night);
+            
+        }
+        
