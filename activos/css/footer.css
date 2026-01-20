@@ -1,0 +1,6 @@
+/* ======CONTENEDOR PRINCIPAL====== */
+.footer-custom-bg {
+  background-color: var(--night);
+  color: var(--offwhite);
+  font-family: var(--fuente-principal);
+}
