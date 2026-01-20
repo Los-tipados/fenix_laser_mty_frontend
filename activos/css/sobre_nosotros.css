@@ -79,7 +79,7 @@
   .video-loop {
     width: 70%;                /* 👈 ajusta aquí (70–85%) */
     max-width: 420px;          /* límite elegante */
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 }
 
@@ -122,7 +122,7 @@
 .contenedor-imagen {
   width: 70%;
   max-width: 420px;
-  aspect-ratio: 16 / 9;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +165,7 @@ Sección CEO
   align-items: center;
   width: 70%;           /* mismo valor que video e historia */
   max-width: 420px;     /* mismo límite elegante */
-  aspect-ratio: 16 / 9;
+  object-fit: cover;
   margin: 0 auto;       /* centra dentro de la columna */
 }
 
