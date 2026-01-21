@@ -1,0 +1,236 @@
+/* Estilos específicos para la pagina "Sobre Nosotros" */
+
+/* =========================
+   TÍTULOS
+========================= */
+/*.titulo-nosotros {
+  color: var(--offwhite);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 6rem 0 1.5rem;
+}*/
+
+.subtitulo-nosotros {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.titulo-ceo {
+  color: var(--offwhite);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.palabra-destacada {
+  color: var(--orange);
+}
+
+/* =========================
+   SECCIÓN NOSOTROS
+========================= */
+
+/* Fila principal */
+.fila-nosotros {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Columnas */
+.fila-nosotros > div {
+  display: flex;
+}
+
+/* Texto (MANDA LA ALTURA) */
+.col-texto {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  color: var(--offwhite);
+}
+
+/* Contenedor del video */
+.contenedor-video {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* VIDEO → SIN ALTURA FORZADA */
+.video-loop {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Desktop: video más pequeño que su columna */
+@media (min-width: 769px) {
+  .contenedor-video {
+    display: flex;
+    justify-content: center;   /* centra horizontal */
+    align-items: center;       /* centra vertical */
+  }
+
+  .video-loop {
+    width: 70%;                /* 👈 ajusta aquí (70–85%) */
+    max-width: 420px;          /* límite elegante */
+    object-fit: cover;
+  }
+}
+
+/* =========================
+   MOBILE NOSOTROS
+========================= */
+@media (max-width: 768px) {
+  .fila-nosotros {
+    flex-direction: column;
+  }
+
+  .contenedor-video {
+    height: 200px;       /* CONTROL REAL EN MÓVIL */
+  }
+
+  .video-loop {
+    height: 100%;
+  }
+
+  .col-texto {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================
+   NUESTRA HISTORIA
+========================= */
+.titulos-centrados {
+  text-align: center;
+  color: var(--offwhite);
+}
+
+.imagen-historia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.contenedor-imagen {
+  width: 70%;
+  max-width: 420px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;       /* centra dentro de la columna */
+}
+
+/* =========================
+   MOBILE NUESTRA HISTORIA
+========================= */
+
+@media (max-width: 768px) {
+  .contenedor-imagen {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* =========================
+  MEDIA QUERY PARA IMG Y VIDEOS
+========================= */
+
+@media (max-width: 991px) {
+.row {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.imagen-historia, 
+.imagen-ceo {
+  max-width: 80%;
+  margin-bottom: 10px;
+}
+
+.col-md-6 {
+  width: 100%;
+}
+}
+
+/* =========================
+   CARDS TRANSPARENTES
+========================= */
+.card {
+  background-color: transparent;
+  border: none;
+  color: var(--offwhite);
+}
+
+
+/* =========================
+Sección CEO
+========================= */
+
+.titulo-ceo {
+  margin-bottom: 2.5rem; /* separa el título del hr */
+}
+
+.contenedor-imagen-ceo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;           /* mismo valor que video e historia */
+  max-width: 420px;     /* mismo límite elegante */
+  object-fit: cover;
+  margin: 0 auto;       /* centra dentro de la columna */
+}
+
+.imagen-ceo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .seccion-ceo {
+  flex-direction: column;
+}
+    
+.contenedor-imagen-ceo {
+  width: 100%;
+  height: 200px;
+  aspect-ratio: auto;
+}
+}
+
+/* =========================
+   HR PERSONALIZADO
+========================= */
+
+hr {
+    height: 6px;
+    background-color: var(--offwhite);
+    border: none; /* Quita el borde por defecto */
+    width: 90%;
+    margin: auto; /* Centra la línea */
+    margin-top: 0;         /* evita que se pegue */
+    margin-bottom: 3rem;  /* separa del contenido de abajo */
+    }
+
+
+    .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

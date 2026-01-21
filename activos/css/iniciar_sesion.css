@@ -1,0 +1,242 @@
+.custom-label {
+    color: #ffffff; /* Define el color del texto de la etiqueta en blanco */
+}
+
+body{
+   min-height: 100vh; 
+   /* Hace que el body tenga al menos el alto total de la ventana del navegador */
+
+   background-image: url("../imagenes/fondos/bateFondo.png "); 
+   /* Coloca una imagen de fondo */
+
+   background-size: cover;
+   /* Escala la imagen para cubrir toda la pantalla */
+
+   background-repeat: no-repeat;
+   /* Evita que la imagen de fondo se repita */
+}
+
+.login-card {
+    background: linear-gradient(135deg, 
+        rgba(20, 43, 67, 0.5), 
+        rgba(116, 42, 33, 0.5)) ;
+    /* Aplica un fondo con degradado semitransparente */
+
+    border-radius: 40px; 
+    /* Redondea las esquinas de la tarjeta */
+
+    backdrop-filter: blur(2px);
+    /* Aplica un efecto de desenfoque al fondo detrás del elemento */
+
+    -webkit-backdrop-filter: blur(15px); 
+    /* Compatibilidad con navegadores WebKit (Safari, Chrome antiguos) */
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) ;
+    /* Agrega sombra para dar efecto de profundidad */
+
+    color: white;
+    /* Cambia el color del texto a blanco */
+
+    margin: 6rem 0 1.5rem;
+}
+
+.form-control{
+    background-color: transparent !important;
+    /* Hace transparente el fondo del input */
+    border: none ;
+    /* Elimina todos los bordes del input */
+    color: #1877F2;
+    border-bottom: 1px solid white; 
+    /* Agrega solo una línea blanca en la parte inferior */
+}
+  
+
+hr {
+    border: none;
+    /* Quita el borde por defecto de Bootstrap */
+
+    height: 1px !important;
+    /* Define el grosor real de la línea */
+
+    background-color: rgba(255, 255, 255, 0.3) !important; 
+    /* Línea blanca con opacidad para que se vea más fina */
+
+    opacity: 1;
+    /* Evita que Bootstrap modifique la opacidad */
+}
+
+.boton-ejemplo{
+    background: linear-gradient(90deg, #853728 0%, #BD5A14 51%, #F57C00 100%) !important;
+    /* Fondo con degradado horizontal */
+
+    border: none;
+    /* Elimina el borde del botón */
+
+    border-radius: 50px;
+    /* Hace el botón completamente redondeado */
+ 
+    color: var(--offwhite);
+    /* Color del texto usando una variable CSS */
+
+    padding: 12px 40px;
+    /* Espaciado interno vertical y horizontal */
+
+    font-weight: bold;
+    /* Texto en negrita */
+}
+
+
+/* Base de los botones sociales */
+.btn-social {
+    width: 50px;
+    /* Ancho del botón */
+
+    height: 50px;
+    /* Alto del botón */
+
+    border-radius: 50% !important;
+    /* Hace el botón circular */
+
+    display: flex;
+    /* Activa Flexbox */
+
+    align-items: center;
+    /* Centra verticalmente el contenido */
+
+    justify-content: center;
+    /* Centra horizontalmente el contenido */
+
+    border: none !important;
+    /* Elimina el borde */
+
+    padding: 0 !important;
+    /* Quita padding interno */
+
+    transition: transform 0.2s;
+    /* Agrega animación suave al transform */
+}
+
+.btn-google-white img {
+    width: 35px;
+    /* Ancho del logo de Google */
+
+    height: 35px;
+    /* Alto del logo de Google */
+}
+
+.btn-x { 
+    background-color: #000000 !important; 
+    /* Fondo negro para el botón de X (Twitter) */
+}
+
+.btn-facebook {
+    background-color: rgba(255, 255, 255, 0.1) !important; 
+    /* Fondo semitransparente */
+
+    width: 52px;
+    height: 52px;
+    /* Tamaño del botón */
+
+    border-radius: 50% !important;
+    /* Botón circular */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centrado del contenido */
+
+    padding: 0 !important;
+    /* Elimina padding */
+
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    /* Borde fino semitransparente */
+}
+
+.btn-facebook i {
+    background-color: #1877F2;
+    /* Fondo azul oficial de Facebook */
+
+    color: #ffffff !important;
+    /* Color blanco del icono */
+
+    width: 52px;
+    height: 52px;
+    /* Tamaño del círculo interno */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centrado del icono */
+
+    border-radius: 50%;
+    /* Hace el círculo interno */
+
+    font-size: 1.8rem;
+    /* Tamaño del icono */
+
+    line-height: 0;
+    /* Ajusta la alineación vertical */
+
+    padding-top: 3px;
+    /* Ajuste fino para centrar la "f" */
+}
+
+/* Iconos dentro de botones sociales */
+.btn-social i {
+    color: white;
+    /* Color blanco del icono */
+
+    font-size: 1.5rem;
+    /* Tamaño del icono */
+}
+
+.btn-google-custom i {
+    background: linear-gradient(
+        to right,
+        #4285F4 25%,
+        #EA4335 25% 50%,
+        #FBBC05 50% 75%,
+        #34A853 75%
+    );
+    /* Degradado con los colores oficiales de Google */
+
+    -webkit-background-clip: text;
+    /* Aplica el fondo solo al texto */
+
+    -webkit-text-fill-color: transparent;
+    /* Hace transparente el color del texto */
+
+    font-size: 1.4rem;
+    /* Tamaño del icono */
+
+    font-weight: bold;
+    /* Texto en negrita */
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background: url("../imagenes/fondos/fondoTablet.jpg") center/cover no-repeat;
+    /* Cambia el fondo cuando la pantalla es tablet */
+  }
+  
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  body {
+    background: url("../imagenes/fondos/fondoCelular2.jpg") center/cover no-repeat;
+    /* Cambia el fondo cuando la pantalla es móvil */
+  }
+}
+
+.form-control::placeholder {
+  color: var(--letraformularios);
+  /* Cambia el color del texto placeholder */
+
+  opacity: 1;
+  /* Evita que el placeholder se vea transparente */
+}
+
+
+
