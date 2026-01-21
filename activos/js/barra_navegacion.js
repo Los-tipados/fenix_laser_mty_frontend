@@ -3,3 +3,5 @@ fetch("barra_navegacion.html")
   .then(html => {
     document.getElementById("navbar").innerHTML = html;
   });
+
+  // Barra de navegación  
