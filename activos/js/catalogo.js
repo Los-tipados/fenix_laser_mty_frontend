@@ -1,32 +1,129 @@
-// ==============================
-// FUNCIÓN PARA CREAR LA CARD
-// ==============================
-function addProductToList(product) {
-  const list = document.getElementById('product-list');
+// catalogo.js
 
+// Elementos del DOM
+const productList = document.getElementById('product-list');
+const recommendedList = document.getElementById('recommended-list');
+const searchInput = document.getElementById('searchInput');
+const priceRange = document.getElementById('priceRange');
+const priceValue = document.getElementById('priceValue');
+
+// Arrays para filtros de categoría (se llenan cuando se marquen checkboxes)
+let selectedCategories = [];
+
+// Función para crear una tarjeta de producto
+function createProductCard(product) {
   const col = document.createElement('div');
-  col.className = 'col-md-4';
+  col.className = 'col-6 col-md-4 col-lg-3';
+
+  // Calcular estrellas
+  const rating = product.rating || 4.5;
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  let starsHTML = '';
+  
+  for (let i = 0; i < fullStars; i++) {
+    starsHTML += '<i class="fas fa-star"></i>';
+  }
+  if (hasHalf) {
+    starsHTML += '<i class="fas fa-star-half-alt"></i>';
+  }
+  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+  for (let i = 0; i < emptyStars; i++) {
+    starsHTML += '<i class="far fa-star"></i>';
+  }
 
   col.innerHTML = `
-    <div class="card-catalogo h-100">
+    <div class="card h-100">
       <img src="${product.img}" class="card-img-top" alt="${product.nombre}">
-      <div class="card-body">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-title">${product.nombre}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">$${product.precio} MXN</h6>
-        <p class="card-text">${product.descripcion}</p>
+        <h6 class="card-subtitle mb-2" style="color: var(--gold);">
+          $${product.precio.toLocaleString('es-MX')} MXN
+        </h6>
+        <div class="rating mb-2 text-warning">
+          ${starsHTML}
+          <small class="text-muted ms-1">(${rating})</small>
+        </div>
+        <p class="card-text text-muted small flex-grow-1">
+          ${product.descripcion}
+        </p>
+        <a href="#" class="btn btn-outline-warning mt-auto">Ver detalle</a>
       </div>
     </div>
   `;
 
-  list.appendChild(col);
+  // Guardar datos para filtrado
+  col.dataset.precio = product.precio;
+  col.dataset.nombre = product.nombre.toLowerCase();
+  col.dataset.descripcion = product.descripcion.toLowerCase();
+  col.dataset.categoria = product.categoria || '';
+
+  return col;
 }
 
-// ==============================
-// CARGA DESDE EL JSON
-// ==============================
+// Función para renderizar productos (con filtros aplicados)
+function renderProducts(products) {
+  // Limpiar listas
+  productList.innerHTML = '';
+  recommendedList.innerHTML = '';
+
+  // Recomendados
+  const recommended = products.filter(p => p.recomendado === true);
+  recommended.forEach(product => {
+    recommendedList.appendChild(createProductCard(product));
+  });
+
+  // Todos los productos (con filtros)
+  const maxPrice = parseInt(priceRange.value) || 3000;
+  const searchText = searchInput.value.toLowerCase().trim();
+
+  products.forEach(product => {
+    const precio = product.precio;
+    const matchesPrice = precio <= maxPrice;
+    const matchesSearch = !searchText || 
+      product.nombre.toLowerCase().includes(searchText) ||
+      product.descripcion.toLowerCase().includes(searchText);
+    const matchesCategory = selectedCategories.length === 0 || 
+      selectedCategories.includes(product.categoria);
+
+    if (matchesPrice && matchesSearch && matchesCategory) {
+      productList.appendChild(createProductCard(product));
+    }
+  });
+}
+
+// Cargar datos y configurar filtros
 fetch('../activos/data/productos.json')
   .then(response => response.json())
-  .then(data => {
-    data.forEach(product => addProductToList(product));
+  .then(products => {
+    // Actualizar valor inicial del slider
+    priceValue.textContent = `$${priceRange.value.toLocaleString('es-MX')}`;
+
+    // Render inicial
+    renderProducts(products);
+
+    // Eventos de filtro
+    priceRange.addEventListener('input', () => {
+      priceValue.textContent = `$${priceRange.value.toLocaleString('es-MX')}`;
+      renderProducts(products);
+    });
+
+    searchInput.addEventListener('input', () => {
+      renderProducts(products);
+    });
+
+    // Filtros de categoría (checkboxes)
+    document.querySelectorAll('.form-check-input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        selectedCategories = Array.from(
+          document.querySelectorAll('.form-check-input[type="checkbox"]:checked')
+        ).map(cb => cb.value);
+        
+        renderProducts(products);
+      });
+    });
   })
-  .catch(error => console.error('Error loading JSON:', error));
+  .catch(error => {
+    console.error('Error al cargar productos:', error);
+    productList.innerHTML = '<p class="text-danger">No se pudieron cargar los productos. Intenta más tarde.</p>';
+  });
