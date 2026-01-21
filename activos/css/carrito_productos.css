@@ -77,8 +77,15 @@
         }
 
         .container{
-            padding-top: 3%;
+            padding-top: 10%;
         }
+
+@media (min-width: 430px) and (min-height: 932px) {
+  .container {
+    padding-top: 15%; /* ajusta el valor según lo que necesites */
+  }
+}
+
 
         .boton-volver{
             background: #E86C1A;
@@ -90,4 +97,80 @@
             transition: 0.3s;
             font-weight: 600;
         }
-        
+
+        .div-boton{
+
+            text-align: center;
+
+        }
+
+        .boton{
+            background-color: var(--orange);
+            color: var(--offwhite);
+            font-weight: bold;
+
+
+        }
+       
+.boton:hover {
+  background-color: #b34b00;
+  
+  
+}
+
+.mi-botonera {
+  display: flex;                  /* equivale a d-flex */
+  justify-content: space-between; /* equivale a justify-content-between */
+  align-items: center;            /* equivale a align-items-center */
+  margin-bottom: 1.5rem;          /* equivale a mb-4 (≈ 24px) */
+  padding-top: 1rem;              /* equivale a pt-3 (≈ 16px) */
+}
+
+.texto-carrito{
+    
+  margin-left: 100px; /* ajusta el valor a tu gusto */
+}
+
+
+@media (min-width: 1432px) and (min-height: 721px) {
+  .texto-carrito{
+  margin-left: 250px; /* ajusta el valor a tu gusto */
+  
+
+  }
+  .regresar{
+    font-size: 20px;
+  }
+}
+
+
+@media (min-width: 414px) and (min-height: 896px) {
+  .texto-carrito{
+  margin-left: 10px; /* ajusta el valor a tu gusto */
+  
+
+  }
+  .regresar{
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 390px) and (min-height: 844px) {
+  .texto-carrito{
+  margin-left: 10px; /* ajusta el valor a tu gusto */
+  }
+
+  regresar{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 375px) and (max-height: 667px) {
+  .texto-carrito {
+    margin-left: 2px; /* ajusta el valor a tu gusto */
+  }
+
+  .regresar {
+    font-size: 1px;
+  }
+}
