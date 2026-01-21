@@ -30,3 +30,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // o simplemente lo usamos para aplicar el umbral dinámico:
     elementos.forEach(el => observer.observe(el));
 });
+
+// Barra de navegación
