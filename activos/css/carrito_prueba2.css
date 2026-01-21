@@ -1,0 +1,102 @@
+/* Variables para que sea fácil cambiar colores */
+:root {
+    --brand-color: #4a90e2; /* Tu color principal */
+    --brand-dark: #357abd;
+    --border-color: #e0e0e0;
+    --bg-light: #f8f9fa;   /* Esto se va a borrar todo root*/
+}
+
+h2, h3, h4, h5, h6 {
+        font-family: var(--fuente-principal);
+        font-weight: 700; /* Negrita para títulos */
+        color: var(--night);
+}
+
+
+
+/* Bordes y sombras de las tarjetas */
+.card-custom {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+/* Inputs personalizados */
+.input-custom {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+}
+
+.input-custom:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.25 border-radius rgba(74, 144, 226, 0.25);
+}
+
+/* Botones personalizados */
+.btn-outline-custom {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.btn-check:checked + .btn-outline-custom {
+    background-color: var(--orange);
+    border-color: var(--orange );
+    color: var(--offwhite);
+}
+
+.btn-confirmar {
+  background: var(--orange);
+  border: none;
+  color: white;
+  padding: 4px 10px;   /* menos espacio interno */
+  border-radius: 8px;
+  font-size: 1.1rem;   /* texto más pequeño */
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.btn-outline-custom {
+  color: var(--night); /* rojo normal */
+  border: 3px solid var(--orange);
+}
+
+/* Hover */
+.btn-outline-custom:hover {
+  background-color: var(--orange);
+   /* texto blanco al pasar el mouse */
+}
+
+/* Cuando el radio está seleccionado */
+.btn-check:checked + .btn-outline-custom {
+  background-color: var(--orange);
+  color: var(--offwhite);
+  border-color: var(--orange);
+}
+
+
+
+
+
+/* Texto y detalles */
+.text-primary-custom {
+    color: var(--night);
+    font-weight: 800;
+}
+
+.divider-custom {
+    border-top: 2px dashed var(--border-color);
+    opacity: 1;
+}
+
+.container{
+            padding-top: 10%;
+        }
+
+@media (min-width: 430px) and (min-height: 932px) {
+  .container {
+    padding-top: 25%; /* ajusta el valor según lo que necesites */
+  }
+}
+
+
+
