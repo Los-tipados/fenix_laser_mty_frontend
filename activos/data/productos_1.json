@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Combo Doble",
+    "img": "https://lh3.googleusercontent.com/u/0/d/17cC8N54pIF_xy9Kr1eqbhiu3gVPOgEsG",
+    "precio": "2999",
+    "descripcion": "Grill Box Doble 9 kg + Tabla y Hacha"
+  },
+  {
+    "nombre": "Super Combo",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1EtkaVTyKK2pXNBq6feGtC0QEBJshNp2t",
+    "precio": "2499",
+    "descripcion": "Grill Box Sencilla 6 kg + Tabla y Hacha"
+  },
+  {
+    "nombre": "Combo Parota",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1JBshA70QKuAaDt80gq72abYdnCaybyJx",
+    "precio": "1199",
+    "descripcion": "Tabla de madera + hacha para carne"
+  },
+  {
+    "nombre": "Set de cuchillos",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1JtHDWnaTV4lFFW2z4i2-TRWdw4sTTvzh",
+    "precio": "699",
+    "descripcion": "Set de cuchillos profesionales"
+  },
+  {
+    "nombre": "Hacha",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1q6mKj2-7FK7Zu4-yzxjY0ZLdKoNmcFSq",
+    "precio": "399",
+    "descripcion": "Hacha para carne"
+  },
+  {
+    "nombre": "Cuchillo Chef",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1zxcGi6dd2FgAMYUdddJcyMusbpRapyZC",
+    "precio": "499",
+    "descripcion": "Cuchillo chef profesional"
+  },
+  {
+    "nombre": "Kit Whiskero",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1hsNhyn5R6_jJ7SjQCsYXvuC2YABYFvYI",
+    "precio": "799",
+    "descripcion": "Kit Whiskero personalizado 🥃"
+  },
+  {
+    "nombre": "Poker Box",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1dXyqmns58rvcZTcbxQbUoQB9I5PwuF-g",
+    "precio": "1199",
+    "descripcion": "Poker Box, un elegante maletín de aluminio"
+  },
+  {
+    "nombre": "Reloj Box",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1jOgzjWHYp0SIXYxOmt_J08TQpOJrrl32",
+    "precio": "1199",
+    "descripcion": "No hay regalo más valioso que el tiempo"
+  },
+  {
+    "nombre": "Kit parrillero",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1vwLngen4FHotbjSTBfAkLZV1aN0b61o2",
+    "precio": "699",
+    "descripcion": "Kit parrillero personalizado 🔥"
+  }
+]

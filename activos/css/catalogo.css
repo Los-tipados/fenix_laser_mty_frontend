@@ -1,0 +1,58 @@
+.card {
+  background: #2f2a44 !important;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: contain;
+  background: #242038;
+  padding: 15px;
+}
+
+.card-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  color: #ffca2c !important;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.rating i {
+  color: #ffc107;
+}
+
+.rating i.far {
+  color: #6c757d;
+}
+
+.text-warning { color: #ffca2c !important; }
+
+/* Carrusel recomendados */
+#recommended-carousel .carousel-item {
+  transition: transform 0.6s ease;
+}
+
+@media (min-width: 380px) {
+  #recommended-carousel .carousel-inner {
+    display: flex;
+  }
+  #recommended-carousel .carousel-item {
+    flex: 0 0 20%;          /* 5 items visibles aprox */
+    margin-right: 1rem;
+  }
+}
