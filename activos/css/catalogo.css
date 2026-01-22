@@ -1,36 +1,70 @@
-<<<<<<< HEAD
+/*.card {
+  background: #2f2a44 !important;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
-@media screen and (min-width: 700px) {
-  .carousel-inner {
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: contain;
+  background: #242038;
+  padding: 15px;
+}
+
+.card-title {
+  color: #F2F0F1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  color: #E86C1A !important;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.rating i {
+  color: #F2A23A;
+}
+
+.rating i.far {
+  color: #D7D7D7;
+}
+
+.text-warning { color: #E86C1A; !important; }
+
+.btn-outline-warning{
+  color: #E86C1A;
+}
+
+
+
+/* Carrusel recomendados
+#recommended-carousel .carousel-item {
+  transition: transform 0.6s ease;
+}
+
+@media (min-width: 380px) {
+  #recommended-carousel .carousel-inner {
     display: flex;
   }
-  .carousel-item {
-    margin-right: 0;
-    flex: 0 0 calc(100% / 5);
-    display: block;
+  #recommended-carousel .carousel-item {
+    flex: 0 0 20%;          /* 5 items visibles aprox 
+    margin-right: 1rem;
   }
-}
+}*/
 
-.carousel-inner{
-    padding: 0.5em;
-}
-.card{
-    margin: 3em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: none;
-    object-fit: cover;
-}
-.carousel-control-prev, .carousel-control-next{
-    background-color: #e1e1e1;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    top: -5%;
-    right: 0;
+/* Nuevos estilos */
 
-
-=======
 .card {
   background: #2f2a44 !important;
   border: none;
@@ -53,40 +87,117 @@
 }
 
 .card-title {
-  color: #fff;
+  color: #F2F0F1;
   font-weight: 600;
   font-size: 1.1rem;
   margin-bottom: 8px;
 }
 
 .card-subtitle {
-  color: #ffca2c !important;
+  color: #E86C1A !important;
   font-weight: 700;
   font-size: 1.15rem;
 }
 
 .rating i {
-  color: #ffc107;
+  color: #F2A23A;
 }
 
 .rating i.far {
-  color: #6c757d;
+  color: #D7D7D7;
 }
 
-.text-warning { color: #ffca2c !important; }
+.text-warning { color: #E86C1A; !important; }
 
-/* Carrusel recomendados */
+.btn-outline-warning{
+  color: #E86C1A;
+}
+
+.card-text{
+    color: #D7D7D7
+}
+
+.card-subtitle {
+  color: var(--gold) !important;  /* Precio en dorado */
+}
+
+/* Botón Ver detalle: borde y texto naranja, fondo transparente */
+.btn-outline-warning {
+  color: var(--orange) !important;
+  border-color: var(--orange) !important;
+}
+
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
+.btn-outline-warning:active {
+  background-color: var(--orange) !important;
+  color: white !important;
+  border-color: var(--orange) !important;
+}
+
+.recommended-card-wrapper {
+  flex: 0 0 auto;
+  width: 300px;          /* ancho fijo o mínimo para cada tarjeta en carrusel */
+  margin-right: 1rem;    /* espacio entre tarjetas */
+}
+
+.recommended-card-wrapper .card-img-top {
+  height: 220px;         /* un poco más altas si quieres destacarlas */
+}
+
+/* Carrusel recomendados - múltiples tarjetas visibles */
+#recommended-carousel .carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
 #recommended-carousel .carousel-item {
+  display: flex;
+  flex: 0 0 100%;               /* Cada "slide" ocupa 100% */
   transition: transform 0.6s ease;
 }
 
-@media (min-width: 380px) {
-  #recommended-carousel .carousel-inner {
-    display: flex;
-  }
-  #recommended-carousel .carousel-item {
-    flex: 0 0 20%;          /* 5 items visibles aprox */
-    margin-right: 1rem;
-  }
->>>>>>> d091daac769233291d6db43224ef89cd94c46607
+#recommended-carousel .card {
+  margin: 0 3rem;             /* Espacio entre tarjetas */
+  flex: 1;
 }
+
+/* Responsive: cuántas tarjetas visibles por slide */
+@media (min-width: 576px) {
+  #recommended-carousel .carousel-item {
+    flex: 0 0 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #recommended-carousel .carousel-item {
+    flex: 0 0 66.666%;          /* ~2 tarjetas visibles */
+  }
+}
+
+@media (min-width: 992px) {
+  #recommended-carousel .carousel-item {
+    flex: 0 0 50%;              /* ~3-4 tarjetas visibles */
+  }
+}
+
+@media (min-width: 1200px) {
+  #recommended-carousel .carousel-item {
+    flex: 0 0 33.333%;          /* ~4-5 tarjetas visibles */
+  }
+}
+
+/* Mejorar visibilidad de controles */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.7;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) brightness(2);  /* Hacer iconos blancos/naranjas si quieres */
+}
+
+

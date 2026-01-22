@@ -6,7 +6,7 @@
     "descripcion": "Grill Box Doble 9 kg + Tabla y Hacha",
     "categoria": "grill-parrilla",
     "rating": 4.8,
-    "recomendado": true,
+    "recomendado": false,
     "etiquetas": ["combo", "parrilla", "premium"]
   },
   {
@@ -16,7 +16,7 @@
     "descripcion": "Grill Box Sencilla 6 kg + Tabla y Hacha",
     "categoria": "grill-parrilla",
     "rating": 4.7,
-    "recomendado": true,
+    "recomendado": false,
     "etiquetas": ["combo", "parrilla"]
   },
   {
