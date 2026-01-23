@@ -1,0 +1,62 @@
+:root {
+    --gold: #F2A23A;
+    --orange: #E86C1A;
+    --bg-card: #2f2a44;
+}
+
+/* --- CARRUSEL --- */
+#recommended-carousel .carousel-item {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.recommended-card-wrapper {
+    display: inline-block;
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1) brightness(100);
+}
+
+/* --- ESTILO DE TARJETAS (CATÁLOGO Y CARRUSEL) --- */
+.card {
+    background: var(--bg-card) !important;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-img-top {
+    height: 200px; /* Altura fija para que todas las cards midan lo mismo */
+    object-fit: contain;
+    background: #242038;
+    padding: 15px;
+}
+
+.card-title { color: #F2F0F1; font-weight: 600; font-size: 1.1rem; }
+.card-subtitle { color: var(--gold) !important; font-weight: 700; }
+.rating i { color: var(--gold); }
+.card-text { color: #D7D7D7; font-size: 0.9rem; }
+
+.btn-outline-warning {
+    color: var(--orange) !important;
+    border-color: var(--orange) !important;
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--orange) !important;
+    color: white !important;
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "nombre": "Combo Doble",
+    "img": "https://lh3.googleusercontent.com/u/0/d/17cC8N54pIF_xy9Kr1eqbhiu3gVPOgEsG",
+    "precio": 2999,
+    "descripcion": "Grill Box Doble 9 kg + Tabla y Hacha",
+    "categoria": "grill-parrilla",
+    "rating": 4.8,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+    "etiquetas": ["combo", "parrilla", "premium"]
+  },
+  {
+    "nombre": "Super Combo",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1EtkaVTyKK2pXNBq6feGtC0QEBJshNp2t",
+    "precio": 2499,
+    "descripcion": "Grill Box Sencilla 6 kg + Tabla y Hacha",
+    "categoria": "grill-parrilla",
+    "rating": 4.7,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["combo", "parrilla"]
+  },
+  {
+    "nombre": "Combo Parota",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1JBshA70QKuAaDt80gq72abYdnCaybyJx",
+    "precio": 1199,
+    "descripcion": "Tabla de madera + hacha para carne",
+    "categoria": "accesorios",
+    "rating": 4.5,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["tabla", "madera", "hacha"]
+  },
+  {
+    "nombre": "Set de cuchillos",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1JtHDWnaTV4lFFW2z4i2-TRWdw4sTTvzh",
+    "precio": 699,
+    "descripcion": "Set de cuchillos profesionales",
+    "categoria": "cuchillos",
+    "rating": 4.9,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["cuchillos", "profesional"]
+  },
+  {
+    "nombre": "Hacha",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1q6mKj2-7FK7Zu4-yzxjY0ZLdKoNmcFSq",
+    "precio": 399,
+    "descripcion": "Hacha para carne",
+    "categoria": "accesorios",
+    "rating": 4.6,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["hacha"]
+  },
+  {
+    "nombre": "Cuchillo Chef",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1zxcGi6dd2FgAMYUdddJcyMusbpRapyZC",
+    "precio": 499,
+    "descripcion": "Cuchillo chef profesional",
+    "categoria": "cuchillos",
+    "rating": 4.8,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["cuchillo", "chef"]
+  },
+  {
+    "nombre": "Kit Whiskero",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1hsNhyn5R6_jJ7SjQCsYXvuC2YABYFvYI",
+    "precio": 799,
+    "descripcion": "Kit Whiskero personalizado 🥃",
+    "categoria": "personalizados",
+    "rating": 5.0,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+    "etiquetas": ["whisky", "personalizado", "regalo"]
+  },
+  {
+    "nombre": "Poker Box",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1dXyqmns58rvcZTcbxQbUoQB9I5PwuF-g",
+    "precio": 1199,
+    "descripcion": "Poker Box, un elegante maletín de aluminio",
+    "categoria": "personalizados",
+    "rating": 4.7,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+    "etiquetas": ["poker", "juego", "maletín"]
+  },
+  {
+    "nombre": "Reloj Box",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1jOgzjWHYp0SIXYxOmt_J08TQpOJrrl32",
+    "precio": 1199,
+    "descripcion": "No hay regalo más valioso que el tiempo",
+    "categoria": "personalizados",
+    "rating": 4.9,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+    "etiquetas": ["reloj", "regalo", "personalizado"]
+  },
+  {
+    "nombre": "Kit parrillero",
+    "img": "https://lh3.googleusercontent.com/u/0/d/1vwLngen4FHotbjSTBfAkLZV1aN0b61o2",
+    "precio": 699,
+    "descripcion": "Kit parrillero personalizado 🔥",
+    "categoria": "grill-parrilla",
+    "rating": 4.6,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+    "etiquetas": ["parrilla", "kit", "personalizado"]
+  }
+]
