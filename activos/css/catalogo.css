@@ -1,15 +1,31 @@
+.curva {
+  background-color: #372f47;
+  width: 100%;
+  min-height: auto; /* Dejamos que el carrusel dicte la altura */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 20px 0px 20px; /* Padding superior y lateral, 0 abajo */
+  box-sizing: border-box;
+}
+
+/* PARA TU OLA ORIGINAL */
+
+/* Mantenemos tu CSS de las cards intacto */
 .card {
   background: #2f2a44 !important;
   border: none;
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .card-img-top {
@@ -40,7 +56,9 @@
   color: #6c757d;
 }
 
-.text-warning { color: #ffca2c !important; }
+.text-warning {
+  color: #ffca2c !important;
+}
 
 /* Carrusel recomendados */
 #recommended-carousel .carousel-item {
@@ -52,7 +70,7 @@
     display: flex;
   }
   #recommended-carousel .carousel-item {
-    flex: 0 0 20%;          /* 5 items visibles aprox */
+    flex: 0 0 20%; /* 5 items visibles aprox */
     margin-right: 1rem;
   }
 }
