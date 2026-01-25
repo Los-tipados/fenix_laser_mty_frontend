@@ -60,3 +60,7 @@
     background-color: var(--orange) !important;
     color: white !important;
 }
+
+h2{
+  margin: 6rem 0 1.5rem !important;
+}

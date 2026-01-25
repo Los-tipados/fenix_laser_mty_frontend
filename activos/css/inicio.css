@@ -3,22 +3,22 @@
   color: #E86C1A;
 }
 
-.btn-orange {
+.btn-catalogo { /*btn-orange*/
   background-color: #ff7a00;
   color: #fff;
   border: none;
 }
 
-.btn-orange:hover {
+.btn-catalogo:hover {
   background-color: #E86C1A;
 }
 
-.btn-outline-orange {
+.btn-outline-ver-todo {
   border: 1px solid #ff7a00;
   color: #ff7a00;
 }
 
-.btn-outline-orange:hover {
+.btn-outline-ver-todo:hover {
   background-color: #ff7a00;
   color: #fff;
 }
@@ -98,9 +98,9 @@ h2{
 
 /* ============== POR QUE ELEGIRNOS =================*/
 
-.btn{
+/*.btn{
   margin-bottom: 20px;
-}
+}*/ 
 
 
 /* ============== PROCESO =================*/
