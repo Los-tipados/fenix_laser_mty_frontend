@@ -3,12 +3,13 @@
 }
 
 body{
-   min-height: 100vh; 
+   min-height: 90vh; 
    /* Hace que el body tenga al menos el alto total de la ventana del navegador */
 
    background-image: url("../imagenes/fondos/bateFondo.png "); 
    /* Coloca una imagen de fondo */
 
+   background-position: center;
    background-size: cover;
    /* Escala la imagen para cubrir toda la pantalla */
 
@@ -213,22 +214,22 @@ hr {
     /* Texto en negrita */
 }
 
-/* Tablet */
+/* Tablet /
 @media (min-width: 768px) and (max-width: 1024px) {
   body {
     background: url("../imagenes/fondos/fondoTablet.jpg") center/cover no-repeat;
-    /* Cambia el fondo cuando la pantalla es tablet */
+    / Cambia el fondo cuando la pantalla es tablet /
   }
   
 }
 
-/* Móvil */
+/ Móvil /
 @media (max-width: 767px) {
   body {
     background: url("../imagenes/fondos/fondoCelular2.jpg") center/cover no-repeat;
-    /* Cambia el fondo cuando la pantalla es móvil */
+    / Cambia el fondo cuando la pantalla es móvil /
   }
-}
+}*/
 
 .form-control::placeholder {
   color: var(--letraformularios);
