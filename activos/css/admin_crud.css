@@ -1,8 +1,4 @@
 
-i{
-  color: var(--gold);
-}
-
 .text-warning {
   color: var(--gold) !important;
 }
@@ -33,6 +29,20 @@ i{
   height: 180px;
   object-fit: cover;
   background: #0d1117;
+}
+
+.btn-success {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn-success:hover {
+  background-color: var(--orange);
+  border-color: var(--gold);
+}
+
+.icono-mas {
+  color: var(--offwhite);
 }
 
 .btn-warning {
