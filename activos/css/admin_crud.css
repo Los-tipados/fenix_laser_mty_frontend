@@ -1,7 +1,10 @@
-body {
-  background: #0d1117;
-  color: #e6edf3;
-  padding: 1.5rem;
+
+i{
+  color: var(--gold);
+}
+
+.text-warning {
+  color: var(--gold) !important;
 }
 
 #login-section {
@@ -10,16 +13,13 @@ body {
 }
 
 #login-form {
-  background: rgba(22, 27, 34, 0.9);
-  border: 1px solid #f0b429 !important;
+  background: var(--night);
+  border: 1px solid var(--orange) !important;
 }
 
-h1, h2, h5 {
-  color: #f0b429 !important;
-}
 
 .card {
-  background: #161b22;
+  background: var(--night);
   border: 1px solid #30363d;
   transition: transform 0.15s, box-shadow 0.15s;
 }
@@ -36,19 +36,16 @@ h1, h2, h5 {
 }
 
 .btn-warning {
-  background-color: #f0b429;
-  border-color: #f0b429;
+  background-color: var(--orange);
+  border-color: var(--gold);
   color: #0d1117;
 }
 
 .btn-warning:hover {
-  background-color: #d99f1f;
-  border-color: #d99f1f;
+  background-color: var(--gold);
+  border-color: var(--orange);
 }
 
-.text-warning {
-  color: #f0b429 !important;
-}
 
 .modal-content {
   background: #0d1117;
@@ -66,11 +63,11 @@ h1, h2, h5 {
 }
 
 .form-control:focus {
-  border-color: #f0b429;
+  border-color: var(--gold);
   box-shadow: 0 0 0 0.25rem rgba(240, 180, 41, 0.25);
 }
 
 .form-check-input:checked {
-  background-color: #f0b429;
-  border-color: #f0b429;
+  background-color: var(--gold);
+  border-color: var(--gold);
 }
