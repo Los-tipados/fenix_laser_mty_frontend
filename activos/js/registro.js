@@ -1,3 +1,12 @@
+function notificar(titulo, mensaje, icono) {
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icono
+    });
+}
+
+
 
 document.getElementById('registroForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -62,7 +71,8 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
 // --- LLAMADA A LA FUNCIÓN DE LIMPIEZA ---
         limpiarFormulario();
 
-        alert("¡Registro exitoso! Los datos se han guardado en un objeto JSON.");
+        notificar("¡Registro exitoso!","Ahora eres parte de fenix laser","success");
+       
         
         // Aquí podrías usar fetch() para enviar usuarioJSON a tu servidor
     }
