@@ -16,6 +16,9 @@
   --fuente-principal: 'Montserrat', sans-serif;
   --letraformularios: #D7D7D7;
   --glass-bg: rgba(255, 255, 255, 0.07);
+  --night-opaco: #1f1c2d93;
+  --brown-opaco: #85382893;
+
 }
 
 /* =========================
@@ -50,9 +53,15 @@ h1{
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 1px;
+  text-align: center;
+  margin: 6rem 0 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2{
+  margin: 0.5rem 0 1.5rem;
+}
+
+h2, h3, h4, h5, h6{
     font-family: var(--fuente-principal);
     font-weight: 700; /* Negrita para títulos */
     color: var(--offwhite);
@@ -60,8 +69,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 p{
     color: var(--offwhite);
-
-
 }
 
 

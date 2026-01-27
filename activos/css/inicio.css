@@ -1,0 +1,220 @@
+/* ================= COLORES ================= */
+.text-orange {
+  color: #E86C1A;
+}
+
+.btn-catalogo { /*btn-orange*/
+  background-color: #ff7a00;
+  color: #fff;
+  border: none;
+}
+
+.btn-catalogo:hover {
+  background-color: #E86C1A;
+}
+
+.btn-outline-ver-todo {
+  border: 1px solid #ff7a00;
+  color: #ff7a00;
+}
+
+.btn-outline-ver-todo:hover {
+  background-color: #ff7a00;
+  color: #fff;
+}
+
+/* ================= HERO ================= */
+.hero-section {
+  min-height: 90vh;
+  background: linear-gradient(90deg,
+    var(--night-opaco),
+    var(--brown-opaco)),
+              url("https://lh3.googleusercontent.com/u/0/d/1buyrrvFaMCtsZUh86R_ebQR_IMv5ulnS") center / cover no-repeat !important;
+                   
+  font-family: var(--fuente-principal);
+}
+
+/* ================= PRODUCTOS ================= */
+
+.products-section, .process-section{
+  background: linear-gradient(135deg,
+    var(--night-opaco),
+    var(--offwhite)) ;
+}
+
+h4,h6{
+  font-style: normal;
+  color: var(--night);
+}
+
+h2{
+  color: var(--offwhite);
+}
+
+.card-img-top{
+  height: 180px;          /* altura fija de la imagen */
+  object-fit: fill;      /* se ajusta sin deformarse */
+  width: 100%;
+  object-position: center;
+}
+
+.card-body{
+  height: 100px;
+}
+
+
+.products-section .card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.products-section .card:hover {
+  transform: translateY(-6px);
+}
+
+/* ================= FLECHAS CARRUSEL ================= */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev {
+  left: -60px;
+}
+
+.carousel-control-next {
+  right: -60px;
+}
+
+/* Estilo flechas */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--brown-opaco);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: 50% 50%;
+}
+
+/* ============== POR QUE ELEGIRNOS =================*/
+
+/*.btn{
+  margin-bottom: 20px;
+}*/ 
+
+
+/* ============== PROCESO =================*/
+.video {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.process-videos {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tamaño reducido */
+.video-small {
+  max-width: 320px;
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+  .video-small {
+    max-width: 100%;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 767.98px) {
+
+  /* Ocultar flechas en móvil */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .hero-section {
+    text-align: center;
+  }
+}
+
+/* ================= RESEÑAS ================= */
+
+.reviews-section {
+  background: linear-gradient(90deg, #1f1c2d, #853728);
+}
+
+.review-card {
+  max-width: 360px;
+  border-radius: 20px;
+  background: #f2f0f1;
+  border: none;
+}
+
+.review-text {
+  color: #4a4a4a;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.review-author img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-author strong {
+  color: var(--offwhite);
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+/* Flechas */
+.reviews-section .carousel-control-prev-icon,
+.reviews-section .carousel-control-next-icon {
+  background-color: var(--brown-opaco);
+  border-radius: 50%;
+  width: 60px;
+  height: 30px;
+}
+
+/* Suscripción */
+.subscribe-card {
+  max-width: 350px;
+  border-radius: 20px;
+  border: none;
+}
+
+.sub-text{
+  color: var(--night);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .review-card,
+  .subscribe-card {
+    max-width: 100%;
+  }
+
+  .reviews-section h4 {
+    text-align: center;
+  }
+}

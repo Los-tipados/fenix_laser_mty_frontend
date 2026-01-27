@@ -1,6 +1,8 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
 .custom-navbar {
   background: linear-gradient(90deg, #1F1C2D, #853728);
-
+border-bottom: 1px solid #ffffff; /* grosor, estilo y color */
 }
 
 .custom-navbar .nav-link {
@@ -21,3 +23,44 @@
   filter: invert(1);
 }
 
+.btn-outline-light {
+  color: var(--offwhite);
+  border-color: var(--offwhite);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
+
+.d-flex {
+  align-items: center;
+  gap: 10px;
+}
+
+strong {
+  color: var(--offwhite);
+}
+
+svg {
+  height: 30px;
+  width: 30px;
+  margin-left: 15px;
+  color: var(--offwhite);
+}
+
+svg:hover {
+  color: var(--orange);
+}
+
+
+/* Pantallas pequeñas: botones en columna */
+@media (max-width: 325px) {
+  .d-flex
+   {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*para actualzizar*/

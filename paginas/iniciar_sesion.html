@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Iniciar Sesion</title>
+    <title>Inicia Sesion | Fénix Láser</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,103 +23,114 @@
 
     <link rel="stylesheet" href="../activos/css/sobre_nosotros.css">
     <!-- Estilos reutilizados de la sección sobre nosotros -->
+
+    <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+    <!-- Estilos de la barra de navegación -->
 </head>
 
 <body>
+
+    <!-- Barra de navegación -->
     <div id="navbar"></div>
-    <div class="container">
-        <!-- Contenedor principal que centra el contenido -->
 
-        <div class="row justify-content-center">
-            <!-- Fila con el contenido centrado horizontalmente -->
+    <main>
+        <div class="container">
+            <!-- Contenedor principal que centra el contenido -->
 
-            <div class="col-md-5">
-                <!-- Columna de 5 espacios en pantallas medianas -->
+            <div class="row justify-content-center">
+                <!-- Fila con el contenido centrado horizontalmente -->
 
-                <div class="login-card p-5 shadow-lg text-center">
-                    <!-- Tarjeta del login con padding y sombra -->
+                <div class="col-md-5">
+                    <!-- Columna de 5 espacios en pantallas medianas -->
 
-                    <h2 class="fw-bold mb-4" style="color:#E86C1A;">¡Hola de nuevo!</h2>
-                    <!-- Título principal -->
+                    <div class="login-card p-5 shadow-lg text-center">
+                        <!-- Tarjeta del login con padding y sombra -->
 
-                    <p class="mb-4">Inicia sesión con tu correo y contraseña</p>
-                    <!-- Texto descriptivo -->
+                        <h2 class="fw-bold mb-4" style="color:#E86C1A;">¡Hola de nuevo!</h2>
+                        <!-- Título principal -->
 
-                    <form>
-                        <!-- Formulario de inicio de sesión -->
+                        <p class="mb-4">Inicia sesión con tu correo y contraseña</p>
+                        <!-- Texto descriptivo -->
 
-                        <div class="mb-4 text-start">
-                            <!-- Campo de correo -->
+                        <form>
+                            <!-- Formulario de inicio de sesión -->
 
-                            <label class="form-label fw-bold">Correo electrónico</label>
-                            <!-- Etiqueta del input -->
+                            <div class="mb-4 text-start">
+                                <!-- Campo de correo -->
 
-                            <input type="email" class="form-control text-white"  placeholder="tunombre@email.com">
-                            <!-- Input para correo -->
+                                <label class="form-label fw-bold">Correo electrónico</label>
+                                <!-- Etiqueta del input -->
+
+                                <input type="email" class="form-control text-white" placeholder="tunombre@email.com">
+                                <!-- Input para correo -->
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                <!-- Campo de contraseña -->
+
+
+                                <label class="form-label fw-bold">Contraseña</label>
+
+                                <input type="password" class="form-control text-white" placeholder="Contraseña">
+                                <!-- Input para contraseña -->
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-4 small">
+                                <!-- Contenedor de enlaces -->
+
+                                <a href="registro.html" class="text-white ">¡Regístrate!</a>
+                                <!-- Enlace de registro -->
+
+                                <a href="recupera_tu_contrasena.html" class="  text-white">¿Olvidaste tu contraseña?</a>
+                                <!-- Enlace para recuperar contraseña -->
+                            </div>
+
+                            <button class="btn btn-ejemplo text-white mb-4 boton-ejemplo">
+                                Iniciar sesión
+                            </button>
+                            <!-- Botón de envío -->
+                        </form>
+
+                        <div class="d-flex align-items-center my-1">
+                            <!-- Separador visual -->
+
+                            <hr class="flex-grow-1">
+                            <span class="mx-2">O</span>
+                            <hr class="flex-grow-1">
                         </div>
 
-                        <div class="mb-4 text-start">
-                            <!-- Campo de contraseña -->
+                        <p>Inicia sesión con tus redes sociales</p>
 
+                        <div class="d-flex justify-content-center gap-3">
+                            <!-- Botones de redes sociales -->
 
-                            <label class="form-label fw-bold">Contraseña</label>
+                            <button class="btn btn-social btn-x">
+                                <i class="bi bi-twitter-x"></i>
+                            </button>
 
-                            <input type="password" class="form-control text-white" placeholder="Contraseña">
-                            <!-- Input para contraseña -->
+                            <button class="btn btn-social btn-google-white">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                                    alt="Google">
+                            </button>
+
+                            <button class="btn btn-social btn-facebook">
+                                <i class="bi bi-facebook"></i>
+                            </button>
                         </div>
 
-                        <div class="d-flex justify-content-between mb-4 small">
-                            <!-- Contenedor de enlaces -->
-
-                            <a href="registro.html" class="text-white ">¡Regístrate!</a>
-                            <!-- Enlace de registro -->
-
-                            <a href="Restablecer_contraseña.html" class="  text-white">¿Olvidaste tu contraseña?</a>
-                            <!-- Enlace para recuperar contraseña -->
-                        </div>
-
-                        <button class="btn btn-ejemplo text-white mb-4 boton-ejemplo">
-                            Iniciar sesión
-                        </button>
-                        <!-- Botón de envío -->
-                    </form>
-
-                    <div class="d-flex align-items-center my-1">
-                        <!-- Separador visual -->
-
-                        <hr class="flex-grow-1">
-                        <span class="mx-2">O</span>
-                        <hr class="flex-grow-1">
                     </div>
-
-                    <p>Inicia sesión con tus redes sociales</p>
-
-                    <div class="d-flex justify-content-center gap-3">
-                        <!-- Botones de redes sociales -->
-
-                        <button class="btn btn-social btn-x">
-                            <i class="bi bi-twitter-x"></i>
-                        </button>
-
-                        <button class="btn btn-social btn-google-white">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                alt="Google">
-                        </button>
-
-                        <button class="btn btn-social btn-facebook">
-                            <i class="bi bi-facebook"></i>
-                        </button>
-                    </div>
-
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <script src="../activos/js/navbar.js"></script>
+        </div> 
+
+    </main>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Activa componentes interactivos de Bootstrap -->
+
+    <!-- Barra de navegación -->
+    <script src="../activos/js/barra_navegacion.js"></script>
 
 </body>
 

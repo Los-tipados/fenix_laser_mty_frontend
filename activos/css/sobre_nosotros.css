@@ -3,14 +3,14 @@
 /* =========================
    TÍTULOS
 ========================= */
-.titulo-nosotros {
+/*.titulo-nosotros {
   color: var(--offwhite);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 1px;
   text-align: center;
-  margin: 3rem 0 1.5rem;
-}
+  margin: 6rem 0 1.5rem;
+}*/
 
 .subtitulo-nosotros {
   color: var(--offwhite);
@@ -79,7 +79,7 @@
   .video-loop {
     width: 70%;                /* 👈 ajusta aquí (70–85%) */
     max-width: 420px;          /* límite elegante */
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 }
 
@@ -122,10 +122,11 @@
 .contenedor-imagen {
   width: 70%;
   max-width: 420px;
-  aspect-ratio: 16 / 9;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;       /* centra dentro de la columna */
 }
 
 /* =========================
@@ -139,6 +140,27 @@
   }
 }
 
+/* =========================
+  MEDIA QUERY PARA IMG Y VIDEOS
+========================= */
+
+@media (max-width: 991px) {
+.row {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.imagen-historia, 
+.imagen-ceo {
+  max-width: 80%;
+  margin-bottom: 10px;
+}
+
+.col-md-6 {
+  width: 100%;
+}
+}
 
 /* =========================
    CARDS TRANSPARENTES
@@ -164,7 +186,7 @@ Sección CEO
   align-items: center;
   width: 70%;           /* mismo valor que video e historia */
   max-width: 420px;     /* mismo límite elegante */
-  aspect-ratio: 16 / 9;
+  object-fit: cover;
   margin: 0 auto;       /* centra dentro de la columna */
 }
 
@@ -212,12 +234,3 @@ hr {
   opacity: 1;
   transform: translateY(0);
 }
-
-
-
-
-
-
-
-
-

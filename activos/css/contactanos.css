@@ -1,9 +1,12 @@
 /* --- CABECERA --- */
-.titulo-contactanos {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-top: 50px;
-}
+/*.titulo-contactanos {
+color: var(--offwhite);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 6rem 0 1.5rem;
+}*/
 
 .subtitulo-contactanos {
     font-size: 1.1rem;

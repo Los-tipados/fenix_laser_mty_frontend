@@ -3,14 +3,14 @@
 /* =========================
    TÍTULOS
 ========================= */
-.titulo-cotizacion {
+/*.titulo-cotizacion {
   color: var(--offwhite);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 1px;
   text-align: center;
   margin: 6rem 0 1.5rem;
-}
+}*/
 
 .subtitulo-cotizacion {
   color: var(--offwhite);
