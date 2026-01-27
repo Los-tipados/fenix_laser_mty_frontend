@@ -21,47 +21,46 @@
 <body>
    <!-- Navbar -->
     <div id="navbar"></div>
-    <main class="faq-container">
-        <h1 class="faq-title">FAQ - Preguntas frecuentes</h1>
-        <p class="faq-subtitle">¿Cómo podemos ayudarte?</p>
+    <main class="faq">
+  <h1 class="faq__title">FAQ - Preguntas frecuentes</h1>
 
-        <!-- Buscador -->
-         <div class="faq-search">
-            <input type="text" id="faqSearch" placeholder="Buscar...">
-            <i class="bi bi-search"></i>
-         </div>
+  <div class="faq__hero">
+    <p class="faq__subtitle">¿Cómo podemos ayudarte?</p>
 
-         <div class="faq-layout">
-             <!-- Categorías -->
-              <aside class="faq-categories">
-                <button class="cat-btn active" data-category="about">
-                     <i class="bi bi-fire"></i>
-                     <span>Sobre Nosotros</span>
-                </button>
+    <div class="faq__search">
+      <input id="faqSearch" type="text" placeholder="Buscar..." />
+      <i class="bi bi-search"></i>
+    </div>
 
-                 <button class="cat-btn" data-category="materials">
-                    <i class="bi bi-layers"></i>
-                    <span>Materiales</span>
-                 </button>
+    <!-- BOTONES EN FILA -->
+    <div class="faq__cats">
+      <button class="cat active" data-category="about">
+        <i class="bi bi-fire"></i><span>Sobre nosotros</span>
+      </button>
+      <button class="cat" data-category="materials">
+        <i class="bi bi-layers"></i><span>Materiales</span>
+      </button>
+      <button class="cat" data-category="user">
+        <i class="bi bi-person"></i><span>Usuario</span>
+      </button>
+      <button class="cat" data-category="shipping">
+        <i class="bi bi-truck"></i><span>Envíos</span>
+      </button>
+    </div>
+  </div>
 
-                <button class="cat-btn" data-category="user">
-                    <i class="bi bi-person"></i>
-                    <span>Usuario</span>
-                </button>
+  <!-- PANEL CENTRADO -->
+  <section class="faq__panel">
+    <div class="faq__panelHeader">
+      <h3 id="faqSectionTitle">Sobre nosotros</h3>
+    </div>
+    <div id="faqAccordion" class="faq__accordion"></div>
 
-                <button class="cat-btn" data-category="shipping">
-                    <i class="bi bi-truck"></i>
-                    <span>Envíos</span>
-                </button>
-              </aside>
-
-              <!-- Contenido -->
-               <section class="faq-content">
-                <h3 id="faqSectionTitle">Sobre nosotros</h3>
-                <div id="faqAccordion"></div>
-               </section>
-         </div>
-    </main> 
+    <footer class="faq__footer">
+      <p>¿Necesitas ayuda personalizada? <a href="../paginas/contactanos.html">Ponte en contacto con nosotros.</a></p>
+    </footer>
+  </section>
+</main>
 
     <!-- JS -->
      <script src="../activos/js/barra_navegacion.js"></script>
