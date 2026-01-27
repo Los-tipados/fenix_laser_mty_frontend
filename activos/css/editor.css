@@ -10,14 +10,17 @@
 :root {
     /* Paleta de Colores (Dark Mode) */
     --bg-dark: #1a1a1a;        /* Fondo profundo de la aplicación */
-    --sidebar-bg: #2b2121;     /* Color de la barra de navegación */
-    --panel-bg: #3d3434;       /* Color de los paneles de herramientas */
+    --barra-desplegable: var(--glass-bg);     /* Color de la barra de navegación */
+    --panel-section: var(--glass-bg);       /* Color de los paneles de herramientas */
     --accent: #e67e22;         /* Color de marca (Naranja) */
-    
+    --fondo-tarjeta-producto: rgba(49, 49, 49, 0.985);
+    --hoover-section:orange;
+    --top-panel-bg:var(--glass-bg);
+
     /* Tipografía y Estados de Texto */
     --text-main: #ffffff;      /* Texto principal */
-    --text-dim: #a0a0a0;       /* Texto secundario o deshabilitado */
-    --border-color: #4d4444;   /* Separadores y bordes de UI */
+    --text-dim: var(--offwhite);       /* Texto secundario o deshabilitado */
+    --border-color: #929292;   /* Separadores y bordes de UI */
     
     /* Sombras y Efectos */
     --shadow-main: 0 4px 15px rgba(0,0,0,0.4);
@@ -57,7 +60,7 @@ body, html {
 .sidebar-icons {
     width: 80px; 
     min-width: 80px;
-    background-color: var(--sidebar-bg);
+    background-color: var(--barra-desplegable);
     border-right: 1px solid var(--border-color);
     display: flex; 
     flex-direction: column;
@@ -85,7 +88,7 @@ body, html {
 /* Estado activo y hover de los iconos */
 .icon-unit:hover, .icon-unit.active { 
     color: white; 
-    background: var(--panel-bg); 
+    background: var(--hoover-section); 
 }
 
 /* ==========================================
@@ -94,7 +97,7 @@ body, html {
 .sidebar-panel {
     width: 260px; 
     min-width: 260px;
-    background-color: var(--panel-bg);
+    background-color: var(--panel-section);
     padding: 20px;
     border-right: 1px solid var(--border-color);
     display: none; /* Controlado dinámicamente por JS */
@@ -118,7 +121,7 @@ body, html {
  */
 .top-navbar {
     height: 60px;
-    background-color: var(--panel-bg);
+    background-color: var(--top-panel-bg);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
@@ -137,10 +140,23 @@ body, html {
 
 /**
  * .canvas-area: El fondo con patrón de puntos donde vive el lienzo.
+
+ background: linear-gradient(
+    90deg,
+    var(--night),
+    var(--brown)
+  );
  */
 .canvas-area {
     flex-grow: 1;
-    background: #2b2121;
+    background: linear-gradient(
+    90deg,
+    var(--night),
+    var(--brown)
+  );
+
+
+    
     background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
     background-size: 20px 20px; /* Tamaño de la cuadrícula de puntos */
     display: flex; 
@@ -163,7 +179,7 @@ body, html {
 
 /* Botones genéricos de herramienta */
 .btn-tool {
-    background: var(--border-color); 
+    background: orange; 
     border: none; 
     color: white;
     padding: 6px 12px; 
@@ -192,7 +208,7 @@ body, html {
 }
 
 .asset-card {
-    background: var(--sidebar-bg); 
+    background: var(--fondo-tarjeta-producto); 
     padding: 10px; 
     border-radius: 8px;
     text-align: center; 
