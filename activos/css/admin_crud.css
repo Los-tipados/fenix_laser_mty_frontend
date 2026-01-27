@@ -1,0 +1,83 @@
+
+.text-warning {
+  color: var(--gold) !important;
+}
+
+#login-section {
+  max-width: 420px;
+  margin: 120px auto 0;
+}
+
+#login-form {
+  background: var(--night);
+  border: 1px solid var(--orange) !important;
+}
+
+
+.card {
+  background: var(--night);
+  border: 1px solid #30363d;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.15);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  background: #0d1117;
+}
+
+.btn-success {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn-success:hover {
+  background-color: var(--orange);
+  border-color: var(--gold);
+}
+
+.icono-mas {
+  color: var(--offwhite);
+}
+
+.btn-warning {
+  background-color: var(--orange);
+  border-color: var(--gold);
+  color: #0d1117;
+}
+
+.btn-warning:hover {
+  background-color: var(--gold);
+  border-color: var(--orange);
+}
+
+
+.modal-content {
+  background: #0d1117;
+  border: 1px solid #30363d;
+}
+
+.modal-header {
+  border-bottom: 1px solid #30363d;
+}
+
+.form-control {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+}
+
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 0.25rem rgba(240, 180, 41, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}

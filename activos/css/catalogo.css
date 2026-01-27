@@ -1,58 +1,80 @@
+:root {
+  --gold: #f2a23a;
+  --orange: #e86c1a;
+  --bg-card: #2f2a44;
+}
+
+/* --- CARRUSEL --- */
+#recommended-carousel .carousel-item {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.recommended-card-wrapper {
+  display: inline-block;
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) brightness(100);
+}
+
+/* --- ESTILO DE TARJETAS (CATÁLOGO Y CARRUSEL) --- */
 .card {
-  background: #2f2a44 !important;
+  background: var(--bg-card) !important;
   border: none;
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .card-img-top {
-  height: 220px;
+  height: 200px; /* Altura fija para que todas las cards midan lo mismo */
   object-fit: contain;
   background: #242038;
   padding: 15px;
 }
 
 .card-title {
-  color: #fff;
+  color: #f2f0f1;
   font-weight: 600;
   font-size: 1.1rem;
-  margin-bottom: 8px;
 }
-
 .card-subtitle {
-  color: #ffca2c !important;
+  color: var(--gold) !important;
   font-weight: 700;
-  font-size: 1.15rem;
 }
-
 .rating i {
-  color: #ffc107;
+  color: var(--gold);
+}
+.card-text {
+  color: #d7d7d7;
+  font-size: 0.9rem;
 }
 
-.rating i.far {
-  color: #6c757d;
+.btn-outline-warning {
+  color: var(--orange) !important;
+  border-color: var(--orange) !important;
 }
 
-.text-warning { color: #ffca2c !important; }
-
-/* Carrusel recomendados */
-#recommended-carousel .carousel-item {
-  transition: transform 0.6s ease;
+.btn-outline-warning:hover {
+  background-color: var(--orange) !important;
+  color: white !important;
 }
 
-@media (min-width: 380px) {
-  #recommended-carousel .carousel-inner {
-    display: flex;
-  }
-  #recommended-carousel .carousel-item {
-    flex: 0 0 20%;          /* 5 items visibles aprox */
-    margin-right: 1rem;
-  }
+h2 {
+  margin: 6rem 0 1.5rem !important;
 }

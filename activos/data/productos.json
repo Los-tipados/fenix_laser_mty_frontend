@@ -6,7 +6,8 @@
     "descripcion": "Grill Box Doble 9 kg + Tabla y Hacha",
     "categoria": "grill-parrilla",
     "rating": 4.8,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
     "etiquetas": ["combo", "parrilla", "premium"]
   },
   {
@@ -16,7 +17,8 @@
     "descripcion": "Grill Box Sencilla 6 kg + Tabla y Hacha",
     "categoria": "grill-parrilla",
     "rating": 4.7,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["combo", "parrilla"]
   },
   {
@@ -26,7 +28,8 @@
     "descripcion": "Tabla de madera + hacha para carne",
     "categoria": "accesorios",
     "rating": 4.5,
-    "recomendado": false,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["tabla", "madera", "hacha"]
   },
   {
@@ -36,7 +39,8 @@
     "descripcion": "Set de cuchillos profesionales",
     "categoria": "cuchillos",
     "rating": 4.9,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["cuchillos", "profesional"]
   },
   {
@@ -46,7 +50,8 @@
     "descripcion": "Hacha para carne",
     "categoria": "accesorios",
     "rating": 4.6,
-    "recomendado": false,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["hacha"]
   },
   {
@@ -56,7 +61,8 @@
     "descripcion": "Cuchillo chef profesional",
     "categoria": "cuchillos",
     "rating": 4.8,
-    "recomendado": false,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["cuchillo", "chef"]
   },
   {
@@ -66,7 +72,8 @@
     "descripcion": "Kit Whiskero personalizado 🥃",
     "categoria": "personalizados",
     "rating": 5.0,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
     "etiquetas": ["whisky", "personalizado", "regalo"]
   },
   {
@@ -76,7 +83,8 @@
     "descripcion": "Poker Box, un elegante maletín de aluminio",
     "categoria": "personalizados",
     "rating": 4.7,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
     "etiquetas": ["poker", "juego", "maletín"]
   },
   {
@@ -86,7 +94,8 @@
     "descripcion": "No hay regalo más valioso que el tiempo",
     "categoria": "personalizados",
     "rating": 4.9,
-    "recomendado": true,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
     "etiquetas": ["reloj", "regalo", "personalizado"]
   },
   {
@@ -96,7 +105,8 @@
     "descripcion": "Kit parrillero personalizado 🔥",
     "categoria": "grill-parrilla",
     "rating": 4.6,
-    "recomendado": false,
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
     "etiquetas": ["parrilla", "kit", "personalizado"]
   }
 ]
