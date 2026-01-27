@@ -71,7 +71,7 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
 // --- LLAMADA A LA FUNCIÓN DE LIMPIEZA ---
         limpiarFormulario();
 
-        notificar("¡Registro exitoso!","Ahora eres parte de fenix laser","success");
+        notificar("¡Registro exitoso!","Ahora eres parte de Fenix Laser","success");
        
         
         // Aquí podrías usar fetch() para enviar usuarioJSON a tu servidor
