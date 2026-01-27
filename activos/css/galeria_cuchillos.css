@@ -1,0 +1,13 @@
+/* ========ANIMACIONES EN LOS CONTENEDORES========== */
+.contenedor-img:hover {
+  animation: shadow-drop-center 0.4s linear both;
+}
+
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.55);
+  }
+}
