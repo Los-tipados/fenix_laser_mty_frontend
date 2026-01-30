@@ -3,7 +3,7 @@ body{
    min-height: 100vh; 
    /* Hace que el body tenga al menos el alto total de la ventana del navegador */
 
-   background-image: url("../imagenes/fondos/fondoCelular2.jpg "); 
+   background-image: url("/imagenes/fondos/fondoCelular2.jpg "); 
    /* Coloca una imagen de fondo */
 
    background-size: cover;
@@ -216,7 +216,7 @@ hr {
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
   body {
-    background: url("../imagenes/fondos/fondoTablet.jpg") center/cover no-repeat;
+    background: url("/imagenes/fondos/fondoTablet.jpg") center/cover no-repeat;
     /* Cambia el fondo cuando la pantalla es tablet */
   }
   
@@ -225,7 +225,7 @@ hr {
 /* Móvil */
 @media (max-width: 767px) {
   body {
-    background: url("../imagenes/fondos/fondoCelular2.jpg") center/cover no-repeat;
+    background: url("/imagenes/fondos/fondoCelular2.jpg") center/cover no-repeat;
     display:flex;
     align-items:center;
     justify-content:center;
