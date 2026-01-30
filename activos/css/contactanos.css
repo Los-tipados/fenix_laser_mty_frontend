@@ -22,12 +22,36 @@ color: var(--offwhite);
 }
 
 /* --- TARJETA DE FORMULARIO (IZQUIERDA) --- */
-.formulario-card {
-    background-color: var(--offwhite);
-    border-radius: 15px;
-    padding: 40px;
-    color: #333;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+.formulario-card{
+  background: rgba(255, 255, 255, 0.08); /* transparencia */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 15px;
+  padding: 40px;
+  color: var(--offwhite);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.formulario-card .form-label{
+  color: rgba(242, 240, 241, 0.92); /* offwhite */
+}
+
+.formulario-card .form-control{
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--offwhite);
+}
+
+.formulario-card .form-control::placeholder{
+  color: rgba(242, 240, 241, 0.65);
+}
+
+.formulario-card .form-control:focus{
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(232, 108, 26, 0.65); /* tu naranja */
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
+  color: var(--offwhite);
 }
 
 .form-label {
@@ -66,6 +90,11 @@ color: var(--offwhite);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
     padding: 30px;
+}
+
+.contact-info-card,
+.cotizar-card{
+  width: 100%;
 }
 
 .lista-contacto {
@@ -119,6 +148,10 @@ color: var(--offwhite);
   color: var(--offwhite);
 }
 
+.main-content{
+  padding-bottom: 80px; /* ajusta 60–120 según gusto */
+}
+
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 768px) {
     .mapa-contenedor {
@@ -147,4 +180,28 @@ color: var(--offwhite);
 
 .bi-envelope{
     color: #E86C1A;
+}
+
+/* Hace que la columna derecha tome el alto del row (en pantallas lg+) */
+@media (min-width: 992px){
+  .right-col{
+    height: 100%;
+  }
+
+  /* Tarjeta de arriba crece para “llenar” */
+  .right-col .contact-info-card{
+    flex: 1;
+  }
+
+  /* Empuja la tarjeta de cotizar hasta abajo */
+  .right-col .cotizar-card{
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 992px){
+  .formulario-card{
+    flex: 1;
+    width: 100%;
+  }
 }

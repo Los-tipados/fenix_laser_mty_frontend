@@ -36,69 +36,71 @@
 ========================= */
 /* Contenedor Principal (Tarjeta Glassmorphism) */
 .cotizacion-card {
-    background: rgba(30, 30, 30, 0.6); /* Fondo oscuro semitransparente */
-    backdrop-filter: blur(10px); /* Desenfoque de fondo */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    color: white;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  color: var(--offwhite);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 /* Etiquetas (Labels) */
-.label-custom {
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+.label-custom{
+  color: var(--letraformularios);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
 }
 
 /* Inputs, Selects y Textareas */
-.input-custom {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 12px !important;
-    color: #ffffff !important;
-    padding: 12px 15px;
+.input-custom{
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 8px !important;  /* igual que contactanos */
+  color: var(--offwhite) !important;
+  padding: 12px 15px;
 }
 
-.input-custom::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+.input-custom::placeholder{
+  color: rgba(242, 240, 241, 0.65);
 }
 
-.input-custom:focus {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-color: #ff6a00 !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 106, 0, 0.25);
+.input-custom:focus{
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(232, 108, 26, 0.65) !important;
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
 }
 
 /* Área de carga de archivos (Dashed Border) */
-.upload-area {
-    border: 2px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.02);
-    cursor: pointer;
-    transition: all 0.3s ease;
+.upload-area{
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.upload-area:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: #ff6a00;
+.upload-area:hover{
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(232, 108, 26, 0.55);
+  box-shadow: 0 0 0 0.18rem rgba(232, 108, 26, 0.10);
 }
 
 /* Botón de envío con degradado */
-.btn-submit {
-    background: linear-gradient(90deg, #ff8c00 0%, #d35400 100%);
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: transform 0.2s ease;
+.btn-submit{
+  background: var(--orange);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease;
 }
 
-.btn-submit:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(90deg, #ff9d26 0%, #e67e22 100%);
-    color: white;
+.btn-submit:hover{
+  transform: scale(1.02);
+  color: white;
 }
 
 .fa-solid {
@@ -123,6 +125,9 @@
     margin-right: 10px;
 }
 
-.form-select {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff6a00' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+.form-select{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23E86C1A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 16px 16px;
 }
