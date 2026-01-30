@@ -1,0 +1,226 @@
+/**
+ * EDITOR PRO - SISTEMA DE DISEÑO ESCALABLE
+ * Esta hoja de estilos utiliza una arquitectura basada en variables para facilitar 
+ * cambios de branding (colores, fuentes) desde un solo lugar.
+ */
+
+/* ==========================================
+   1. VARIABLES GLOBALES (Design Tokens)
+   ========================================== */
+:root {
+    /* Paleta de Colores (Dark Mode) */
+    --fondo-tarjeta-producto: rgba(178, 178, 178, 0.985);
+    --hoover-section: var(--orange);
+    --hoover: rgba(198, 84, 3, 0.644);
+
+    /* Tipografía y Estados de Texto */
+    --border-color: #929292;   /* Separadores y bordes de UI */
+    
+   
+}
+
+/* ==========================================
+   2. REINICIO Y LAYOUT BASE
+   ========================================== */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* El color aplica solo para el numero de fuente y los textos de las barras desplegables*/
+body, html {
+    height: 100%; 
+    width: 100%;
+    overflow: hidden; /* Evita scrolls accidentales en la app */
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--offwhite);
+}
+
+/**
+ * .main-app: Contenedor principal que usa Flexbox 
+ * para alinear sidebar, panel y área de edición.
+ */
+.main-app { 
+    display: flex; 
+    height: 100vh; 
+    width: 100vw; 
+}
+
+/* ==========================================
+   3. BARRA DE NAVEGACIÓN (SIDEBAR)
+   ========================================== */
+.sidebar-icons {
+    width: 80px; 
+    min-width: 80px;
+    background-color: var(--glass-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex; 
+    flex-direction: column;
+    z-index: 200;
+}
+
+/**
+ * .icon-unit: Estilos para cada botón del menú lateral.
+ */
+.icon-unit {
+    width: 100%; 
+    height: 75px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    color: var(--offwhite); 
+    font-size: 11px; 
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.icon-unit span { font-size: 20px; margin-bottom: 5px; }
+
+/* Estado activo y hover de los iconos */
+.icon-unit:hover, .icon-unit.active { 
+    color: var(--offwhite); 
+    background: var(--hoover-section); 
+}
+
+/* ==========================================
+   4. PANEL DE CONTROL (DRAWER)
+   ========================================== */
+.sidebar-panel {
+    width: 260px; 
+    min-width: 260px;
+    background-color: var(--glass-bg);
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+    display: none; /* Controlado dinámicamente por JS */
+    z-index: 190;
+    overflow-y: auto; /* Permite scroll si hay muchos elementos */
+}
+
+/* ==========================================
+   5. NAVBAR Y ÁREA DE TRABAJO (EDITOR)
+   ========================================== */
+.editor-layout {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa todo el ancho restante */
+    height: 100vh;
+}
+
+/**
+ * .top-navbar: Barra superior fija que contiene 
+ * las herramientas de edición inmediata.
+ */
+.top-navbar {
+    height: 60px;
+    background-color: var(--glass-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    gap: 20px;
+    z-index: 100;
+}
+
+
+.tool-group { display: flex; align-items: center; gap: 10px; }
+
+/*Divisores que estan entre fuente y cursiva */
+.divider { 
+    width: 1px; 
+    height: 24px; 
+    background: var(--offwhite); 
+}
+
+
+
+/* Aqui usamos las variables definididas en global   */
+.canvas-area {
+    flex-grow: 1;
+    background: linear-gradient(
+    90deg,
+    var(--night),
+    var(--brown)
+  );
+
+
+    
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px; /* Tamaño de la cuadrícula de puntos */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: auto;
+}
+
+/* Color de la imagen aunque sea png */
+.canvas-workspace { 
+    
+
+    /*  box-shadow: 0 0 40px rgba(0,0,0,0.5);  */
+    line-height: 0; 
+}
+
+/* ==========================================
+   6. COMPONENTES REUTILIZABLES (UI KIT)
+   ========================================== */
+
+/* Botones de navbar*/
+.btn-tool {
+    background: var(--orange); 
+    border: none; 
+    color: var(--offwhite);
+    padding: 6px 12px; 
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-tool:hover { background: var(--hoover); }
+
+/* Elementos de lista (Fuentes, capas, etc.) */
+.list-item {
+    padding: 10px; 
+    margin: 5px 0;
+    border-radius: 4px; 
+    cursor: pointer;
+}
+
+ 
+.list-item:hover { background: var(--hoover); }
+
+/* Grilla para catálogo de productos e imágenes */
+.grid-assets {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    margin-top: 15px;
+}
+
+.asset-card {
+    background: var(--fondo-tarjeta-producto); 
+    padding: 10px; 
+    border-radius: 8px;
+    text-align: center; 
+    cursor: pointer; 
+    font-size: 11px;
+    color: rgb(48, 48, 48);
+}
+.asset-card img { 
+    width: 100%; 
+    height: 70px; 
+    object-fit: contain; 
+    margin-bottom: 5px; 
+}
+
+/* Botón destacado (Descargar PNG) */
+.btn-orange {
+    background: var(--orange); 
+    color: var(--offwhite); 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 20px;
+    font-weight: bold; 
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
