@@ -32,8 +32,7 @@ export const CONFIG = {
     ],
     productos: [
         { id: 'p1', nombre: 'Caja', url: 'https://i.ibb.co/JwT7G5nb/box-real.webp'},
-        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' },
-        { id: 'p3', nombre: 'Gorra Eco', url: 'https://via.placeholder.com/150/e67e22/FFFFFF?text=Gorra' }
+        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' }
     ],
     figuras: [
         { nombre: 'Loro', url: 'https://i.ibb.co/QjjGXwpV/animal-1295493-1280.png' },
