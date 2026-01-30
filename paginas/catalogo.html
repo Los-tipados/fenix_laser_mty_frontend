@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../activos/css/global.css">
     <link rel="stylesheet" href="../activos/css/catalogo.css">
     <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+    <link rel="stylesheet" href="../activos/css/modal_detalle.css">
     <link rel="stylesheet" href="../activos/css/footer.css">
 </head>
 
@@ -29,7 +30,7 @@
     <div class="container-fluid mt-5 px-3 px-md-4 px-lg-5">
         <!-- Sección Recomendados -->
         <section class="mb-5">
-            <h2 class="mb-4 text-center">Productos <span style="color: var(--gold);">recomendados</span></h2>
+            <h2 class="productos mb-4 text-center">Productos <span style="color: var(--gold);">recomendados</span></h2>
 
             <div id="recommended-carousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                 <div class="carousel-inner" id="recommended-inner">
@@ -117,7 +118,12 @@
     <!-- Footer (carga dinámica) -->
     <div id="footer-container"></div>
 
+    <!-- Al final del body, antes de los scripts -->
+    <div id="globalModalContainer"></div>
+
     <!-- Scripts -->
+    <script src="../activos/js/carga_modal.js"></script>
+    <script src="../activos/js/modal_detalle.js"></script>
     <script src="../activos/js/barra_navegacion.js"></script>
     <script src="../activos/js/catalogo.js"></script>
   <!-- Footer -->

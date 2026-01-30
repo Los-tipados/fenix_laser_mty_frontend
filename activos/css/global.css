@@ -3,6 +3,7 @@
 /* =========================
    VARIABLES
 ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root{
   --red: #C62828;
@@ -28,6 +29,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+*:not([class*="fa-"]):not(.fa) {
+  font-family: var(--fuente-principal);
 }
 
 /* =========================
@@ -70,22 +74,3 @@ h2, h3, h4, h5, h6{
 p{
     color: var(--offwhite);
 }
-
-
-/*.form-label {
-    color: var(--offwhite);
-}
-
-.form-text
- {
-      color: var(--offwhite);
-
-}
-
-.div.mb-3.form-check{
-      color: var(--offwhite);
-
-}
-
-
-

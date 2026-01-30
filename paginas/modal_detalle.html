@@ -1,0 +1,27 @@
+<div class="modal fade" id="detalleProductoModal" tabindex="-1" aria-labelledby="detalleProductoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header oculto (puedes quitar d-none si quieres mostrar título arriba) -->
+      <div class="modal-header d-none">
+        <h4 class="modal-title" id="detalleProductoModalLabel">Detalle del Producto</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body p-0">
+        <!-- Spinner de carga -->
+        <div id="modalLoading" class="d-none text-center py-5">
+          <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+        
+        <!-- Aquí se inyecta el contenido dinámico -->
+        <div id="modalContent"></div>
+      </div>
+      
+      <!-- Footer opcional / oculto -->
+      <div class="modal-footer d-none"></div>
+    </div>
+  </div>
+</div>

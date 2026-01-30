@@ -1,0 +1,231 @@
+/* modal-detalle.css - Versión final consolidada para layout HORIZONTAL en todos los productos */
+
+:root {
+  --red: #C62828;
+  --orange: #E86C1A;
+  --gold: #F2A23A;
+  --offwhite: #F2F0F1;
+  --gray: #4A4A4A;
+  --slate: #383F51;
+  --night: #1F1C2D;
+  --brown: #853728;
+  --fuente-principal: 'Montserrat', sans-serif;
+  --letraformularios: #D7D7D7;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --night-opaco: #1f1c2d93;
+  --brown-opaco: #85382893;
+}
+
+/* Fondo modal degradado rojizo/marrón oscuro */
+#detalleProductoModal .modal-content {
+  background: linear-gradient(90deg, var(--night), var(--brown));
+  border: 2px solid var(--brown-opaco);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(255, 69, 0, 0.35);
+  color: #f0f0f0;
+  opacity: 0.95;
+}
+
+/* Body sin padding extra para control total */
+#detalleProductoModal .modal-body {
+  padding: 0;
+}
+
+/* Contenedor principal */
+.product-detail-wrapper {
+  padding: 2rem 1.5rem;
+}
+
+/* Título grande estilo referencia */
+.poker-title {
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
+  /*font-weight: 900;*/
+  text-align: center;
+  background: var(--offwhite);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Imagen principal – más despegada y centrada en mobile */
+.product-img-main {
+  width: 85%;
+  max-width: 480px;
+  margin: 1.5rem auto 1rem;
+  display: block;
+  border-radius: 16px;
+  border: 3px solid var(--brown);
+  box-shadow: 0 0 30px var(--brown-opaco);
+  object-fit: contain;
+  background: #1a0d0d;
+}
+
+/* Precio */
+.price-wrapper {
+  text-align: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.old-price {
+  font-size: 1.5rem;
+  color: #888;
+  text-decoration: line-through;
+  margin-right: 1rem;
+  font-weight: 400;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--offwhite);
+}
+
+.current-price::after {
+  content: " 🔥";
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+/* Badges como imágenes */
+.badges-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.badge-promo {
+  width: 115px;
+  height: 115px;
+}
+
+.badge-promo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 18px rgba(242, 162, 58, 0.5);
+}
+
+/* Contenedor botones – horizontal por defecto */
+.buttons-container {
+  display: flex !important;
+  flex-direction: row !important;     /* fuerza horizontal */
+  flex-wrap: nowrap !important;       /* evita wrap prematuro */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  margin-top: 1.5rem !important;
+  width: 100% !important;
+}
+
+.btn-add-cart,
+.btn-personalizar {
+  flex: 0 0 auto !important;          /* no crecen ni se encogen innecesariamente */
+  width: auto !important;             /* clave: evita width:100% */
+  min-width: 140px !important;
+  padding: 0.7rem 1.8rem !important;
+  white-space: nowrap !important;
+  font-size: 0.95rem;     /* texto no se rompe */
+}
+
+.btn-add-cart {
+  background: var(--orange) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-add-cart:hover {
+  background: var(--gold) !important;
+  transform: translateY(-3px);
+}
+
+.btn-personalizar {
+  background: var(--orange) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-personalizar:hover {
+  background: var(--gold) !important;
+  transform: translateY(-3px);
+}
+
+/* Descripción */
+.product-description {
+  font-size: 1.7rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  /* En pantallas medianas/pequeñas vuelve a vertical si es necesario */
+  .product-detail-wrapper .row {
+    flex-direction: column;
+  }
+  
+  .product-img-main {
+    width: 80%;
+    margin: 1rem auto 2rem;
+  }
+  
+  .poker-title,
+  .price-wrapper,
+  .product-description,
+  .badges-container {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .poker-title {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+  
+  .current-price {
+    font-size: 2.8rem;
+  }
+  
+  .badge-promo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .product-detail-wrapper {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* En mobile (pantallas pequeñas) sí permite apilar, pero con más espacio */
+@media (max-width: 991.98px) {
+  .buttons-container {
+    flex-wrap: wrap !important;       /* permite wrap si no cabe */
+    gap: 1.2rem !important;
+  }
+  
+  .btn-add-cart,
+  .btn-personalizar {
+    min-width: 180px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .buttons-container {
+    flex-direction: column !important;  /* solo en muy pequeño apila */
+    align-items: center !important;
+  }
+  
+  .btn-add-cart,
+  .btn-personalizar {
+    width: 90% !important;            /* casi full width en mobile */
+  }
+}
