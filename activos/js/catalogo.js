@@ -51,7 +51,7 @@ function createCard(product, isCatalog = true) {
                     <small class="text-white-50 ms-1">(${product.rating || 0})</small>
                 </div>
                 <p class="card-text flex-grow-1">${product.descripcion}</p>
-                ${isCatalog ? '<a href="#" class="btn btn-outline-warning mt-auto">Ver detalle</a>' : ''}
+                ${isCatalog ? '<a href="#" class="btn btn-outline-warning mt-auto btn-ver-detalle">Ver detalle</a>' : ''}
             </div>
         </div>
     `;
@@ -60,6 +60,9 @@ function createCard(product, isCatalog = true) {
     wrapper.className = isCatalog
         ? 'col-12 col-sm-6 col-md-6 col-lg-4 mb-4'
         : '';
+
+    wrapper.dataset.product = JSON.stringify(product);
+
     wrapper.innerHTML = cardHTML;
 
     return wrapper;
