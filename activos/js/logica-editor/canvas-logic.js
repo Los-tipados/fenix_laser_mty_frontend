@@ -117,3 +117,31 @@ export function changeFontSize(delta, callbackUI) {
         if(callbackUI) callbackUI();
     }
 }
+
+/**
+ * Alterna el estilo de texto (Negrita o Cursiva) del objeto seleccionado.
+ * @param {'bold'|'italic'} format - El formato a aplicar.
+ */
+export function toggleFormat(format) {
+    const obj = canvas.getActiveObject();
+    if (!obj) return;
+    
+    if (format === 'bold') {
+        obj.set('fontWeight', obj.fontWeight === 'bold' ? 'normal' : 'bold');
+    }
+    if (format === 'italic') {
+        obj.set('fontStyle', obj.fontStyle === 'italic' ? 'normal' : 'italic');
+    }
+    canvas.renderAll();
+}
+
+/**
+ * Elimina de forma segura todos los objetos que estén seleccionados.
+ */
+export function deleteObject() {
+    const active = canvas.getActiveObjects();
+    if (active) {
+        canvas.discardActiveObject(); // Deseleccionar antes de borrar para evitar errores de renderizado
+        canvas.remove(...active);
+    }
+}
