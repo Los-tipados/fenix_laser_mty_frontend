@@ -134,3 +134,47 @@ else if (type === 'figuras') {
     // Es vital re-vincular los eventos cada vez que se regenera el HTML interno
     attachPanelEvents(type);
 }
+
+
+
+
+/**
+ * Asigna manejadores de eventos a los elementos recién creados dentro del panel lateral.
+ * @param {string} type - Tipo de contenido para determinar qué eventos asignar.
+ */
+function attachPanelEvents(type) {
+    if (type === 'texto') {
+        document.getElementById('add-text-btn').onclick = () => CanvasLogic.addIText();
+        document.querySelectorAll('.btn-font').forEach(el => {
+            el.onclick = () => CanvasLogic.changeFont(el.dataset.font);
+        });
+    } else if (type === 'productos') {
+        document.querySelectorAll('.btn-product').forEach(el => {
+            el.onclick = () => CanvasLogic.changeCanvasBackground(el.dataset.url);
+        });
+    } else if (type === 'figuras') {
+    document.querySelectorAll('.btn-figure').forEach(el => {
+        el.onclick = () => CanvasLogic.addImage(el.dataset.url); // Usamos una nueva función
+    });
+}
+}
+
+
+
+/**
+ * Sincroniza la información del objeto seleccionado en el canvas con la UI.
+ * Específicamente actualiza el indicador de tamaño de fuente.
+ */
+export function updateUI() {
+    const obj = CanvasLogic.canvas.getActiveObject();
+    if (obj && obj.fontSize) {
+        document.getElementById('size-indicator').innerText = Math.round(obj.fontSize);
+    }
+}
+
+/**
+ * Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
+ */
+export function clearUIIndicator() {
+    document.getElementById('size-indicator').innerText = '--';
+}
