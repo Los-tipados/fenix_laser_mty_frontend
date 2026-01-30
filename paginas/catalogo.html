@@ -1,27 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Catalogo | Fénix Láser</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo | Fénix Láser</title>
 
-  <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome para estrellas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tus estilos -->
     <link rel="stylesheet" href="../activos/css/global.css">
+    <link rel="stylesheet" href="../activos/css/catalogo.css">
     <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+    <link rel="stylesheet" href="../activos/css/footer.css">
 </head>
-<body>
-    <!-- Barra de navegación -->
-    <div id="navbar"></div>
-<h1>Catalogo</h1>
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">Listado de Productos</h2>
-    <div id="product-list" class="row g-4"></div>
-  </div>
 
-  <script src="script.js"></script>
-  <!-- Barra de navegación -->
+<body>
+    <!-- Barra de navegación (carga dinámica) -->
+    <div id="navbar"></div>
+
+    <div class="container-fluid mt-5 px-3 px-md-4 px-lg-5">
+        <!-- Sección Recomendados -->
+        <section class="mb-5">
+            <h2 class="mb-4 text-center">Productos <span style="color: var(--gold);">recomendados</span></h2>
+
+            <div id="recommended-carousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                <div class="carousel-inner" id="recommended-inner">
+                    <!-- Slides se agregan dinámicamente -->
+                </div>
+
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#recommended-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#recommended-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Layout principal: filtros + catálogo -->
+        <div class="row g-4">
+            <!-- Sidebar - Filtros -->
+            <aside class="col-12 col-md-4 col-lg-3">
+                <div class="card bg-dark border-0 shadow-lg p-4 sticky-top" style="top: 80px;">
+                    <h4 class="mb-4 text-center" style="color: var(--gold);">Filtros</h4>
+
+                    <!-- Búsqueda -->
+                    <div class="mb-4">
+                        <h6>Buscar</h6>
+                        <input type="text" id="searchInput" class="form-control bg-dark text-light border-secondary"
+                            placeholder="Nombre o descripción...">
+                    </div>
+
+                    <!-- Categorías -->
+                    <div class="mb-4">
+                        <h6>Categorías</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cat-grill" value="grill-parrilla">
+                            <label class="form-check-label" for="cat-grill">Grill / Parrilla</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cat-cuchillos" value="cuchillos">
+                            <label class="form-check-label" for="cat-cuchillos">Cuchillos</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cat-personalizado"
+                                value="personalizados">
+                            <label class="form-check-label" for="cat-personalizado">Personalizados</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cat-accesorios" value="accesorios">
+                            <label class="form-check-label" for="cat-accesorios">Accesorios</label>
+                        </div>
+                    </div>
+
+                    <!-- Rango de precio -->
+                    <div class="mb-2">
+                        <h6>Precio máximo</h6>
+                        <input type="range" class="form-range" min="300" max="3000" step="100" id="priceRange"
+                            value="3000">
+                        <div class="d-flex justify-content-between mt-2 small">
+                            <span>$300</span>
+                            <span id="priceValue">$3,000</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Contenido principal -->
+            <main class="col-12 col-md-8 col-lg-9">
+                <h2 class="mb-4">Catálogo completo</h2>
+                <div id="product-list" class="row g-4"></div>
+                    <!-- Se llenan con JS -->
+                </div>
+
+                <!-- Mensaje cuando no hay resultados -->
+                <div id="noResults" class="text-center text-muted my-5 d-none">
+                    <h5>No se encontraron productos que coincidan con los filtros</h5>
+                    <p>Prueba ajustando la búsqueda o los filtros</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Footer (carga dinámica) -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
     <script src="../activos/js/barra_navegacion.js"></script>
+    <script src="../activos/js/catalogo.js"></script>
+  <!-- Footer -->
+     <script src="../activos/js/footer.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
