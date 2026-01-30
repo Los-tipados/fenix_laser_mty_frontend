@@ -1,76 +1,66 @@
-.curva {
-  background-color: #372f47;
-  width: 100%;
-  min-height: auto; /* Dejamos que el carrusel dicte la altura */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px 20px 0px 20px; /* Padding superior y lateral, 0 abajo */
-  box-sizing: border-box;
+:root {
+    --gold: #F2A23A;
+    --orange: #E86C1A;
+    --bg-card: #2f2a44;
 }
 
-/* PARA TU OLA ORIGINAL */
+/* --- CARRUSEL --- */
+#recommended-carousel .carousel-item {
+    text-align: center;
+    padding: 20px 0;
+}
 
-/* Mantenemos tu CSS de las cards intacto */
+.recommended-card-wrapper {
+    display: inline-block;
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1) brightness(100);
+}
+
+/* --- ESTILO DE TARJETAS (CATÁLOGO Y CARRUSEL) --- */
 .card {
-  background: #2f2a44 !important;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  transition:
-    transform 0.25s,
-    box-shadow 0.25s;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: var(--bg-card) !important;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #fff;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .card-img-top {
-  height: 220px;
-  object-fit: contain;
-  background: #242038;
-  padding: 15px;
+    height: 200px; /* Altura fija para que todas las cards midan lo mismo */
+    object-fit: contain;
+    background: #242038;
+    padding: 15px;
 }
 
-.card-title {
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+.card-title { color: #F2F0F1; font-weight: 600; font-size: 1.1rem; }
+.card-subtitle { color: var(--gold) !important; font-weight: 700; }
+.rating i { color: var(--gold); }
+.card-text { color: #D7D7D7; font-size: 0.9rem; }
+
+.btn-outline-warning {
+    color: var(--orange) !important;
+    border-color: var(--orange) !important;
 }
 
-.card-subtitle {
-  color: #ffca2c !important;
-  font-weight: 700;
-  font-size: 1.15rem;
+.btn-outline-warning:hover {
+    background-color: var(--orange) !important;
+    color: white !important;
 }
 
-.rating i {
-  color: #ffc107;
-}
-
-.rating i.far {
-  color: #6c757d;
-}
-
-.text-warning {
-  color: #ffca2c !important;
-}
-
-/* Carrusel recomendados */
-#recommended-carousel .carousel-item {
-  transition: transform 0.6s ease;
-}
-
-@media (min-width: 380px) {
-  #recommended-carousel .carousel-inner {
-    display: flex;
-  }
-  #recommended-carousel .carousel-item {
-    flex: 0 0 20%; /* 5 items visibles aprox */
-    margin-right: 1rem;
-  }
+h2{
+  margin: 6rem 0 1.5rem !important;
 }

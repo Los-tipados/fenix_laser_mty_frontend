@@ -1,129 +1,186 @@
-// catalogo.js
-
-// Elementos del DOM
+// ==============================
+// ELEMENTOS DEL DOM
+// ==============================
 const productList = document.getElementById('product-list');
-const recommendedList = document.getElementById('recommended-list');
+const recommendedInner = document.getElementById('recommended-inner');
 const searchInput = document.getElementById('searchInput');
 const priceRange = document.getElementById('priceRange');
 const priceValue = document.getElementById('priceValue');
 
-// Arrays para filtros de categoría (se llenan cuando se marquen checkboxes)
 let selectedCategories = [];
+let allProducts = [];
 
-// Función para crear una tarjeta de producto
-function createProductCard(product) {
-  const col = document.createElement('div');
-  col.className = 'col-6 col-md-4 col-lg-3';
+// ==============================
+// UTILIDADES
+// ==============================
+function getStarsHTML(rating = 0) {
+    const fullStars = Math.floor(rating);
+    const hasHalf = rating % 1 >= 0.5;
+    let html = '';
 
-  // Calcular estrellas
-  const rating = product.rating || 4.5;
-  const fullStars = Math.floor(rating);
-  const hasHalf = rating % 1 >= 0.5;
-  let starsHTML = '';
-  
-  for (let i = 0; i < fullStars; i++) {
-    starsHTML += '<i class="fas fa-star"></i>';
-  }
-  if (hasHalf) {
-    starsHTML += '<i class="fas fa-star-half-alt"></i>';
-  }
-  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
-  for (let i = 0; i < emptyStars; i++) {
-    starsHTML += '<i class="far fa-star"></i>';
-  }
+    for (let i = 0; i < fullStars; i++) html += '<i class="fas fa-star"></i>';
+    if (hasHalf) html += '<i class="fas fa-star-half-alt"></i>';
 
-  col.innerHTML = `
-    <div class="card h-100">
-      <img src="${product.img}" class="card-img-top" alt="${product.nombre}">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">${product.nombre}</h5>
-        <h6 class="card-subtitle mb-2" style="color: var(--gold);">
-          $${product.precio.toLocaleString('es-MX')} MXN
-        </h6>
-        <div class="rating mb-2 text-warning">
-          ${starsHTML}
-          <small class="text-muted ms-1">(${rating})</small>
+    const empty = 5 - fullStars - (hasHalf ? 1 : 0);
+    for (let i = 0; i < empty; i++) html += '<i class="far fa-star"></i>';
+
+    return html;
+}
+
+function getItemsPerSlide() {
+    const w = window.innerWidth;
+    if (w < 576) return 1;   // móvil
+    if (w < 992) return 2;   // tablet
+    return 3;               // desktop
+}
+
+// ==============================
+// CREAR CARD
+// ==============================
+function createCard(product, isCatalog = true) {
+    const cardHTML = `
+        <div class="card h-100">
+            <img src="${product.img}" class="card-img-top" alt="${product.nombre}">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${product.nombre}</h5>
+                <h6 class="card-subtitle mb-2">
+                    $${product.precio.toLocaleString('es-MX')} MXN
+                </h6>
+                <div class="rating mb-2">
+                    ${getStarsHTML(product.rating || 0)}
+                    <small class="text-white-50 ms-1">(${product.rating || 0})</small>
+                </div>
+                <p class="card-text flex-grow-1">${product.descripcion}</p>
+                ${isCatalog ? '<a href="#" class="btn btn-outline-warning mt-auto">Ver detalle</a>' : ''}
+            </div>
         </div>
-        <p class="card-text text-muted small flex-grow-1">
-          ${product.descripcion}
-        </p>
-        <a href="#" class="btn btn-outline-warning mt-auto">Ver detalle</a>
-      </div>
-    </div>
-  `;
+    `;
 
-  // Guardar datos para filtrado
-  col.dataset.precio = product.precio;
-  col.dataset.nombre = product.nombre.toLowerCase();
-  col.dataset.descripcion = product.descripcion.toLowerCase();
-  col.dataset.categoria = product.categoria || '';
+    const wrapper = document.createElement('div');
+    wrapper.className = isCatalog
+        ? 'col-12 col-sm-6 col-md-6 col-lg-4 mb-4'
+        : '';
+    wrapper.innerHTML = cardHTML;
 
-  return col;
+    return wrapper;
 }
 
-// Función para renderizar productos (con filtros aplicados)
-function renderProducts(products) {
-  // Limpiar listas
-  productList.innerHTML = '';
-  recommendedList.innerHTML = '';
+// ==============================
+// RENDER CARRUSEL (RECOMENDADOS)
+// ==============================
+function renderCarousel(products) {
+    if (!recommendedInner) return;
 
-  // Recomendados
-  const recommended = products.filter(p => p.recomendado === true);
-  recommended.forEach(product => {
-    recommendedList.appendChild(createProductCard(product));
-  });
+    // 🔥 SOLO RECOMENDADOS VISIBLES
+    const recommended = products.filter(
+        p => p.visibleRecomendados === true
+    );
 
-  // Todos los productos (con filtros)
-  const maxPrice = parseInt(priceRange.value) || 3000;
-  const searchText = searchInput.value.toLowerCase().trim();
+    recommendedInner.innerHTML = '';
 
-  products.forEach(product => {
-    const precio = product.precio;
-    const matchesPrice = precio <= maxPrice;
-    const matchesSearch = !searchText || 
-      product.nombre.toLowerCase().includes(searchText) ||
-      product.descripcion.toLowerCase().includes(searchText);
-    const matchesCategory = selectedCategories.length === 0 || 
-      selectedCategories.includes(product.categoria);
+    const itemsPerSlide = getItemsPerSlide();
 
-    if (matchesPrice && matchesSearch && matchesCategory) {
-      productList.appendChild(createProductCard(product));
+    for (let i = 0; i < recommended.length; i += itemsPerSlide) {
+        const carouselItem = document.createElement('div');
+        carouselItem.className = `carousel-item ${i === 0 ? 'active' : ''}`;
+
+        const row = document.createElement('div');
+        row.className = 'row justify-content-center g-4';
+
+        recommended.slice(i, i + itemsPerSlide).forEach(product => {
+            const col = document.createElement('div');
+
+            col.className =
+                itemsPerSlide === 1
+                    ? 'col-12'
+                    : itemsPerSlide === 2
+                        ? 'col-12 col-md-6'
+                        : 'col-12 col-md-6 col-lg-4';
+
+            col.appendChild(createCard(product, false));
+            row.appendChild(col);
+        });
+
+        carouselItem.appendChild(row);
+        recommendedInner.appendChild(carouselItem);
     }
-  });
 }
 
-// Cargar datos y configurar filtros
+// ==============================
+// RENDER CATÁLOGO
+// ==============================
+function renderCatalog(products) {
+    if (!productList) return;
+
+    productList.innerHTML = '';
+
+    const maxPrice = parseInt(priceRange.value) || 5000;
+    const searchText = searchInput.value.toLowerCase().trim();
+    let hasResults = false;
+
+    products.forEach(product => {
+
+        // ⛔ SOLO CATÁLOGO
+        if (product.visibleCatalogo === false) return;
+
+        const matchesPrice = product.precio <= maxPrice;
+
+        const matchesSearch =
+            !searchText ||
+            product.nombre.toLowerCase().includes(searchText) ||
+            product.descripcion.toLowerCase().includes(searchText);
+
+        const matchesCategory =
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(product.categoria);
+
+        if (matchesPrice && matchesSearch && matchesCategory) {
+            productList.appendChild(createCard(product, true));
+            hasResults = true;
+        }
+    });
+
+    document
+        .getElementById('noResults')
+        .classList.toggle('d-none', hasResults);
+}
+
+// ==============================
+// FETCH + EVENTOS
+// ==============================
 fetch('../activos/data/productos.json')
-  .then(response => response.json())
-  .then(products => {
-    // Actualizar valor inicial del slider
-    priceValue.textContent = `$${priceRange.value.toLocaleString('es-MX')}`;
+    .then(res => res.json())
+    .then(products => {
+        allProducts = products;
 
-    // Render inicial
-    renderProducts(products);
+        priceValue.textContent =
+            `$${parseInt(priceRange.value).toLocaleString('es-MX')}`;
 
-    // Eventos de filtro
-    priceRange.addEventListener('input', () => {
-      priceValue.textContent = `$${priceRange.value.toLocaleString('es-MX')}`;
-      renderProducts(products);
+        renderCarousel(allProducts);
+        renderCatalog(allProducts);
+
+        priceRange.addEventListener('input', () => {
+            priceValue.textContent =
+                `$${parseInt(priceRange.value).toLocaleString('es-MX')}`;
+            renderCatalog(allProducts);
+        });
+
+        searchInput.addEventListener('input', () => {
+            renderCatalog(allProducts);
+        });
+
+        document.querySelectorAll('.form-check-input').forEach(cb => {
+            cb.addEventListener('change', () => {
+                selectedCategories = Array.from(
+                    document.querySelectorAll('.form-check-input:checked')
+                ).map(c => c.value);
+
+                renderCatalog(allProducts);
+            });
+        });
+
+        // 🔥 Re-render carrusel al cambiar tamaño
+        window.addEventListener('resize', () => {
+            renderCarousel(allProducts);
+        });
     });
-
-    searchInput.addEventListener('input', () => {
-      renderProducts(products);
-    });
-
-    // Filtros de categoría (checkboxes)
-    document.querySelectorAll('.form-check-input[type="checkbox"]').forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        selectedCategories = Array.from(
-          document.querySelectorAll('.form-check-input[type="checkbox"]:checked')
-        ).map(cb => cb.value);
-        
-        renderProducts(products);
-      });
-    });
-  })
-  .catch(error => {
-    console.error('Error al cargar productos:', error);
-    productList.innerHTML = '<p class="text-danger">No se pudieron cargar los productos. Intenta más tarde.</p>';
-  });

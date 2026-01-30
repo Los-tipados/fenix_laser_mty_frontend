@@ -1,0 +1,20 @@
+/* ======CONTENEDOR PRINCIPAL====== */
+.footer-personalizado {
+  background-color: var(--night);
+  color: var(--offwhite);
+  font-family: var(--fuente-principal);
+}
+/* Aqui son es el contenedor de los iconos que sean flexibles y su espaciado */
+.contenedor-iconos {
+  display: flex;
+  gap: 15px;
+}
+/* Imagen del mapa con borde redondeado */
+.card-imagen {
+  border-radius: 13px;
+}
+
+/*Define la altura de línea del texto.  */
+.card-texto {
+  line-height: 1.9;
+}

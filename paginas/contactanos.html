@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../activos/css/contactanos.css">
     <link rel="stylesheet" href="../activos/css/global.css">
     <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+    <link rel="stylesheet" href="../activos/css/footer.css">
+
 </head>
 
 <body>
@@ -26,94 +28,102 @@
         </p>
     </header>
 
-    <div class="container main-content">
-        <div class="row g-5">
-            <div class="col-12 col-lg-6">
-                <h2 class="subtitulo-seccion">Envíanos un mensaje</h2>
-                <div class="formulario-card">
-                    <form id="contactForm" action="https://formspree.io/f/mlggeqbj" method="POST">
-                        <div id="formAlert" class="mb-3" aria-live="polite"></div>
+    <main>
 
-                        <div class="mb-3">
-                            <label name="Nombre_completo" class="form-label">Nombre Completo *</label>
-                            <input id="fullName" type="text" class="form-control" name="nombre" placeholder="Tu nombre"
-                                required>
-                        </div>
+        <div class="container main-content">
+            <div class="row g-5">
+                <div class="col-12 col-lg-6">
+                    <h2 class="subtitulo-seccion">Envíanos un mensaje</h2>
+                    <div class="formulario-card">
+                        <form id="contactForm" action="https://formspree.io/f/mlggeqbj" method="POST">
+                            <div id="formAlert" class="mb-3" aria-live="polite"></div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Correo Electrónico *</label>
-                            <input id="email" type="email" class="form-control" name="email" placeholder="tu@email.com"
-                                required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Teléfono *</label>
-                            <input id="phone" class="form-control" name="telefono" placeholder="+52 55 1234 5678"
-                                required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Mensaje</label>
-                            <textarea id="message" class="form-control" name="mensaje" rows="4"
-                                placeholder="Mensaje..."></textarea>
-                        </div>
-
-                        <button id="btn-submit" class="btn-submit" type="submit">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
-                <h2 class="subtitulo-seccion ">Información de contacto</h2>
-
-                <div class="card-glass contact-info-card">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <ul class="lista-contacto contacto-textos">
-                                <li>
-                                    <span class="icon"><i class="bi bi-envelope"></i></i></span>
-                                    <div><strong>Email</strong><br>info@fenixlaser.com</div>
-                                </li>
-                                <li>
-                                    <span class="icon"><i class="bi bi-telephone"></i></i></span>
-                                    <div><strong>Teléfono</strong><br>+52 (55) 1234-5678</div>
-                                </li>
-                                <li>
-                                    <span class="icon"><i class="bi bi-geo-alt"></i></i></span>
-                                    <div><strong>Ubicación</strong><br>Monterrey, Nuevo León</div>
-                                </li>
-                                <li>
-                                    <span class="icon"><i class="bi bi-alarm"></i></span>
-                                    <div><strong>Horario</strong><br>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00 -
-                                        14:00</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mapa-contenedor">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.51693530853!2d-100.33349068963244!3d25.72041337728347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866295cb326a6867%3A0x633ee46a7f153782!2sAv.%20Alfonso%20Reyes%201620%2C%20Bernardo%20Reyes%2C%2064280%20Monterrey%2C%20N.L.!5e0!3m2!1ses!2smx!4v1768717066155!5m2!1ses!2smx"
-                                    width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="mb-3">
+                                <label name="Nombre_completo" class="form-label">Nombre Completo *</label>
+                                <input id="fullName" type="text" class="form-control" name="nombre"
+                                    placeholder="Tu nombre" required>
                             </div>
-                        </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Correo Electrónico *</label>
+                                <input id="email" type="email" class="form-control" name="email"
+                                    placeholder="tu@email.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Teléfono *</label>
+                                <input id="phone" class="form-control" name="telefono" placeholder="+52 55 1234 5678"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Mensaje</label>
+                                <textarea id="message" class="form-control" name="mensaje" rows="4"
+                                    placeholder="Mensaje..."></textarea>
+                            </div>
+
+                            <button id="btn-submit" class="btn-submit" type="submit">Enviar Mensaje</button>
+                        </form>
                     </div>
                 </div>
 
-                <div class="card-glass cotizar-card text-center">
-                    <h2>¿Listo para cotizar?</h2>
-                    <p>Obtén una cotización personalizada para tu proyecto de grabado láser.</p>
-                    <a href="cotizacion.html">
-                        <button type="button" class="btn-solicitar">Solicitar Cotización</button>
-                    </a>
+                <div class="col-12 col-lg-6 d-flex flex-column gap-4">
+                    <h2 class="subtitulo-seccion ">Información de contacto</h2>
+
+                    <div class="card-glass contact-info-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <ul class="lista-contacto contacto-textos">
+                                    <li>
+                                        <span class="icon"><i class="bi bi-envelope"></i></i></span>
+                                        <div><strong>Email</strong><br>info@fenixlaser.com</div>
+                                    </li>
+                                    <li>
+                                        <span class="icon"><i class="bi bi-telephone"></i></i></span>
+                                        <div><strong>Teléfono</strong><br>+52 (55) 1234-5678</div>
+                                    </li>
+                                    <li>
+                                        <span class="icon"><i class="bi bi-geo-alt"></i></i></span>
+                                        <div><strong>Ubicación</strong><br>Monterrey, Nuevo León</div>
+                                    </li>
+                                    <li>
+                                        <span class="icon"><i class="bi bi-alarm"></i></span>
+                                        <div><strong>Horario</strong><br>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00
+                                            -
+                                            14:00</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mapa-contenedor">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.51693530853!2d-100.33349068963244!3d25.72041337728347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866295cb326a6867%3A0x633ee46a7f153782!2sAv.%20Alfonso%20Reyes%201620%2C%20Bernardo%20Reyes%2C%2064280%20Monterrey%2C%20N.L.!5e0!3m2!1ses!2smx!4v1768717066155!5m2!1ses!2smx"
+                                        width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-glass cotizar-card text-center">
+                        <h2>¿Listo para cotizar?</h2>
+                        <p>Obtén una cotización personalizada para tu proyecto de grabado láser.</p>
+                        <a href="cotizacion.html">
+                            <button type="button" class="btn-solicitar">Solicitar Cotización</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- Footer (carga dinámica) -->
+    <div id="footer-container"></div>
+
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../activos/js/contactanos.js"></script>
     <!-- Barra de navegación  script js -->
     <script src="../activos/js/barra_navegacion.js"></script>
+    <script src="../activos/js/footer.js"></script>
 </body>
 
 </html>
