@@ -73,12 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 
                 <div class="buttons-container">
-                  <button class="btn btn-add-cart me-3" id="modalAddToCart">
+                <button class="btn btn-add-cart me-3" id="modalAddToCart">
                     AÑADIR AL CARRITO
                   </button>
-                  <button class="btn btn-personalizar">
+                <a href="../paginas/editor.html">
+                    <button class="btn btn-personalizar">
                     PERSONALIZAR AHORA
                   </button>
+                </a>
                 </div>
               </div>
             </div>

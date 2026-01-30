@@ -127,9 +127,10 @@
 .btn-personalizar {
   flex: 0 0 auto !important;          /* no crecen ni se encogen innecesariamente */
   width: auto !important;             /* clave: evita width:100% */
-  min-width: 200px !important;
-  padding: 1rem 2.6rem !important;
-  white-space: nowrap !important;     /* texto no se rompe */
+  min-width: 140px !important;
+  padding: 0.7rem 1.8rem !important;
+  white-space: nowrap !important;
+  font-size: 0.95rem;     /* texto no se rompe */
 }
 
 .btn-add-cart {
@@ -139,9 +140,8 @@
 }
 
 .btn-add-cart:hover {
-  background: #ff6600 !important;
+  background: var(--gold) !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 69, 0, 0.8);
 }
 
 .btn-personalizar {
@@ -151,9 +151,8 @@
 }
 
 .btn-personalizar:hover {
-  background: #ff6600 !important;
+  background: var(--gold) !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 69, 0, 0.8);
 }
 
 /* Descripción */

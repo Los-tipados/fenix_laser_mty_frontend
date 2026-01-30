@@ -74,19 +74,3 @@ h2, h3, h4, h5, h6{
 p{
     color: var(--offwhite);
 }
-
-
-/*.form-label {
-    color: var(--offwhite);
-}
-
-.form-text
- {
-      color: var(--offwhite);
-
-}
-
-.div.mb-3.form-check{
-      color: var(--offwhite);
-
-}
