@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showConfirmButton: false,
       toast: true,
       position: 'top-end',
-      iconColor: '#f0b429'
+      iconColor: '#F2A23A'
     });
 
     bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         text: `Vas a eliminar "${productoNombre}". Esta acción no se puede deshacer.`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
+        confirmButtonColor: '#E86C1A',
         cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sí, eliminar',
         cancelButtonText: 'Cancelar',

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../activos/css/global.css">
     <link rel="stylesheet" href="../activos/css/iniciar_sesion.css">
     <link rel="stylesheet" href="../activos/css/barra_navegacion.css">
+      <link rel="stylesheet" href="../activos/css/footer.css">
 </head>
 
 <body>
@@ -23,72 +24,79 @@
     <!-- Barra de navegación -->
     <div id="navbar"></div>
 
-    <main>
+   <main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="login-card p-5 shadow-lg text-center">
+                    <h2 class=" fw-bold mb-4" style="color:#E86C1A;"> ¡Registrate!</h2>
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="login-card p-5 shadow-lg text-center">
-                        <h2 class=" fw-bold mb-4" style="color:#E86C1A;"> ¡Registrate!</h2>
-
-                        <form>
-                            <div class="mb-4 text-start">
-                                <label class="form-label fw-bold">Correo electrónico</label>
-                                <input type="email" class="form-control text-white" placeholder="tunombre@email.com">
-                            </div>
-                            <div class="mb-4 text-start">
-                                <label class="form-label fw-bold">Contraseña</label>
-                                <input type="password" class="form-control text-white" placeholder="Contraseña">
-                            </div>
-
-                            <div class="mb-4 text-start">
-                                <label class="form-label fw-bold ">Confirma tu contraseña</label>
-                                <input type="password" class="form-control text-white "
-                                    placeholder="Repite la contraseña">
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-4 small">
-                                <a href="iniciar_sesion.html" class="text-white ">¿Ya tienes cuenta?</a>
-                                <a href="recupera_tu_contrasena.html" class="text-white ">¿Olvidaste tu contraseña?</a>
-                            </div>
-
-                            <button class="btn btn-ejemplo text-white mb-4 b boton-ejemplo">Registrarse</button>
-                        </form>
-
-                        <div class="d-flex align-items-center my-1">
-                            <hr class="flex-grow-1">
-                            <span class="mx-2">O</span>
-                            <hr class="flex-grow-1">
+                    <form id="registroForm" novalidate>
+                        <div class="mb-4 text-start">
+                            <label class="form-label fw-bold">Nombre completo</label>
+                            <input type="text" id="nombre" class="form-control text-white" placeholder="Tu nombre completo">
+                            <div class="invalid-feedback" id="errorNombre"></div>
                         </div>
 
-                        <p>Regístrate con tus redes sociales</p>
-                        <div class="d-flex justify-content-center gap-3">
-
-                            <button class="btn btn-social btn-x">
-                                <i class="bi bi-twitter-x"></i>
-                            </button>
-
-                            <button class="btn btn-social btn-google-white">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                    alt="Google">
-                            </button>
-
-                            <button class="btn btn-social btn-facebook">
-                                <i class="bi bi-facebook"></i>
-                            </button>
-
-
+                        <div class="mb-4 text-start">
+                            <label class="form-label fw-bold">Número de teléfono</label>
+                            <input type="tel" id="telefono" class="form-control text-white" placeholder="Ej: 1234567890">
+                            <div class="invalid-feedback" id="errorTelefono"></div>
                         </div>
+
+                        <div class="mb-4 text-start">
+                            <label class="form-label fw-bold">Correo electrónico</label>
+                            <input type="email" id="email" class="form-control text-white" placeholder="tunombre@email.com">
+                            <div class="invalid-feedback" id="errorEmail"></div>
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label class="form-label fw-bold">Contraseña</label>
+                            <input type="password" id="password" class="form-control text-white" placeholder="Contraseña">
+                            <div class="invalid-feedback" id="errorPassword"></div>
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label class="form-label fw-bold ">Confirma tu contraseña</label>
+                            <input type="password" id="confirmPassword" class="form-control text-white " placeholder="Repite la contraseña">
+                            <div class="invalid-feedback" id="errorConfirmPassword"></div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-4 small">
+                            <a href="iniciar_sesion.html" class="text-white ">¿Ya tienes cuenta?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-ejemplo text-white mb-4 b boton-ejemplo">Registrarse</button>
+                    </form>
+
+                    <div class="d-flex align-items-center my-1">
+                        <hr class="flex-grow-1">
+                        <span class="mx-2">O</span>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <p>Regístrate con tus redes sociales</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-social btn-x"><i class="bi bi-twitter-x"></i></button>
+                        <button class="btn btn-social btn-google-white">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+                        </button>
+                        <button class="btn btn-social btn-facebook"><i class="bi bi-facebook"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+       <!-- Footer (carga dinámica) -->
+    <div id="footer-container"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="../activos/js/registro.js"></script>
     <!-- Barra de navegación -->
     <script src="../activos/js/barra_navegacion.js"></script>
-
+      <!-- Footer -->
+     <script src="../activos/js/footer.js"></script>
 </body>
 
 </html>
