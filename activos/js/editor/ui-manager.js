@@ -67,3 +67,70 @@ export function renderToolbar() {
     document.getElementById('btn-delete').onclick = () => CanvasLogic.deleteObject();
     document.getElementById('btn-export').onclick = () => CanvasLogic.exportDesign();
 }
+
+/**
+ * Gestiona el estado de apertura/cierre del panel lateral.
+ * @param {string} type - ID de la pestaña (ej. 'texto', 'productos').
+ */
+function togglePanel(type) {
+    const panel = document.getElementById('sidePanel');
+    const icons = document.querySelectorAll('.icon-unit');
+    
+    // Si la pestaña clickeada ya está activa, se cierra el panel (Toggle)
+    if (activeTab === type) {
+        panel.style.display = 'none';
+        activeTab = null;
+        icons.forEach(i => i.classList.remove('active'));
+    } else {
+        // En caso contrario, se abre y se marca como activa
+        activeTab = type;
+        panel.style.display = 'block';
+        icons.forEach(i => i.classList.remove('active'));
+        document.getElementById(`nav-${type}`).classList.add('active');
+        renderPanelContent(type);
+    }
+}
+
+
+
+/**
+ * Genera el contenido dinámico del panel lateral según la pestaña seleccionada.
+ * @param {string} type - El tipo de contenido a renderizar.
+ */
+function renderPanelContent(type) {
+    const content = document.getElementById('panelContent');
+    let html = `<h3>${type.toUpperCase()}</h3>`;
+
+    // Lógica condicional para inyectar listas de fuentes, productos o figuras
+    if (type === 'texto') {
+        html += `<div class="list-group">
+            ${CONFIG.fuentes.map(f => `<div class="list-item btn-font" data-font="${f}">${f}</div>`).join('')}
+        </div>
+        <button class="btn-orange" style="width:100%; margin-top:15px" id="add-text-btn">+ Agregar Texto</button>`;
+    } 
+    else if (type === 'productos') {
+        html += `<div class="grid-assets">
+            ${CONFIG.productos.map(p => `
+                <div class="asset-card btn-product" data-url="${p.url}">
+                    <img src="${p.url}">
+                    <span>${p.nombre}</span>
+                </div>
+            `).join('')}
+        </div>`;
+    } 
+    // Dentro de renderPanelContent(type)
+else if (type === 'figuras') {
+    html += `<div class="grid-assets">
+        ${CONFIG.figuras.map(f => `
+            <div class="asset-card btn-figure" data-url="${f.url}">
+                <img src="${f.url}">
+                <span>${f.nombre}</span>
+            </div>
+        `).join('')}
+    </div>`;
+}
+    
+    content.innerHTML = html;
+    // Es vital re-vincular los eventos cada vez que se regenera el HTML interno
+    attachPanelEvents(type);
+}
