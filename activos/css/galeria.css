@@ -1,9 +1,9 @@
 /* ========CONTENEDORES DE IMAGENES============ */
 .contenedor-img {
-  border: none;
+  width: 100%; /* Para que ocupe toda su columna */
+  height: 250px; /* Para que todas las fotos midan lo mismo de alto */
+  object-fit: cover; /* Para que la foto no se vea estirada */
   border-radius: 15px;
-  width: 219px;
-  height: 220px;
 }
 
 /* ========ANIMACIONES EN LOS CONTENEDORES========== */

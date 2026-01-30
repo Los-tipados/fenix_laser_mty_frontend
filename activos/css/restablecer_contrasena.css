@@ -13,6 +13,12 @@ body{
    /* Evita que la imagen de fondo se repita */
 }
 
+.container{
+
+    padding-top: 8%;
+    padding-bottom: 5%;
+}
+
 .login-card {
     background: linear-gradient(135deg, 
         rgba(20, 43, 67, 0.5), 
