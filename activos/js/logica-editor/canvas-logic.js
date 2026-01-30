@@ -57,3 +57,36 @@ export function changeCanvasBackground(url) {
         });
     }, { crossOrigin: 'anonymous' });
 }
+
+/**
+ * Agrega un objeto de texto interactivo (IText) al lienzo.
+ */
+export function addIText() {
+    const text = new fabric.IText('Escribe aquí', {
+        left: 100, 
+        top: 100, 
+        fontSize: 30, 
+        fontFamily: 'Arial', 
+        fill: '#333'
+    });
+    canvas.add(text).setActiveObject(text);
+}
+
+/**
+ * Añade una imagen (sticker o figura prediseñada) al lienzo como objeto interactivo.
+ * @param {string} url - Ruta de la imagen.
+ */
+export function addImage(url) {
+    if (!url) return;
+
+    fabric.Image.fromURL(url, (img) => {
+        // Escalamos la imagen para que no aparezca gigante
+        img.scaleToWidth(150);
+        
+        // La centramos y la añadimos
+        canvas.add(img);
+        canvas.centerObject(img);
+        canvas.setActiveObject(img);
+        canvas.renderAll();
+    }, { crossOrigin: 'anonymous' });
+}
