@@ -145,3 +145,40 @@ export function deleteObject() {
         canvas.remove(...active);
     }
 }
+
+/**
+ * Captura el contenido actual del lienzo y dispara la descarga en formato PNG.
+ */
+export function exportDesign() {
+    const dataURL = canvas.toDataURL({ 
+        format: 'png', 
+        quality: 1,
+        multiplier: 2 // Exporta al doble de resolución para mejor calidad
+    });
+    
+    const link = document.createElement('a');
+    link.download = 'diseno-pro.png';
+    link.href = dataURL;
+    link.click();
+}
+
+
+
+/**
+ * Ajusta la imagen de fondo actual para que siempre cubra el área del canvas.
+ * Previene el bug de "recorte" al redimensionar la ventana.
+ */
+export function resizeBackground() {
+    const bgImage = canvas.backgroundImage;
+    if (bgImage) {
+        const scale = Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+        canvas.setBackgroundImage(bgImage, canvas.renderAll.bind(canvas), {
+            scaleX: scale,
+            scaleY: scale,
+            left: canvas.width / 2,
+            top: canvas.height / 2,
+            originX: 'center',
+            originY: 'center'
+        });
+    }
+}
