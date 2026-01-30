@@ -51,7 +51,7 @@ function createCard(product, isCatalog = true) {
                     <small class="text-white-50 ms-1">(${product.rating || 0})</small>
                 </div>
                 <p class="card-text flex-grow-1">${product.descripcion}</p>
-                ${isCatalog ? '<a href="#" class="btn btn-outline-warning mt-auto btn-ver-detalle">Ver detalle</a>' : ''}
+                ${isCatalog ? '<a href="/paginas/modal_detalle.html" class="btn btn-outline-warning mt-auto btn-ver-detalle">Ver detalle</a>' : ''}
             </div>
         </div>
     `;
@@ -151,7 +151,7 @@ function renderCatalog(products) {
 // ==============================
 // FETCH + EVENTOS
 // ==============================
-fetch('../activos/data/productos.json')
+fetch('/activos/data/productos.json')
     .then(res => res.json())
     .then(products => {
         allProducts = products;
