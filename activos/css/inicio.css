@@ -1,27 +1,35 @@
 /* ================= COLORES ================= */
+h1 {
+  font-weight: 300;
+}
+
 .text-orange {
   color: #E86C1A;
+  font-weight: 750;
 }
 
 .btn-catalogo { /*btn-orange*/
-  background-color: #ff7a00;
+  background-color: #E86C1A;
   color: #fff;
   border: none;
 }
 
 .btn-catalogo:hover {
-  background-color: #E86C1A;
+  background-color: #F2A23A;
 }
 
-.btn-outline-ver-todo {
-  border: 1px solid #ff7a00;
-  color: #ff7a00;
-}
-
-.btn-outline-ver-todo:hover {
-  background-color: #ff7a00;
+.btn-regalo-light {
+  border: 1px solid #E86C1A;
+  background-color: #f2a23a10;
   color: #fff;
 }
+
+.btn-regalo-light:hover {
+  background-color: #E86C1A;
+  color: #fff;
+}
+
+
 
 /* ================= HERO ================= */
 .hero-section {
@@ -147,6 +155,7 @@ h2{
 
 .reviews-section {
   background: linear-gradient(90deg, #1f1c2d, #853728);
+  margin-bottom: 100px;
 }
 
 .review-card {
@@ -191,7 +200,7 @@ h2{
 .reviews-section .carousel-control-prev-icon,
 .reviews-section .carousel-control-next-icon {
   background-color: var(--brown-opaco);
-  border-radius: 50%;
+  border-radius: 20%;
   width: 60px;
   height: 30px;
 }
