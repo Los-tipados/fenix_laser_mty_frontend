@@ -90,3 +90,30 @@ export function addImage(url) {
         canvas.renderAll();
     }, { crossOrigin: 'anonymous' });
 }
+
+/**
+ * Cambia la familia tipográfica del objeto de texto actualmente seleccionado.
+ * @param {string} font - Nombre de la fuente (ej. 'Verdana').
+ */
+export function changeFont(font) {
+    const obj = canvas.getActiveObject();
+    // Verificamos que el objeto seleccionado admita propiedades de texto
+    if (obj && (obj.type === 'i-text' || obj.type === 'text')) {
+        obj.set('fontFamily', font);
+        canvas.renderAll();
+    }
+}
+
+/**
+ * Incrementa o decrementa el tamaño de fuente del objeto activo.
+ * @param {number} delta - Píxeles a sumar (positivo) o restar (negativo).
+ * @param {Function} [callbackUI] - Función opcional para actualizar indicadores en la UI.
+ */
+export function changeFontSize(delta, callbackUI) {
+    const obj = canvas.getActiveObject();
+    if (obj && obj.fontSize) {
+        obj.set('fontSize', obj.fontSize + delta);
+        canvas.renderAll();
+        if(callbackUI) callbackUI();
+    }
+}
