@@ -18,11 +18,16 @@
     "categoria": "grill-parrilla",
     "rating": 4.7,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": true,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["combo", "parrilla"]
   },
   {
@@ -33,11 +38,16 @@
     "categoria": "accesorios",
     "rating": 4.5,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": false,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["tabla", "madera", "hacha"]
   },
   {
@@ -48,11 +58,16 @@
     "categoria": "cuchillos",
     "rating": 4.9,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": true,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["cuchillos", "profesional"]
   },
   {
@@ -63,11 +78,16 @@
     "categoria": "accesorios",
     "rating": 4.6,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": false,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["hacha"]
   },
   {
@@ -78,11 +98,16 @@
     "categoria": "cuchillos",
     "rating": 4.8,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": false,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["cuchillo", "chef"]
   },
   {
@@ -93,11 +118,16 @@
     "categoria": "personalizados",
     "rating": 5.0,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": true,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": false,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": false,
+>>>>>>> dev
     "etiquetas": ["whisky", "personalizado", "regalo"]
   },
   {
@@ -108,11 +138,16 @@
     "categoria": "personalizados",
     "rating": 4.7,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": true,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": true,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+>>>>>>> dev
     "etiquetas": ["poker", "juego", "maletín"]
   },
   {
@@ -123,11 +158,16 @@
     "categoria": "personalizados",
     "rating": 4.9,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": true,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": true,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+>>>>>>> dev
     "etiquetas": ["reloj", "regalo", "personalizado"]
   },
   {
@@ -138,11 +178,16 @@
     "categoria": "grill-parrilla",
     "rating": 4.6,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "recomendado": false,
 =======
     "visibleCatalogo": true,
     "visibleRecomendados": true,
 >>>>>>> 551daa2b269ea6f189e3b564a7a49d1120795fc3
+=======
+    "visibleCatalogo": true,
+    "visibleRecomendados": true,
+>>>>>>> dev
     "etiquetas": ["parrilla", "kit", "personalizado"]
   }
 ]
