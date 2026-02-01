@@ -32,7 +32,10 @@ export const CONFIG = {
     ],
     productos: [
         { id: 'p1', nombre: 'Caja', url: 'https://i.ibb.co/JwT7G5nb/box-real.webp'},
-        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' }
+        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' },
+        { id: 'p2', nombre: 'Tabla redonda', url: 'https://i.ibb.co/8gXXPtfV/imagen1.webp' },
+        { id: 'p2', nombre: 'Reloj', url: 'https://i.ibb.co/J9cwXtV/reloj.webp' },
+        { id: 'p2', nombre: 'Tabla', url: 'https://i.ibb.co/W4SMNZKN/tabla.webp' }
     ],
     figuras: [
         { nombre: ' ', url: 'https://i.ibb.co/QjjGXwpV/animal-1295493-1280.png' },
