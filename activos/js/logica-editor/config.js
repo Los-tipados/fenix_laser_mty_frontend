@@ -32,23 +32,27 @@ export const CONFIG = {
     ],
     productos: [
         { id: 'p1', nombre: 'Caja', url: 'https://i.ibb.co/JwT7G5nb/box-real.webp'},
-        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' }
+        { id: 'p2', nombre: 'Cuchillo', url: 'https://i.ibb.co/WvXx1qW6/box.webp' },
+        { id: 'p2', nombre: 'Tabla redonda', url: 'https://i.ibb.co/8gXXPtfV/imagen1.webp' },
+        { id: 'p2', nombre: 'Reloj', url: 'https://i.ibb.co/J9cwXtV/reloj.webp' },
+        { id: 'p2', nombre: 'Tabla', url: 'https://i.ibb.co/W4SMNZKN/tabla.webp' }
     ],
     figuras: [
-        { nombre: 'Loro', url: 'https://i.ibb.co/QjjGXwpV/animal-1295493-1280.png' },
-        { nombre: 'Panda', url: 'https://i.ibb.co/BHk0rYYd/panda.png' },
-        { nombre: 'Corazon', url: 'https://i.ibb.co/PGRR9QZ3/Corazon.png' },
-        { nombre: 'Caballo', url: 'https://i.ibb.co/MkYrL1jv/horse-3254102-1280.png' },
+        { nombre: ' ', url: 'https://i.ibb.co/QjjGXwpV/animal-1295493-1280.png' },
+        { nombre: ' ', url: 'https://i.ibb.co/BHk0rYYd/panda.png' },
+        { nombre: ' ', url: 'https://i.ibb.co/PGRR9QZ3/Corazon.png' },
+        { nombre: ' ', url: 'https://i.ibb.co/MkYrL1jv/horse-3254102-1280.png' },
 
-        { nombre: 'Auto', url: 'https://i.ibb.co/M5DR24PT/carro-oldie.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/M5DR24PT/carro-oldie.png'},
         
-        { nombre: 'Marco', url: 'https://i.ibb.co/DZH52CB/marco1.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/DZH52CB/marco1.png'},
         
-        { nombre: 'Corona', url: 'https://i.ibb.co/4R762cYd/corona.png'},
-        { nombre: 'Corazoncitos', url: 'https://i.ibb.co/FL1gyMNj/corazoncitos.png'},
-        { nombre: 'Rosa', url: 'https://i.ibb.co/bgNPX1wM/ai-generated-9166476-1280.png'},
-        { nombre: 'Divisor', url: 'https://i.ibb.co/Kcv62TFt/divider-9999292-640.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/4R762cYd/corona.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/FL1gyMNj/corazoncitos.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/bgNPX1wM/ai-generated-9166476-1280.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/Kcv62TFt/divider-9999292-640.png'},
         
-        { nombre: 'Espada', url: 'https://i.ibb.co/4nDSX19S/espada.png'}
+        { nombre: ' ', url: 'https://i.ibb.co/4nDSX19S/espada.png'},
+        { nombre: ' ', url: 'https://i.ibb.co/S7BSPnkj/ilustracion.webp'}
     ]
 };

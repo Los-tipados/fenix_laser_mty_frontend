@@ -54,6 +54,15 @@ export function renderToolbar() {
         </div>
         <div class="divider"></div>
         <button class="btn-tool" id="btn-delete">🗑️ Eliminar</button>
+
+        <div class="divider"></div>
+
+        <button class="btn-tool"  id="btn-editor"  onclick="history.back()">
+             Salir del editor
+        </button>
+
+
+        
         <div style="margin-left: auto">
             <button class="btn-orange" id="btn-export">Descargar PNG</button>
         </div>

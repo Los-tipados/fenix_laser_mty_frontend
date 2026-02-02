@@ -3,7 +3,11 @@ body{
    min-height: 100vh; 
    /* Hace que el body tenga al menos el alto total de la ventana del navegador */
 
+<<<<<<< HEAD
    background-image: url("../activos/imagenes/fondos/bateFondo.png"); 
+=======
+   background-image: url("/imagenes/fondos/fondoCelular2.jpg "); 
+>>>>>>> dev
    /* Coloca una imagen de fondo */
 
    background-size: cover;
