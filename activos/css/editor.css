@@ -175,7 +175,23 @@ body, html {
     border-radius: 4px; 
     cursor: pointer;
     transition: 0.2s;
+    
+    text-decoration: none;
+
+
 }
+
+#btn-editor{
+    background: rgb(102, 50, 169); 
+
+
+}
+
+#btn-editor:hover{
+    background: rgb(76, 32, 135); 
+
+}
+
 .btn-tool:hover { background: var(--hoover); }
 
 /* Elementos de lista (Fuentes, capas, etc.) */
@@ -224,3 +240,4 @@ body, html {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
 }
+
