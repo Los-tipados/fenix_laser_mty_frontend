@@ -2,7 +2,7 @@
 
 const PASSWORD = 'admin123';           // ← Cambia esto en producción real
 const STORAGE_KEY = 'productos_admin_demo';
-const JSON_PATH = '../activos/data/productos.json';    // Ajusta si está en otra carpeta → 'data/productos.json'
+const JSON_PATH = '/activos/data/productos.json';    // Ajusta si está en otra carpeta → 'data/productos.json'
 
 let allProducts = [];
 

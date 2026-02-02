@@ -54,6 +54,15 @@ export function renderToolbar() {
         </div>
         <div class="divider"></div>
         <button class="btn-tool" id="btn-delete">🗑️ Eliminar</button>
+
+        <div class="divider"></div>
+
+        <button class="btn-tool"  id="btn-editor"  onclick="history.back()">
+             Salir del editor
+        </button>
+
+
+        
         <div style="margin-left: auto">
             <button class="btn-orange" id="btn-export">Descargar PNG</button>
         </div>
@@ -103,10 +112,11 @@ function renderPanelContent(type) {
 
     // Lógica condicional para inyectar listas de fuentes, productos o figuras
     if (type === 'texto') {
-        html += `<div class="list-group">
+        html += `<button class="btn-orange" style="width:100%; margin-top:15px" id="add-text-btn">+ Agregar Texto</button>
+        <div class="list-group">
             ${CONFIG.fuentes.map(f => `<div class="list-item btn-font" data-font="${f}">${f}</div>`).join('')}
         </div>
-        <button class="btn-orange" style="width:100%; margin-top:15px" id="add-text-btn">+ Agregar Texto</button>`;
+        `;
     } 
     else if (type === 'productos') {
         html += `<div class="grid-assets">

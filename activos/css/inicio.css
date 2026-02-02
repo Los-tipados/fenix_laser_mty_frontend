@@ -158,8 +158,9 @@ h2{
   margin-bottom: 100px;
 }
 
-.review-card {
-  max-width: 360px;
+.review-card, 
+.subscribe-card {
+  max-width: 420px;
   border-radius: 20px;
   background: #f2f0f1;
   border: none;
