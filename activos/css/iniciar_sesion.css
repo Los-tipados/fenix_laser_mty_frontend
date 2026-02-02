@@ -6,11 +6,7 @@ body{
    min-height: 90vh; 
    /* Hace que el body tenga al menos el alto total de la ventana del navegador */
 
-<<<<<<< HEAD
-   background-image: url("../imagenes/fondos/bateFondo.png"); 
-=======
-   background-image: url("/imagenes/fondos/bateFondo.png "); 
->>>>>>> dev
+   background-image: url("/activos/imagenes/fondos/bateFondo.png"); 
    /* Coloca una imagen de fondo */
 
    background-position: center;
