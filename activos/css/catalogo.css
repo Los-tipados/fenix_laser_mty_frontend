@@ -2,7 +2,7 @@
     --gold: #F2A23A;
     --orange: #E86C1A;
     --bg-card: #2f2a44;
-    --transparencia: rgba(255, 255, 255, 0.08); 
+    --transparencia: rgba(255, 255, 255, 0.08);
 }
 
 /* --- FONDO ONDULADO --- */
@@ -11,7 +11,7 @@
     bottom: 1;
     left: 0;
     width: 100%;
-    height: 980px;
+    height: 970px;
     z-index: -1;
     margin: 0;
 }
@@ -19,7 +19,7 @@
 /* --- TITULO --- */
 
 .productos {
-    margin: 3rem 0 1rem;
+    margin: 3rem 0 2rem 0;
 }
 
 h2.productos {
@@ -34,36 +34,40 @@ h2.productos span {
 /* --- CARRUSEL --- */
 #recommended-carousel .carousel-item {
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
-/* --- CARDS DE CARRUSEL --- */
+/* --- COLOR DE CARDS DE CARRUSEL --- */
 #recommended-carousel .card {
     width: 100%;
     max-width: 300px;
     display: inline-block;
 }
 
+
+
+
+/* --- ESTILO y POSICION RESPONSIVA DE BOTONES DE CARRUSEL --- */
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(1) brightness(100);
-}
-
-/* --- ESTILO DE BOTONES DE CARRUSEL --- */
-
-
-
-/* --- COLOR DE BOTONES DE CARRUSEL --- */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: var(--gold);
     border-radius: 50%;
     padding: 10px;
 }
 
+@media (min-width: 768px) {
+    .carousel-control-prev {
+        left: -75px;
+    }
+
+    .carousel-control-next {
+        right: -75px;
+    }
+}
+
 /* --- ESTILOS DEL FILTRO --- */
 .filtro-card {
-    background: var(--transparencia)!important;
+    background: var(--transparencia) !important;
 }
 
 h4 {
