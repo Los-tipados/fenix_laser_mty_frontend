@@ -238,30 +238,45 @@ hr {
 /* =========================
    Sección de tipados
 ========================= */
- .flip-card {
-    perspective: 1000px;
-    height: 420px;
-  }
+ .flip-card{
+  width: 300px;
+  height: 350px;
+  perspective: 1000px;
 
-.flip-card-inner {
-  width: 100%;
+ }
+ .flip-card:hover > .flip-card-inner{
+  cursor: pointer;
+  transform: rotateY(180deg);
+ }
+ .flip-card-inner{
   height: 100%;
+  width: 100%;
   position: relative;
-  transition: 0.6s;
+  transition: transform 1500ms;
   transform-style: preserve-3d;
-
+ }
+ 
+ .frente{
+  height: 350px;
+  width: 300px;
+  object-fit:fill;
+  display: flex;
+ }
+  
+ .frente, .atras{
+   border-radius: 2rem;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 5px 2px rgba(50,50,50,0.25); 
+  position:absolute;
+  backface-visibility: hidden;
+  overflow: hidden;
+ }
+.atras{
+  background-color: #3a3a3a;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-  .frente, .atras {
-    position: absolute; inset: 0;
-    backface-visibility: hidden;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-  .back {
-    background: var(--primary);
-    color: white;
-    transform: rotateY(180deg);
-    display: flex; flex-direction: column; justify-content: center; padding: 2rem; text-align: center;
-  }
