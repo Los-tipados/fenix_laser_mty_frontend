@@ -93,12 +93,12 @@ function renderCarousel(products) {
         recommended.slice(i, i + itemsPerSlide).forEach(product => {
             const col = document.createElement('div');
 
-            col.className =
+            col.className = 
                 itemsPerSlide === 1
                     ? 'col-12'
                     : itemsPerSlide === 2
-                        ? 'col-12 col-md-6'
-                        : 'col-12 col-md-6 col-lg-4';
+                        ? 'col-12 col-sm-6'
+                        : 'col-12 col-sm-6 col-lg-3';
 
             col.appendChild(createCard(product, false));
             row.appendChild(col);

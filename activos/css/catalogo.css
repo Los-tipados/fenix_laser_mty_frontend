@@ -40,11 +40,9 @@ h2.productos span {
 /* --- COLOR DE CARDS DE CARRUSEL --- */
 #recommended-carousel .card {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     display: inline-block;
 }
-
-
 
 
 /* --- ESTILO y POSICION RESPONSIVA DE BOTONES DE CARRUSEL --- */
@@ -55,16 +53,16 @@ h2.productos span {
     padding: 10px;
 }
 
-@media (min-width: 768px) {
-    .carousel-control-prev {
-        left: -75px;
+@media (max-width: 991px) {
+    .carousel-control-prev
+    {
+        left: -25px;
     }
-
     .carousel-control-next {
-        right: -75px;
+        right: -25px;
     }
 }
-
+    
 /* --- ESTILOS DEL FILTRO --- */
 .filtro-card {
     background: var(--transparencia) !important;
