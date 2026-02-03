@@ -27,7 +27,16 @@
     <!-- Barra de navegación (carga dinámica) -->
     <div id="navbar"></div>
 
+    <svg class="fondo" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <g transform="scale(-1,1) translate(-1440,0)">
+            <path fill="#2f2a44"
+                d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,144C840,139,960,149,1080,165.3C1200,181,1320,203,1380,213.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+            </path>
+        </g>
+    </svg>
+
     <div class="container-fluid mt-5 px-3 px-md-4 px-lg-5">
+
         <!-- Sección Recomendados -->
         <section class="mb-5">
             <h2 class="productos mb-lg-2">Productos <span>recomendados</span></h2>
@@ -36,6 +45,8 @@
                 <div class="carousel-inner" id="recommended-inner">
                     <!-- Slides se agregan dinámicamente -->
                 </div>
+
+
 
                 <!-- Controles -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#recommended-carousel"
@@ -48,7 +59,10 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Siguiente</span>
                 </button>
+
+
             </div>
+
         </section>
 
         <!-- Layout principal: filtros + catálogo -->
@@ -61,7 +75,8 @@
                     <!-- Búsqueda -->
                     <div class="mb-4">
                         <h6>Buscar</h6>
-                        <input type="text" id="searchInput" class=" c-buscar form-control bg-dark text-light border-secondary"
+                        <input type="text" id="searchInput"
+                            class=" c-buscar form-control bg-dark text-light border-secondary"
                             placeholder="Nombre o descripción...">
                     </div>
 
@@ -104,16 +119,16 @@
             <main class="col-12 col-md-8 col-lg-9">
                 <h2 class="mb-4 estilo-t">Catálogo completo</h2>
                 <div id="product-list" class="row g-4"></div>
-                    <!-- Se llenan con JS -->
-                </div>
-
-                <!-- Mensaje cuando no hay resultados -->
-                <div id="noResults" class="text-center text-muted my-5 d-none">
-                    <h5>No se encontraron productos que coincidan con los filtros</h5>
-                    <p>Prueba ajustando la búsqueda o los filtros</p>
-                </div>
-            </main>
+                <!-- Se llenan con JS -->
         </div>
+
+        <!-- Mensaje cuando no hay resultados -->
+        <div id="noResults" class="text-center text-muted my-5 d-none">
+            <h5>No se encontraron productos que coincidan con los filtros</h5>
+            <p>Prueba ajustando la búsqueda o los filtros</p>
+        </div>
+        </main>
+    </div>
     </div>
     <!-- Footer (carga dinámica) -->
     <div id="footer-container"></div>
@@ -126,8 +141,8 @@
     <script src="/activos/js/modal_detalle.js"></script>
     <script src="/activos/js/barra_navegacion.js"></script>
     <script src="/activos/js/catalogo.js"></script>
-  <!-- Footer -->
-     <script src="/activos/js/footer.js"></script>
+    <!-- Footer -->
+    <script src="/activos/js/footer.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
