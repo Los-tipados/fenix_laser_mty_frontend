@@ -39,7 +39,7 @@ function getItemsPerSlide() {
 // ==============================
 function createCard(product, isCatalog = true) {
     const cardHTML = `
-        <div class="card h-100">
+        <div class="card h-100 ${isCatalog ? '' : 'card-carousel'}">
             <img src="${product.img}" class="card-img-top" alt="${product.nombre}">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.nombre}</h5>

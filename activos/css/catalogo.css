@@ -1,7 +1,9 @@
 :root {
     --gold: #F2A23A;
     --orange: #E86C1A;
-    --bg-card: #2f2a44;
+    --bg-card: #332e49d3;
+    --bg-card-variable: rgba(77, 66, 114, 0);
+    --bg-card-carrusel: #2f2a4462;
     --transparencia: rgba(255, 255, 255, 0.08);
 }
 
@@ -11,7 +13,7 @@
     bottom: 1;
     left: 0;
     width: 100%;
-    height: 970px;
+    height: 900px;
     z-index: -1;
     margin: 0;
 }
@@ -36,13 +38,23 @@ h2.productos span {
     text-align: center;
     padding: 15px 0;
 }
-
-/* --- COLOR DE CARDS DE CARRUSEL --- */
 #recommended-carousel .card {
     width: 100%;
     max-width: 280px;
     display: inline-block;
 }
+
+/* --- COLOR DE TARJETAS EN CARRUSEL --- */
+
+.card-carousel {
+    background: var(--bg-card-carrusel) !important;
+}
+
+.card-img-top{
+    background: var(--bg-card-variable) !important;
+}
+
+
 
 
 /* --- ESTILO y POSICION RESPONSIVA DE BOTONES DE CARRUSEL --- */
