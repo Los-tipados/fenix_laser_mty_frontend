@@ -139,13 +139,11 @@ h2{
 
 /* ================= MOBILE ================= */
 @media (max-width: 767.98px) {
-
-  /* Ocultar flechas en móvil */
-  .carousel-control-prev,
-  .carousel-control-next {
+  /* Ocultar flechas SOLO en el carrusel de productos */
+  .products-section .carousel-control-prev,
+  .products-section .carousel-control-next {
     display: none;
   }
-
   .hero-section {
     text-align: center;
   }
@@ -226,5 +224,22 @@ h2{
 
   .reviews-section h4 {
     text-align: center;
+  }
+
+  /* Forzar visibilidad de flechas en carrusel de reseñas */
+  .reviews-section .carousel-control-prev,
+  .reviews-section .carousel-control-next {
+    display: block !important; /* !important para sobreescribir Bootstrap si es necesario */
+    width: 5%; /* Ajusta el ancho para mobile si las flechas se ven demasiado grandes */
+    opacity: 0.8; /* Opcional: reduce opacidad para un look más sutil en mobile */
+  }
+
+  /* Opcional: Ajusta posición de flechas en mobile para que no invadan el contenido */
+  .reviews-section .carousel-control-prev {
+    left: 0;
+  }
+
+  .reviews-section .carousel-control-next {
+    right: 0;
   }
 }
