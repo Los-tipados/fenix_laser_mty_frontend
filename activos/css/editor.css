@@ -245,15 +245,18 @@ body, html {
    7. RESPONSIVE DESIGN (Móviles y Tablets)
    ========================================== */
 
+/* ==========================================
+   7. RESPONSIVE DESIGN (Móviles y Tablets)
+   ========================================== */
+
 @media (max-width: 768px) {
-    /* Cambiamos el flujo de la app de horizontal a vertical */
     .main-app {
         flex-direction: column;
     }
 
-    /* 1. Barra de Iconos: De vertical a horizontal (Abajo) */
+    /* 1. Barra de Iconos (Base de la pantalla) */
     .sidebar-icons {
-        order: 3; /* La manda al fondo */
+        order: 3; 
         width: 100% !important;
         height: 70px !important;
         min-width: unset !important;
@@ -263,6 +266,8 @@ body, html {
         position: fixed;
         bottom: 0;
         left: 0;
+        /* Aseguramos que los iconos se distribuyan bien */
+        justify-content: space-around; 
     }
 
     .icon-unit {
@@ -270,46 +275,58 @@ body, html {
         flex: 1;
     }
 
-    /* 2. Panel de Contenido: Ahora sube desde abajo */
+    /* 2. Panel de Contenido (Bottom Sheet) */
     .sidebar-panel {
         order: 2;
         width: 100% !important;
         min-width: unset !important;
-        max-height: 45vh; /* Ocupa casi la mitad de la pantalla */
+        max-height: 50vh; /* Ajustado ligeramente para mejor visibilidad */
         position: fixed;
-        bottom: 70px; /* Se apoya sobre la barra de iconos */
+        bottom: 70px; 
         left: 0;
         border-right: none !important;
-        border-top: 2px solid var(--accent);
-        border-radius: 20px 20px 0 0; /* Bordes redondeados arriba */
+        /* Cambié var(--accent) por var(--orange) que es la que usas arriba */
+        border-top: 2px solid var(--orange); 
+        border-radius: 20px 20px 0 0; 
         box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+        display: none; /* JS controla esto */
     }
 
-    /* 3. Área del Editor: Ajuste de espacio */
+    /* 3. Área del Editor */
     .editor-layout {
         order: 1;
-        height: calc(100vh - 70px); /* Restamos la barra inferior */
+        /* Restamos el espacio de la barra inferior para que nada se oculte */
+        height: calc(100vh - 70px); 
+        width: 100%;
     }
 
     .canvas-area {
         padding: 10px;
-        align-items: flex-start; /* Empuja el canvas un poco arriba */
-        padding-top: 80px; /* Deja espacio para la toolbar superior */
+        /* Centramos el canvas pero permitimos que el usuario haga scroll si es grande */
+        align-items: center; 
+        justify-content: center;
+        /* Evitamos que el canvas se pegue a la toolbar superior */
+        padding-top: 20px; 
+        /* MUY IMPORTANTE: Margen inferior para que el canvas no quede tapado por la barra */
+        padding-bottom: 80px; 
     }
 
-    /* 4. Toolbar Superior: Scroll horizontal si no cabe */
+    /* 4. Toolbar Superior */
     .top-navbar {
-        width: 100%;
+        height: auto; /* Permite que crezca si el contenido se envuelve */
+        min-height: 60px;
         overflow-x: auto;
-        white-space: nowrap;
-        padding: 10px;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-    }
-
-    /* Ajuste de botones para que sean más fáciles de tocar con el dedo */
-    .btn-tool {
         padding: 10px 15px;
+        gap: 15px;
+        /* Oculta la scrollbar en algunos navegadores para estética */
+        scrollbar-width: none; 
+    }
+    .top-navbar::-webkit-scrollbar { display: none; }
+
+    /* Botones más grandes para dedos (Touch targets) */
+    .btn-tool {
+        padding: 12px 18px;
         font-size: 14px;
+        white-space: nowrap;
     }
 }
