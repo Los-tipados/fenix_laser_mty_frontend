@@ -241,3 +241,75 @@ body, html {
     box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
 }
 
+/* ==========================================
+   7. RESPONSIVE DESIGN (Móviles y Tablets)
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* Cambiamos el flujo de la app de horizontal a vertical */
+    .main-app {
+        flex-direction: column;
+    }
+
+    /* 1. Barra de Iconos: De vertical a horizontal (Abajo) */
+    .sidebar-icons {
+        order: 3; /* La manda al fondo */
+        width: 100% !important;
+        height: 70px !important;
+        min-width: unset !important;
+        flex-direction: row !important;
+        border-right: none !important;
+        border-top: 1px solid var(--border-color);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    .icon-unit {
+        height: 100% !important;
+        flex: 1;
+    }
+
+    /* 2. Panel de Contenido: Ahora sube desde abajo */
+    .sidebar-panel {
+        order: 2;
+        width: 100% !important;
+        min-width: unset !important;
+        max-height: 45vh; /* Ocupa casi la mitad de la pantalla */
+        position: fixed;
+        bottom: 70px; /* Se apoya sobre la barra de iconos */
+        left: 0;
+        border-right: none !important;
+        border-top: 2px solid var(--accent);
+        border-radius: 20px 20px 0 0; /* Bordes redondeados arriba */
+        box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+    }
+
+    /* 3. Área del Editor: Ajuste de espacio */
+    .editor-layout {
+        order: 1;
+        height: calc(100vh - 70px); /* Restamos la barra inferior */
+    }
+
+    .canvas-area {
+        padding: 10px;
+        align-items: flex-start; /* Empuja el canvas un poco arriba */
+        padding-top: 80px; /* Deja espacio para la toolbar superior */
+    }
+
+    /* 4. Toolbar Superior: Scroll horizontal si no cabe */
+    .top-navbar {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+
+    /* Ajuste de botones para que sean más fáciles de tocar con el dedo */
+    .btn-tool {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
