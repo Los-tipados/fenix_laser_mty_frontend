@@ -90,6 +90,7 @@ function openModal(index = -1) {
     document.getElementById('visibleCatalogo').checked = true;
     document.getElementById('visibleRecomendados').checked = false;
     document.getElementById('rating').value = '4.5';
+    document.getElementById('id').value = '';
     idxInput.value = '-1';
   } else {
     const p = allProducts[index];
@@ -105,6 +106,7 @@ function openModal(index = -1) {
     document.getElementById('etiquetas').value    = (p.etiquetas || []).join(', ');
     document.getElementById('visibleCatalogo').checked    = p.visibleCatalogo    !== false;
     document.getElementById('visibleRecomendados').checked = !!p.visibleRecomendados;
+    document.getElementById('id').value = p.id || ''; 
   }
 
   modal.show();
