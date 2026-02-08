@@ -18,6 +18,12 @@ async function loadProducts() {
       const res = await fetch(JSON_PATH);
       if (!res.ok) throw new Error('No se pudo cargar productos.json');
       allProducts = await res.json();
+        // Asignar id temporal a productos que no lo tengan (parche para datos viejos)
+      allProducts.forEach((p, i) => {
+        if (!p.id) {
+          p.id = Date.now().toString() + '-' + i;  // id único
+        }
+      });
       saveProducts(); // Guardamos copia inicial
     } catch (err) {
       console.error('Error al cargar JSON original:', err);
@@ -90,23 +96,23 @@ function openModal(index = -1) {
     document.getElementById('visibleCatalogo').checked = true;
     document.getElementById('visibleRecomendados').checked = false;
     document.getElementById('rating').value = '4.5';
-    document.getElementById('id').value = '';
     idxInput.value = '-1';
+    document.getElementById('id').value = '';
   } else {
     const p = allProducts[index];
     title.textContent = 'Editar Producto';
     idxInput.value = index;
 
-    document.getElementById('nombre').value       = p.nombre       || '';
-    document.getElementById('img').value          = p.img          || '';
-    document.getElementById('precio').value       = p.precio       || '';
-    document.getElementById('descripcion').value  = p.descripcion  || '';
-    document.getElementById('categoria').value    = p.categoria    || '';
-    document.getElementById('rating').value       = p.rating       || '4.5';
-    document.getElementById('etiquetas').value    = (p.etiquetas || []).join(', ');
-    document.getElementById('visibleCatalogo').checked    = p.visibleCatalogo    !== false;
+    document.getElementById('nombre').value = p.nombre || '';
+    document.getElementById('img').value = p.img || '';
+    document.getElementById('precio').value = p.precio || '';
+    document.getElementById('descripcion').value = p.descripcion || '';
+    document.getElementById('categoria').value = p.categoria || '';
+    document.getElementById('rating').value = p.rating || '4.5';
+    document.getElementById('etiquetas').value = (p.etiquetas || []).join(', ');
+    document.getElementById('visibleCatalogo').checked = p.visibleCatalogo !== false;
     document.getElementById('visibleRecomendados').checked = !!p.visibleRecomendados;
-    document.getElementById('id').value = p.id || ''; 
+    document.getElementById('id').value = p.id || '';
   }
 
   modal.show();
@@ -191,23 +197,23 @@ document.addEventListener('DOMContentLoaded', () => {
       form.querySelector('.is-invalid')?.focus();
       return;
     }
-
+   
     // Guardar
     const idx = parseInt(document.getElementById('edit-index').value);
 
     const producto = {
-      nombre:       nombre.value.trim(),
-      img:          img.value.trim(),
-      precio:       precioVal,
-      descripcion:  document.getElementById('descripcion').value.trim(),
-      categoria:    document.getElementById('categoria').value.trim().toLowerCase(),
-      rating:       ratingVal,
-      visibleCatalogo:    document.getElementById('visibleCatalogo').checked,
+      nombre: nombre.value.trim(),
+      img: img.value.trim(),
+      precio: precioVal,
+      descripcion: document.getElementById('descripcion').value.trim(),
+      categoria: document.getElementById('categoria').value.trim().toLowerCase(),
+      rating: ratingVal,
+      visibleCatalogo: document.getElementById('visibleCatalogo').checked,
       visibleRecomendados: document.getElementById('visibleRecomendados').checked,
-      etiquetas:    document.getElementById('etiquetas').value
-                        .split(',')
-                        .map(t => t.trim())
-                        .filter(t => t)
+      etiquetas: document.getElementById('etiquetas').value
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t)
     };
 
     if (idx === -1) {
@@ -244,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btn.classList.contains('edit-btn')) {
       openModal(index);
-    } 
+    }
     else if (btn.classList.contains('delete-btn')) {
       const productoNombre = allProducts[index]?.nombre || 'este producto';
 
@@ -285,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `productos_actualizados_${new Date().toISOString().slice(0,10)}.json`;
+    a.download = `productos_actualizados_${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   });

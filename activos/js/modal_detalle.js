@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Añadiendo al carrito:", product.nombre, "- Precio:", product.precio);
             // Aquí va tu lógica real de agregar al carrito
             // Ejemplo: agregarAlCarrito(product);
+
+            
           });
         }
 
