@@ -16,18 +16,27 @@ export let canvas;
  */
 export function initCanvas(onSelection, onCleared) {
     const container = document.querySelector('.canvas-area');
+    const isMobile = window.innerWidth <= 768;
+
+    // 1. En móvil reducimos el margen para aprovechar cada píxel
+    const margin = isMobile ? 10 : 40;
     
-    // Cálculo de dimensiones responsivas
-    const availableWidth = container.clientWidth - 40;
-    const availableHeight = container.clientHeight - 40;
+    // 2. Forzamos al contenedor a darnos su ancho real antes del cálculo
+    const availableWidth = container.clientWidth - margin;
+    const availableHeight = container.clientHeight - margin;
+
+    // 3. Definimos límites según dispositivo
+    // En móvil queremos que sea casi cuadrado o vertical, en PC horizontal.
+    const maxWidth = isMobile ? availableWidth : 900; 
+    const maxHeight = isMobile ? Math.min(availableHeight, 500) : 600;
 
     canvas = new fabric.Canvas('mainCanvas', {
-        width: Math.min(availableWidth, 700),
-        height: Math.min(availableHeight, 600),
-        backgroundColor: '#36363600'
+        width: Math.min(availableWidth, maxWidth),
+        height: Math.min(availableHeight, maxHeight),
+        backgroundColor: null // Transparente
     });
 
-    // Suscripción a eventos de Fabric.js para sincronizar con la UI externa
+    // ... resto de tus eventos ...
     canvas.on('selection:created', onSelection);
     canvas.on('selection:updated', onSelection);
     canvas.on('selection:cleared', onCleared);
@@ -36,15 +45,24 @@ export function initCanvas(onSelection, onCleared) {
 
 
 /**
- * Establece una imagen como fondo del lienzo con escalado inteligente.
+ * Establece una imagen como fondo del lienzo con escalado inteligente según el dispositivo.
  * @param {string} url - Ruta o URL de la imagen de fondo.
  */
 export function changeCanvasBackground(url) {
     if (!url) return;
     
+    // 1. Detectamos si estamos en móvil (usando el ancho de la ventana)
+    const isMobile = window.innerWidth <= 768;
+
     fabric.Image.fromURL(url, (img) => {
-        // Algoritmo de escalado: 'Cover' (asegura que cubra todo el fondo)
-        const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+        /**
+         * 2. Algoritmo de escalado dinámico:
+         * Desktop (Cover): Math.max -> Llena todo el espacio, puede recortar bordes.
+         * Mobile (Contain): Math.min -> Asegura que TODA la imagen sea visible.
+         */
+        const scale = isMobile 
+            ? Math.min(canvas.width / img.width, canvas.height / img.height)
+            : Math.max(canvas.width / img.width, canvas.height / img.height);
         
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
             scaleX: scale,
