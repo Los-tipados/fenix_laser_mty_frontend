@@ -200,6 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
    
     // Guardar
     const idx = parseInt(document.getElementById('edit-index').value);
+    const idInput = document.getElementById('id');
+    let id = idInput.value.trim();
+
+    if (idx === -1) {
+      // Nuevo producto: generar id único si no existe
+      id = id || Date.now().toString();
+    } 
 
     const producto = {
       nombre: nombre.value.trim(),
