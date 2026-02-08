@@ -313,20 +313,64 @@ body, html {
 
     /* 4. Toolbar Superior */
     .top-navbar {
-        height: auto; /* Permite que crezca si el contenido se envuelve */
-        min-height: 60px;
-        overflow-x: auto;
-        padding: 10px 15px;
-        gap: 15px;
-        /* Oculta la scrollbar en algunos navegadores para estética */
-        scrollbar-width: none; 
+        padding: 0 10px !important;
+        height: 70px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
+
+    /* Contenedor que permite deslizar las herramientas con el dedo */
+    .toolbar-scroll-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        overflow-x: auto;
+        flex-grow: 1;
+        padding-right: 15px;
+        scrollbar-width: none; /* Oculta scrollbar */
+    }
+
     .top-navbar::-webkit-scrollbar { display: none; }
 
-    /* Botones más grandes para dedos (Touch targets) */
+    /* Estilo de botones táctiles */
     .btn-tool {
-        padding: 12px 18px;
-        font-size: 14px;
-        white-space: nowrap;
+        min-width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    /* Indicador de tamaño compacto */
+    .size-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255,255,255,0.1);
+        padding: 4px 8px;
+        border-radius: 6px;
+        min-width: 40px;
+    }
+
+    .size-badge small { font-size: 8px; opacity: 0.7; }
+
+    /* Botón de exportar destacado a la derecha */
+    .export-container {
+        padding-left: 10px;
+        border-left: 1px solid var(--border-color);
+    }
+
+    .btn-orange.main-action {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Botón circular en móvil */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 20px;
     }
 }
