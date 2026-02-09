@@ -302,6 +302,10 @@ body, html {
         overflow-y: auto;          
         touch-action: pan-y;       
         overscroll-behavior: contain;
+
+        /* BLOQUEA LA SELECCION DE TEXTO si el usuario mantiene presionado, esto evita una mala experiencia */
+        user-select: none;
+        -webkit-user-select: none;
     }
 
     /* 3. Área del Editor */
