@@ -5,12 +5,18 @@ fetch("/paginas/barra_de_navegacion.html")
   .then(html => {
     document.getElementById("navbar").innerHTML = html;
 
-    // --- LÓGICA PARA EL BADGE ---
-    // Verificar si la función existe 
-    if (typeof actualizarBadge === 'function') {
-        const saved = localStorage.getItem('carritoFenixLaser');
-        const carrito = saved ? JSON.parse(saved) : [];
-        actualizarBadge(carrito);
+    console.log("Navbar cargada, sincronizando badge...");
+
+    // Buscar el carrito en el localStorage
+    const saved = localStorage.getItem('carritoFenixLaser');
+    const carrito = saved ? JSON.parse(saved) : [];
+
+    // Función para actualizar los números
+    //  Una vez cargada la barra, ejecutamos la actualización
+    if (typeof window.actualizarBadge === 'function') {
+      const saved = localStorage.getItem('carritoFenixLaser');
+      const carrito = saved ? JSON.parse(saved) : [];
+      window.actualizarBadge(carrito);
     }
   })
-  .catch(err => console.error("Error cargando la barra:", err));
+  .catch(err => console.error("Error al cargar la barra:", err));

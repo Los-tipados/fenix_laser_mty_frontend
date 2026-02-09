@@ -1,39 +1,40 @@
-// /activos/js/carrito_productos.js
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Carrito JS cargado");
-    const carrito = cargarCarrito();
-    actualizarBadge(carrito);
-
-    // Detectar si estamos en la página del carrito para renderizar
-    if (document.getElementById('carrito-items')) {
-        renderizarCarrito();
-    }
-
-    // Configuración del botón vaciar carrito (si existe en el DOM)
-    const btnVaciar = document.getElementById('vaciar-carrito');
-    if (btnVaciar) {
-        btnVaciar.addEventListener('click', vaciarCarrito);
-    }
-});
-
-// --- FUNCIONES DE PERSISTENCIA (LOCAL STORAGE) ---
+// --- 1. FUNCIONES GLOBALES (Deben estar disponibles para el Modal) ---
 
 function cargarCarrito() {
-    const saved = localStorage.getItem('carritoFenixLaser');
-    return saved ? JSON.parse(saved) : [];
+    try {
+        const saved = localStorage.getItem('carritoFenixLaser');
+        return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+        console.error("Error al parsear el carrito:", error);
+        return [];
+    }
 }
 
 function guardarCarrito(carrito) {
     localStorage.setItem('carritoFenixLaser', JSON.stringify(carrito));
 }
 
-// --- LÓGICA DE NEGOCIO (PRODUCTOS) ---
+function actualizarBadge(carrito) {
+    // Buscamos todos los posibles badges (ID y Clase)
+    const badges = document.querySelectorAll('#cart-badge, .cart-badge');
+    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+
+    badges.forEach(badge => {
+        if (totalItems > 0) {
+            badge.textContent = totalItems;
+            badge.style.setProperty('display', 'block', 'important'); // Forzamos que se vea
+            badge.classList.remove('d-none'); // Por si Bootstrap lo está ocultando
+        } else {
+            badge.style.display = 'none';
+        }
+    });
+}
 
 function agregarAlCarrito(product) {
+    console.log("Intentando agregar producto:", product);
     let carrito = cargarCarrito();
     
-    // Usamos == para evitar problemas si un ID es String y el otro Number
+    // Usamos == para comparar IDs por si vienen como string o número
     const existing = carrito.find(item => item.id == product.id);
 
     if (existing) {
@@ -50,22 +51,18 @@ function agregarAlCarrito(product) {
 
     guardarCarrito(carrito);
     actualizarBadge(carrito);
-    console.log("Producto agregado:", product.nombre);
+    console.log("Carrito actualizado:", carrito);
 }
 
+// Estas funciones se usan dentro de la página del carrito
 function cambiarCantidad(id, cambio) {
     let carrito = cargarCarrito();
     const producto = carrito.find(item => item.id == id);
-
     if (producto) {
         producto.cantidad += cambio;
-        
-        // Si la cantidad es menor a 1, lo eliminamos
         if (producto.cantidad <= 0) {
-            eliminarDelCarrito(id);
-            return;
+            carrito = carrito.filter(item => item.id != id);
         }
-        
         guardarCarrito(carrito);
         renderizarCarrito();
         actualizarBadge(carrito);
@@ -80,108 +77,74 @@ function eliminarDelCarrito(id) {
     actualizarBadge(carrito);
 }
 
-function vaciarCarrito() {
-    // Usamos SweetAlert2 ya que vi que lo tienes en tu modal
-    Swal.fire({
-        title: '¿Vaciar carrito?',
-        text: "Se eliminarán todos los productos seleccionados",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#cc3333',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Sí, vaciar',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            localStorage.removeItem('carritoFenixLaser');
-            renderizarCarrito();
-            actualizarBadge([]);
+// --- 2. EXPOSICIÓN GLOBAL (VITAL PARA EL MODAL) ---
+window.agregarAlCarrito = agregarAlCarrito;
+window.actualizarBadge = actualizarBadge;
+window.cambiarCantidad = cambiarCantidad;
+window.eliminarDelCarrito = eliminarDelCarrito;
+
+// --- 3. LÓGICA DE INTERFAZ (DOM) ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carrito = cargarCarrito();
+    actualizarBadge(carrito);
+
+    // Solo si estamos en la página del carrito ejecutamos el render
+    if (document.getElementById('carrito-items')) {
+        renderizarCarrito();
+        
+        const btnVaciar = document.getElementById('vaciar-carrito');
+        if (btnVaciar) {
+            btnVaciar.addEventListener('click', () => {
+                if (confirm('¿Vaciar todo el carrito?')) {
+                    localStorage.removeItem('carritoFenixLaser');
+                    renderizarCarrito();
+                    actualizarBadge([]);
+                }
+            });
         }
-    });
-}
-
-// --- LÓGICA DE INTERFAZ (UI) ---
-
-function actualizarBadge(carrito) {
-    const badges = document.querySelectorAll('#cart-badge');
-    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-
-    badges.forEach(badge => {
-        badge.textContent = totalItems;
-        badge.style.display = totalItems > 0 ? 'block' : 'none';
-    });
-}
+    }
+});
 
 function renderizarCarrito() {
     const contenedor = document.getElementById('carrito-items');
     const totalFinalElemento = document.getElementById('cart-total');
-    // Este suele ser el span en el resumen lateral para el subtotal
-    const resumenArticulos = document.querySelector('.columna-resumen .divisores-div span:last-child');
-    
+    if (!contenedor) return;
+
     const carrito = cargarCarrito();
 
-    // Mantener la estructura del encabezado
     contenedor.innerHTML = `
         <div class="d-flex align-items-center mb-4">
-            <a href="/paginas/catalogo.html" class="regresar" style="text-decoration:none; color: #cc3333; font-weight: bold;">← Regresar al catálogo</a>
-            <h4 class="texto-carrito ms-4 mb-0">Carrito de Compras</h4>
+            <a href="/paginas/catalogo.html" class="regresar" style="text-decoration:none; color: #cc3333; font-weight: bold;">← Regresar</a>
+            <h4 class="ms-4 mb-0">Carrito de Compras</h4>
         </div>
-        <hr>
-    `;
+        <hr>`;
 
     if (carrito.length === 0) {
-        contenedor.innerHTML += `
-            <div class="text-center my-5 py-5">
-                <i class="bi bi-cart-x text-muted" style="font-size: 5rem;"></i>
-                <h5 class="mt-3 text-muted">Tu carrito está vacío</h5>
-                <a href="/paginas/catalogo.html" class="btn btn-outline-danger mt-3">Ir a comprar</a>
-            </div>`;
+        contenedor.innerHTML += '<p class="text-center my-5">El carrito está vacío.</p>';
         if (totalFinalElemento) totalFinalElemento.textContent = "$0.00";
-        if (resumenArticulos) resumenArticulos.textContent = "$0.00";
         return;
     }
 
-    let totalAcumulado = 0;
-
+    let totalGlobal = 0;
     carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
-        totalAcumulado += subtotal;
-
+        totalGlobal += subtotal;
         const row = document.createElement('div');
-        row.className = "row mb-4 d-flex justify-content-between align-items-center border-bottom pb-3";
+        row.className = "row mb-4 border-bottom pb-3 align-items-center";
         row.innerHTML = `
-            <div class="col-md-2">
-                <img src="${item.img}" class="img-fluid rounded-2 shadow-sm" alt="${item.nombre}">
-            </div>
-            <div class="col-md-3">
-                <h6 class="text-dark mb-0">${item.nombre}</h6>
-                <small class="text-muted">$${item.precio.toFixed(2)} c/u</small>
-            </div>
-            <div class="col-md-3 d-flex align-items-center justify-content-center">
+            <div class="col-2"><img src="${item.img}" class="img-fluid rounded"></div>
+            <div class="col-3"><h6>${item.nombre}</h6></div>
+            <div class="col-3 d-flex justify-content-center">
                 <button class="btn btn-sm btn-outline-dark" onclick="cambiarCantidad(${item.id}, -1)">-</button>
-                <span class="mx-3 fw-bold">${item.cantidad}</span>
+                <span class="mx-2">${item.cantidad}</span>
                 <button class="btn btn-sm btn-outline-dark" onclick="cambiarCantidad(${item.id}, 1)">+</button>
             </div>
-            <div class="col-md-3 text-center">
-                <h6 class="mb-0 fw-bold">$${subtotal.toFixed(2)}</h6>
-            </div>
-            <div class="col-md-1 text-end">
-                <button class="btn btn-link text-danger p-0" onclick="eliminarDelCarrito(${item.id})">
-                    <i class="bi bi-trash3-fill"></i>
-                </button>
-            </div>
+            <div class="col-3 text-center"><h6>$${subtotal.toFixed(2)}</h6></div>
+            <div class="col-1"><button class="btn btn-link text-danger" onclick="eliminarDelCarrito(${item.id})">🗑</button></div>
         `;
         contenedor.appendChild(row);
     });
 
-    // Actualizar precios en el resumen
-    const precioFormateado = `$${totalAcumulado.toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
-    if (totalFinalElemento) totalFinalElemento.textContent = precioFormateado;
-    if (resumenArticulos) resumenArticulos.textContent = precioFormateado;
+    if (totalFinalElemento) totalFinalElemento.textContent = `$${totalGlobal.toFixed(2)}`;
 }
-
-// --- EXPORTACIÓN AL ÁMBITO GLOBAL ---
-// Vital para que los onclick de los botones y el modal funcionen
-window.agregarAlCarrito = agregarAlCarrito;
-window.cambiarCantidad = cambiarCantidad;
-window.eliminarDelCarrito = eliminarDelCarrito;
