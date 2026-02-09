@@ -332,6 +332,8 @@ body, html {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        touch-action: none; /* Bloquea zoom en la barra superior */
     }
 
     /* Contenedor que permite deslizar las herramientas con el dedo */
