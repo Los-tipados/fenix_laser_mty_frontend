@@ -244,3 +244,15 @@ export function updateUI() {
 export function clearUIIndicator() {
     document.getElementById('size-indicator').innerText = '--';
 }
+
+/**
+ 
+// Si el usuario hace scroll manual en el área del canvas, 
+// asumimos que quiere salir del modo edición de texto.
+document.querySelector('.canvas-area').addEventListener('touchstart', () => {
+    if (activeTab === 'texto' && window.innerWidth <= 768) {
+        // Opcional: podrías cerrar el panel aquí para dar más espacio
+    }
+}, { passive: true });
+* Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
+ */
