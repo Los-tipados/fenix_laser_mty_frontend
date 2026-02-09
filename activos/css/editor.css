@@ -252,6 +252,8 @@ body, html {
 @media (max-width: 768px) {
     .main-app {
         flex-direction: column;
+        overflow: hidden; /* Congela el body para que no haya rebote */
+        height: 100svh;   /* Usa svh para evitar el bug del teclado */
     }
 
     /* 1. Barra de Iconos (Base de la pantalla) */
