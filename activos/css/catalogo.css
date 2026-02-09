@@ -66,6 +66,15 @@ h2.productos span {
 }
 
 @media (max-width: 991px) {
+    .container-fluid.mt-5 {
+        /* Añadimos un espacio extra arriba solo en responsive */
+        padding-top: 70px !important;
+    }
+    .productos {
+        /* Aseguramos que el título tenga su propio espacio */
+        margin-top: 2rem !important;
+        display: block !important; 
+    }
     .carousel-control-prev
     {
         left: -25px;
