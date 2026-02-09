@@ -340,6 +340,10 @@ body, html {
         justify-content: space-between;
 
         touch-action: none; /* Bloquea zoom en la barra superior */
+
+        /* BLOQUEA LA SELECCION DE TEXTO si el usuario mantiene presionado, esto evita una mala experiencia */
+        user-select: none;
+        -webkit-user-select: none;
     }
 
     /* Contenedor que permite deslizar las herramientas con el dedo */
