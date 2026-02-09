@@ -188,20 +188,41 @@ else if (type === 'figuras') {
  * @param {string} type - Tipo de contenido para determinar qué eventos asignar.
  */
 function attachPanelEvents(type) {
+    const isMobile = window.innerWidth <= 768;
+
     if (type === 'texto') {
-        document.getElementById('add-text-btn').onclick = () => CanvasLogic.addIText();
+        document.getElementById('add-text-btn').onclick = () => {
+            CanvasLogic.addIText();
+            // Si es móvil, cerramos el panel para que el usuario vea el texto añadido
+            if (isMobile) togglePanel(type); 
+        };
+
         document.querySelectorAll('.btn-font').forEach(el => {
-            el.onclick = () => CanvasLogic.changeFont(el.dataset.font);
+            el.onclick = () => {
+                CanvasLogic.changeFont(el.dataset.font);
+                // Opcional: No cerramos aquí para que pueda probar varias fuentes seguidas
+            };
         });
+
     } else if (type === 'productos') {
         document.querySelectorAll('.btn-product').forEach(el => {
-            el.onclick = () => CanvasLogic.changeCanvasBackground(el.dataset.url);
+            el.onclick = () => {
+                CanvasLogic.changeCanvasBackground(el.dataset.url);
+                // IMPORTANTE: En móvil, cerramos para que vea el producto completo
+                // Esto ayuda a evitar el bug del "zoom" al reducir elementos en pantalla
+                if (isMobile) togglePanel(type);
+            };
         });
+
     } else if (type === 'figuras') {
-    document.querySelectorAll('.btn-figure').forEach(el => {
-        el.onclick = () => CanvasLogic.addImage(el.dataset.url); // Usamos una nueva función
-    });
-}
+        document.querySelectorAll('.btn-figure').forEach(el => {
+            el.onclick = () => {
+                CanvasLogic.addImage(el.dataset.url);
+                // Si es móvil, cerramos para facilitar el posicionamiento de la figura
+                if (isMobile) togglePanel(type);
+            };
+        });
+    }
 }
 
 

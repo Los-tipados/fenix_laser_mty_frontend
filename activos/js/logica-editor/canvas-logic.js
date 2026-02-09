@@ -208,21 +208,35 @@ export function exportDesign() {
 
 
 
+
 /**
- * Ajusta la imagen de fondo actual para que siempre cubra el área del canvas.
- * Previene el bug de "recorte" al redimensionar la ventana.
+ * Ajusta la imagen de fondo actual para que siempre se adapte al tamaño del canvas.
+ * Previene el bug de "imagen cortada" al cerrar el teclado o rotar la pantalla.
  */
 export function resizeBackground() {
     const bgImage = canvas.backgroundImage;
     if (bgImage) {
-        const scale = Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+        // 1. Detectamos si es móvil para decidir el tipo de ajuste
+        const isMobile = window.innerWidth <= 768;
+
+        /**
+         * 2. Aplicamos la misma lógica que al cargar el producto:
+         * Mobile (Math.min): Asegura que TODO el producto se vea (sin cortes).
+         * Desktop (Math.max): Llena todo el espacio (estilo cover).
+         */
+        const scale = isMobile 
+            ? Math.min(canvas.width / bgImage.width, canvas.height / bgImage.height)
+            : Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+        
         canvas.setBackgroundImage(bgImage, canvas.renderAll.bind(canvas), {
             scaleX: scale,
             scaleY: scale,
             left: canvas.width / 2,
             top: canvas.height / 2,
             originX: 'center',
-            originY: 'center'
+            originY: 'center',
+            // Importante: mantenemos el crossOrigin si lo usaste al cargar
+            crossOrigin: 'anonymous' 
         });
     }
 }
