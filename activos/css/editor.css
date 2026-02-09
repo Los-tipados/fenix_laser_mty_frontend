@@ -440,4 +440,40 @@ body, html {
 
 }
 
+
+/* --- PARCHE  PARA IPHONE  */
+    @supports (-webkit-backdrop-filter: blur(1px)) {
+        
+        /* Forza a iOS a renderizar el fondo de la app */
+        .main-app {
+            background-color: var(--night) !important;
+        }
+
+        /* En iPhone, el cristal necesita un empujoncito para verse */
+        .sidebar-icons {
+            background-color: var(--night-opaco) !important; /* Usamos color opaco para asegurar visibilidad */
+            -webkit-backdrop-filter: blur(15px); /* El efecto cristal de iOS */
+            backdrop-filter: blur(15px);
+            
+            /* Ajuste vital para la barra de gestos de iPhone */
+            padding-bottom: env(safe-area-inset-bottom);
+            height: calc(70px + env(safe-area-inset-bottom)) !important;
+        }
+
+        .sidebar-panel {
+            background-color: var(--night) !important; /* Color sólido de tu paleta */
+            -webkit-transform: translateZ(0); /* Despierta la aceleración de video en iOS */
+        }
+
+        .top-navbar {
+            background-color: var(--night-opaco) !important;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Mejora el deslizamiento de las herramientas en Safari */
+        .toolbar-scroll-container {
+            -webkit-overflow-scrolling: touch;
+        }
+    }
 }
