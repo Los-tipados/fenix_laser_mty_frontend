@@ -250,10 +250,22 @@ body, html {
    ========================================== */
 
 @media (max-width: 768px) {
+
+body, html {
+        overflow: hidden !important;
+        position: fixed; /* Bloquea el viewport en (0,0) */
+        width: 100%;
+        height: 100%;
+    }
+
     .main-app {
         flex-direction: column;
-        overflow: hidden; /* Congela el body para que no haya rebote */
-        height: 100svh;   /* Usa svh para evitar el bug del teclado */
+        overflow: hidden; 
+        height: 100svh;
+        width: 100vw;
+        position: absolute; /* Asegura que se posicione respecto al borde superior */
+        top: 0;
+        left: 0;
     }
 
     /* 1. Barra de Iconos (Base de la pantalla) */
@@ -309,27 +321,34 @@ body, html {
     }
 
     /* 3. Área del Editor */
-    .editor-layout {
-        order: 1;
-        /* Restamos el espacio de la barra inferior para que nada se oculte */
-        height: calc(100vh - 70px); 
-        width: 100%;
-    }
+.editor-layout {
+    order: 1;
+    height: calc(100svh - 70px) !important; 
+    max-height: calc(100svh - 70px) !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    top: 0; /* Forza a que siempre empiece desde arriba */
+}
 
     .canvas-area {
-        padding: 10px;
-        /* Centramos el canvas pero permitimos que el usuario haga scroll si es grande */
-        align-items: center; 
-        justify-content: center;
-        /* Evitamos que el canvas se pegue a la toolbar superior */
-        padding-top: 20px; 
-        /* MUY IMPORTANTE: Margen inferior para que el canvas no quede tapado por la barra */
-        padding-bottom: 80px; 
+    /* Mantenemos tus estilos de padding y alineación */
+    padding: 10px;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 20px; 
+    padding-bottom: 80px; 
 
-        /* CRUCIAL: No mover la pantalla mientras se diseña */
-        touch-action: none; 
-        overflow: hidden;
-    }
+    /* CAMBIO Y ADICIÓN CRUCIAL: */
+    flex: 1;            /* Ocupa el espacio pero no más */
+    min-height: 0;      /* OBLIGA al contenido a quedarse dentro */
+    overflow: hidden;   /* Corta el texto si crece demasiado */
+    
+    display: flex;      /* Para que el centrado funcione */
+    touch-action: none; 
+}
 
     /* 4. Toolbar Superior */
     .top-navbar {
