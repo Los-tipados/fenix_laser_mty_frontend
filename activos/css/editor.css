@@ -258,6 +258,12 @@ body, html {
         height: 100%;
     }
 
+    /* Evita que el navegador haga zoom al enfocar un campo de texto */
+    input, textarea, [contenteditable="true"] {
+        font-size: 16px !important;
+        touch-action: manipulation;
+    }
+
     .main-app {
         flex-direction: column;
         overflow: hidden; 
