@@ -373,4 +373,16 @@ body, html {
         padding: 0;
         font-size: 20px;
     }
+
+    #btn-editor{
+    background: rgb(102, 50, 169); 
+
+
+}
+
+#btn-editor:hover{
+    background: rgb(76, 32, 135); 
+
+}
+
 }

@@ -66,7 +66,7 @@ export function renderToolbar() {
                 <div class="divider"></div>
 
                 <div class="tool-group">
-                    <button class="btn-tool secondary" onclick="history.back()">Salir</button>
+                    <button class="btn-tool secondary" id="btn-editor" onclick="history.back()">Salir</button>
                 </div>
             </div>
 
