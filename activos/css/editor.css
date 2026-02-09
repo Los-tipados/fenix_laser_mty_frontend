@@ -241,3 +241,203 @@ body, html {
     box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
 }
 
+/* ==========================================
+   7. RESPONSIVE DESIGN (Móviles y Tablets)
+   ========================================== */
+
+/* ==========================================
+   7. RESPONSIVE DESIGN (Móviles y Tablets)
+   ========================================== */
+
+@media (max-width: 768px) {
+
+body, html {
+        overflow: hidden !important;
+        position: fixed; /* Bloquea el viewport en (0,0) */
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Evita que el navegador haga zoom al enfocar un campo de texto */
+    input, textarea, [contenteditable="true"] {
+        font-size: 16px !important;
+        touch-action: manipulation;
+    }
+
+    .main-app {
+        flex-direction: column;
+        overflow: hidden; 
+        height: 100svh;
+        width: 100vw;
+        position: absolute; /* Asegura que se posicione respecto al borde superior */
+        top: 0;
+        left: 0;
+    }
+
+    /* 1. Barra de Iconos (Base de la pantalla) */
+    .sidebar-icons {
+        order: 3; 
+        width: 100% !important;
+        height: 70px !important;
+        min-width: unset !important;
+        flex-direction: row !important;
+        border-right: none !important;
+        border-top: 1px solid var(--border-color);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        /* Aseguramos que los iconos se distribuyan bien */
+        justify-content: space-around; 
+
+        /* BLOQUEO TOTAL DE ZOOM: Aquí el usuario solo toca botones */
+        touch-action: none; 
+        user-select: none;
+        background-color: var(--glass-bg);
+    }
+
+    .icon-unit {
+        height: 100% !important;
+        flex: 1;
+    }
+
+    /* 2. Panel de Contenido (Bottom Sheet) */
+    .sidebar-panel {
+        order: 2;
+        width: 100% !important;
+        min-width: unset !important;
+        max-height: 50vh; /* Ajustado ligeramente para mejor visibilidad */
+        position: fixed;
+        bottom: 70px; 
+        left: 0;
+        border-right: none !important;
+        /* Cambié var(--accent) por var(--orange) que es la que usas arriba */
+        border-top: 2px solid var(--orange); 
+        border-radius: 20px 20px 0 0; 
+        box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+        display: none; /* JS controla esto */
+
+        /* GESTIÓN DE SCROLL: Solo vertical, bloquea zoom */
+        overflow-y: auto;          
+        touch-action: pan-y;       
+        overscroll-behavior: contain;
+
+        /* BLOQUEA LA SELECCION DE TEXTO si el usuario mantiene presionado, esto evita una mala experiencia */
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* 3. Área del Editor */
+.editor-layout {
+    order: 1;
+    height: calc(100svh - 70px) !important; 
+    max-height: calc(100svh - 70px) !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    top: 0; /* Forza a que siempre empiece desde arriba */
+}
+
+    .canvas-area {
+    /* Mantenemos tus estilos de padding y alineación */
+    padding: 10px;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 20px; 
+    padding-bottom: 80px; 
+
+    /* CAMBIO Y ADICIÓN CRUCIAL: */
+    flex: 1;            /* Ocupa el espacio pero no más */
+    min-height: 0;      /* OBLIGA al contenido a quedarse dentro */
+    overflow: hidden;   /* Corta el texto si crece demasiado */
+    
+    display: flex;      /* Para que el centrado funcione */
+    touch-action: none; 
+}
+
+    /* 4. Toolbar Superior */
+    .top-navbar {
+        padding: 0 10px !important;
+        height: 70px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        touch-action: none; /* Bloquea zoom en la barra superior */
+
+        /* BLOQUEA LA SELECCION DE TEXTO si el usuario mantiene presionado, esto evita una mala experiencia */
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Contenedor que permite deslizar las herramientas con el dedo */
+    .toolbar-scroll-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        overflow-x: auto;
+        flex-grow: 1;
+        padding-right: 15px;
+        scrollbar-width: none; /* Oculta scrollbar */
+
+        touch-action: pan-x; 
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .top-navbar::-webkit-scrollbar { display: none; }
+
+    /* Estilo de botones táctiles */
+    .btn-tool {
+        min-width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    /* Indicador de tamaño compacto */
+    .size-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255,255,255,0.1);
+        padding: 4px 8px;
+        border-radius: 6px;
+        min-width: 40px;
+    }
+
+    .size-badge small { font-size: 8px; opacity: 0.7; }
+
+    /* Botón de exportar destacado a la derecha */
+    .export-container {
+        padding-left: 10px;
+        border-left: 1px solid var(--border-color);
+    }
+
+    .btn-orange.main-action {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Botón circular en móvil */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 20px;
+    }
+
+    #btn-editor{
+    background: rgb(102, 50, 169); 
+
+
+}
+
+#btn-editor:hover{
+    background: rgb(76, 32, 135); 
+
+}
+
+}

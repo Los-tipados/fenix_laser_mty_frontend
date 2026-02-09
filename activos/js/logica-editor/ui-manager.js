@@ -39,36 +39,71 @@ export function renderSidebar() {
  */
 export function renderToolbar() {
     const toolbar = document.getElementById('mainToolbar');
-    
-    toolbar.innerHTML = `
-        <div class="tool-group">
-            <span style="font-size: 11px; color: var(--text-dim)">FUENTE</span>
-            <button class="btn-tool" id="font-down">−</button>
-            <span id="size-indicator">30</span>
-            <button class="btn-tool" id="font-up">+</button>
-        </div>
-        <div class="divider"></div>
-        <div class="tool-group">
-            <button class="btn-tool" id="btn-bold"><b>B</b></button>
-            <button class="btn-tool" id="btn-italic"><i>I</i></button>
-        </div>
-        <div class="divider"></div>
-        <button class="btn-tool" id="btn-delete">🗑️ Eliminar</button>
+    // Detectamos si es móvil siguiendo tu media query de 768px
+    const isMobile = window.innerWidth <= 768;
 
-        <div class="divider"></div>
+    if (isMobile) {
+        // --- DISEÑO MÓVIL (Optimizado para pulgares y scroll horizontal) ---
+        toolbar.innerHTML = `
+            <div class="toolbar-scroll-container">
+                <div class="tool-group">
+                    <button class="btn-tool round" id="font-down">−</button>
+                    <div class="size-badge">
+                        <small>TAM</small>
+                        <span id="size-indicator">30</span>
+                    </div>
+                    <button class="btn-tool round" id="font-up">+</button>
+                </div>
 
-        <button class="btn-tool"  id="btn-editor"  onclick="history.back()">
-             Salir del editor
-        </button>
+                <div class="divider"></div>
 
+                <div class="tool-group">
+                    <button class="btn-tool square" id="btn-bold"><b>B</b></button>
+                    <button class="btn-tool square" id="btn-italic"><i>I</i></button>
+                    <button class="btn-tool danger" id="btn-delete">🗑️</button>
+                </div>
 
-        
-        <div style="margin-left: auto">
-            <button class="btn-orange" id="btn-export">Descargar PNG</button>
-        </div>
-    `;
+                <div class="divider"></div>
 
-    // Vinculación de eventos de la barra de herramientas a la lógica de negocio
+                <div class="tool-group">
+                    <button class="btn-tool secondary" id="btn-editor" onclick="history.back()">Salir</button>
+                </div>
+            </div>
+
+            <div class="export-container">
+                <button class="btn-orange main-action" id="btn-export">💾</button>
+            </div>
+        `;
+    } else {
+        // --- DISEÑO DESKTOP (Tu código original) ---
+        toolbar.innerHTML = `
+            <div class="tool-group">
+                <span style="font-size: 11px; color: var(--text-dim)">FUENTE</span>
+                <button class="btn-tool" id="font-down">−</button>
+                <span id="size-indicator">30</span>
+                <button class="btn-tool" id="font-up">+</button>
+            </div>
+            <div class="divider"></div>
+            <div class="tool-group">
+                <button class="btn-tool" id="btn-bold"><b>B</b></button>
+                <button class="btn-tool" id="btn-italic"><i>I</i></button>
+            </div>
+            <div class="divider"></div>
+            <button class="btn-tool" id="btn-delete">🗑️ Eliminar</button>
+
+            <div class="divider"></div>
+
+            <button class="btn-tool" id="btn-editor" onclick="history.back()">
+                 Salir del editor
+            </button>
+
+            <div style="margin-left: auto">
+                <button class="btn-orange" id="btn-export">Descargar PNG</button>
+            </div>
+        `;
+    }
+
+    // Los eventos son los mismos para ambos, así que se quedan fuera del IF
     document.getElementById('font-down').onclick = () => CanvasLogic.changeFontSize(-2, updateUI);
     document.getElementById('font-up').onclick = () => CanvasLogic.changeFontSize(2, updateUI);
     document.getElementById('btn-bold').onclick = () => CanvasLogic.toggleFormat('bold');
@@ -153,20 +188,41 @@ else if (type === 'figuras') {
  * @param {string} type - Tipo de contenido para determinar qué eventos asignar.
  */
 function attachPanelEvents(type) {
+    const isMobile = window.innerWidth <= 768;
+
     if (type === 'texto') {
-        document.getElementById('add-text-btn').onclick = () => CanvasLogic.addIText();
+        document.getElementById('add-text-btn').onclick = () => {
+            CanvasLogic.addIText();
+            // Si es móvil, cerramos el panel para que el usuario vea el texto añadido
+            if (isMobile) togglePanel(type); 
+        };
+
         document.querySelectorAll('.btn-font').forEach(el => {
-            el.onclick = () => CanvasLogic.changeFont(el.dataset.font);
+            el.onclick = () => {
+                CanvasLogic.changeFont(el.dataset.font);
+                // Opcional: No cerramos aquí para que pueda probar varias fuentes seguidas
+            };
         });
+
     } else if (type === 'productos') {
         document.querySelectorAll('.btn-product').forEach(el => {
-            el.onclick = () => CanvasLogic.changeCanvasBackground(el.dataset.url);
+            el.onclick = () => {
+                CanvasLogic.changeCanvasBackground(el.dataset.url);
+                // IMPORTANTE: En móvil, cerramos para que vea el producto completo
+                // Esto ayuda a evitar el bug del "zoom" al reducir elementos en pantalla
+                if (isMobile) togglePanel(type);
+            };
         });
+
     } else if (type === 'figuras') {
-    document.querySelectorAll('.btn-figure').forEach(el => {
-        el.onclick = () => CanvasLogic.addImage(el.dataset.url); // Usamos una nueva función
-    });
-}
+        document.querySelectorAll('.btn-figure').forEach(el => {
+            el.onclick = () => {
+                CanvasLogic.addImage(el.dataset.url);
+                // Si es móvil, cerramos para facilitar el posicionamiento de la figura
+                if (isMobile) togglePanel(type);
+            };
+        });
+    }
 }
 
 
@@ -188,3 +244,15 @@ export function updateUI() {
 export function clearUIIndicator() {
     document.getElementById('size-indicator').innerText = '--';
 }
+
+/**
+ 
+// Si el usuario hace scroll manual en el área del canvas, 
+// asumimos que quiere salir del modo edición de texto.
+document.querySelector('.canvas-area').addEventListener('touchstart', () => {
+    if (activeTab === 'texto' && window.innerWidth <= 768) {
+        // Opcional: podrías cerrar el panel aquí para dar más espacio
+    }
+}, { passive: true });
+* Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
+ */

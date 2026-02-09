@@ -16,18 +16,53 @@ export let canvas;
  */
 export function initCanvas(onSelection, onCleared) {
     const container = document.querySelector('.canvas-area');
+    const isMobile = window.innerWidth <= 768;
+
+    // 1. En móvil reducimos el margen para aprovechar cada píxel
+    const margin = isMobile ? 10 : 40;
     
-    // Cálculo de dimensiones responsivas
-    const availableWidth = container.clientWidth - 40;
-    const availableHeight = container.clientHeight - 40;
+    // 2. Forzamos al contenedor a darnos su ancho real antes del cálculo
+    const availableWidth = container.clientWidth - margin;
+    const availableHeight = container.clientHeight - margin;
+
+    // 3. Definimos límites según dispositivo
+    // En móvil queremos que sea casi cuadrado o vertical, en PC horizontal.
+    const maxWidth = isMobile ? availableWidth : 900; 
+    const maxHeight = isMobile ? Math.min(availableHeight, 500) : 600;
 
     canvas = new fabric.Canvas('mainCanvas', {
-        width: Math.min(availableWidth, 700),
-        height: Math.min(availableHeight, 600),
-        backgroundColor: '#36363600'
+        width: Math.min(availableWidth, maxWidth),
+        height: Math.min(availableHeight, maxHeight),
+        backgroundColor: null // Transparente
     });
 
-    // Suscripción a eventos de Fabric.js para sincronizar con la UI externa
+// === FIX PARA MÓVIL: REPARACIÓN TRAS TECLADO ===
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            // Si el alto del viewport vuelve a ser casi el total de la ventana (teclado cerrado)
+            if (window.visualViewport.height >= window.innerHeight * 0.85) {
+                
+                // 1. Reset de posición (evita que la Navbar se quede cortada)
+                window.scrollTo(0, 0);
+                
+                // 2. Recalcular coordenadas del canvas (corrige el bug de puntero/zoom)
+                canvas.calcOffset();
+                
+                // 3. Re-ajustar el fondo para que no se vea "cortado"
+                // Usamos tu función existente que ya tiene la lógica de escalado
+                resizeBackground();
+                
+                canvas.renderAll();
+                console.log("Sistema: Vista restaurada tras cierre de teclado.");
+            }
+        });
+    }
+
+
+
+
+
+    // ... resto de tus eventos ...
     canvas.on('selection:created', onSelection);
     canvas.on('selection:updated', onSelection);
     canvas.on('selection:cleared', onCleared);
@@ -36,15 +71,24 @@ export function initCanvas(onSelection, onCleared) {
 
 
 /**
- * Establece una imagen como fondo del lienzo con escalado inteligente.
+ * Establece una imagen como fondo del lienzo con escalado inteligente según el dispositivo.
  * @param {string} url - Ruta o URL de la imagen de fondo.
  */
 export function changeCanvasBackground(url) {
     if (!url) return;
     
+    // 1. Detectamos si estamos en móvil (usando el ancho de la ventana)
+    const isMobile = window.innerWidth <= 768;
+
     fabric.Image.fromURL(url, (img) => {
-        // Algoritmo de escalado: 'Cover' (asegura que cubra todo el fondo)
-        const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+        /**
+         * 2. Algoritmo de escalado dinámico:
+         * Desktop (Cover): Math.max -> Llena todo el espacio, puede recortar bordes.
+         * Mobile (Contain): Math.min -> Asegura que TODA la imagen sea visible.
+         */
+        const scale = isMobile 
+            ? Math.min(canvas.width / img.width, canvas.height / img.height)
+            : Math.max(canvas.width / img.width, canvas.height / img.height);
         
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
             scaleX: scale,
@@ -92,15 +136,35 @@ export function addImage(url) {
 }
 
 /**
- * Cambia la familia tipográfica del objeto de texto actualmente seleccionado.
- * @param {string} font - Nombre de la fuente (ej. 'Verdana').
+ * Cambia la familia tipográfica asegurando que la fuente esté cargada
+ * antes de renderizar para evitar fallos visuales en el canvas.
+ * @param {string} font - Nombre de la fuente (ej. 'Bungee').
  */
-export function changeFont(font) {
+export async function changeFont(font) {
     const obj = canvas.getActiveObject();
-    // Verificamos que el objeto seleccionado admita propiedades de texto
+    
+    // 1. Verificamos que el objeto sea de tipo texto
     if (obj && (obj.type === 'i-text' || obj.type === 'text')) {
-        obj.set('fontFamily', font);
-        canvas.renderAll();
+        
+        try {
+            // 2. FORZADO: Esperamos a que el navegador tenga la fuente lista
+            // '1em' es el tamaño base para la comprobación
+            if (document.fonts) {
+                await document.fonts.load(`1em "${font}"`);
+            }
+
+            // 3. Una vez confirmada la carga, aplicamos y renderizamos
+            obj.set('fontFamily', font);
+            canvas.renderAll();
+            
+            console.log(`Fuente aplicada: ${font}`);
+        } catch (error) {
+            console.error(`Error al cargar la fuente ${font}:`, error);
+            
+            // Fallback: Aplicar de todos modos si la API falla
+            obj.set('fontFamily', font);
+            canvas.renderAll();
+        }
     }
 }
 
@@ -164,21 +228,35 @@ export function exportDesign() {
 
 
 
+
 /**
- * Ajusta la imagen de fondo actual para que siempre cubra el área del canvas.
- * Previene el bug de "recorte" al redimensionar la ventana.
+ * Ajusta la imagen de fondo actual para que siempre se adapte al tamaño del canvas.
+ * Previene el bug de "imagen cortada" al cerrar el teclado o rotar la pantalla.
  */
 export function resizeBackground() {
     const bgImage = canvas.backgroundImage;
     if (bgImage) {
-        const scale = Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+        // 1. Detectamos si es móvil para decidir el tipo de ajuste
+        const isMobile = window.innerWidth <= 768;
+
+        /**
+         * 2. Aplicamos la misma lógica que al cargar el producto:
+         * Mobile (Math.min): Asegura que TODO el producto se vea (sin cortes).
+         * Desktop (Math.max): Llena todo el espacio (estilo cover).
+         */
+        const scale = isMobile 
+            ? Math.min(canvas.width / bgImage.width, canvas.height / bgImage.height)
+            : Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+        
         canvas.setBackgroundImage(bgImage, canvas.renderAll.bind(canvas), {
             scaleX: scale,
             scaleY: scale,
             left: canvas.width / 2,
             top: canvas.height / 2,
             originX: 'center',
-            originY: 'center'
+            originY: 'center',
+            // Importante: mantenemos el crossOrigin si lo usaste al cargar
+            crossOrigin: 'anonymous' 
         });
     }
 }
