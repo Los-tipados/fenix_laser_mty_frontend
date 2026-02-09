@@ -5,9 +5,9 @@ import * as UIManager from './ui-manager.js';
 async function precargarFuentes() {
     console.log("Iniciando precarga de fuentes...");
     
-    // Obtenemos el array de fuentes de tu CONFIG
+    // Obtenemos el array de fuentes de  CONFIG
     const promesas = CONFIG.fuentes.map(fuente => {
-        // Intentamos cargar la fuente programáticamente
+        // Intentamos cargar la fuente 
         return document.fonts.load(`1em "${fuente}"`)
             .then(() => console.log(`✅ ${fuente} lista`))
             .catch(err => console.warn(`Error cargando ${fuente}:`, err));
