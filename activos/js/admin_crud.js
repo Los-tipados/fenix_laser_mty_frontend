@@ -18,7 +18,7 @@ async function loadProducts() {
       const res = await fetch(JSON_PATH);
       if (!res.ok) throw new Error('No se pudo cargar productos.json');
       allProducts = await res.json();
-        // Asignar id temporal a productos que no lo tengan (parche para datos viejos)
+      // Asignar id temporal a productos que no lo tengan (parche para datos viejos)
       allProducts.forEach((p, i) => {
         if (!p.id) {
           p.id = Date.now().toString() + '-' + i;  // id único
@@ -193,13 +193,19 @@ document.addEventListener('DOMContentLoaded', () => {
       isValid = false;
     }
 
+    console.log('Submit iniciado - idx:', document.getElementById('edit-index').value);  // Log antes de idx para ver si llega
+
+    const idx = parseInt(document.getElementById('edit-index').value);
+    console.log('Idx declarado:', idx);  // Log después de declarar idx
+
     if (!isValid) {
+      console.log('Validación falló - chequea campos con is-invalid');
       form.querySelector('.is-invalid')?.focus();
       return;
     }
-   
-    // Guardar
-    const idx = parseInt(document.getElementById('edit-index').value);
+
+    console.log('Validación pasó - creando producto');
+
     const idInput = document.getElementById('id');
     let id = idInput.value.trim();
 
@@ -209,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } 
 
     const producto = {
+      id: id,
       nombre: nombre.value.trim(),
       img: img.value.trim(),
       precio: precioVal,
@@ -223,14 +230,21 @@ document.addEventListener('DOMContentLoaded', () => {
         .filter(t => t)
     };
 
+    console.log('Producto a guardar:', producto);  // Ver el objeto
+
     if (idx === -1) {
       allProducts.push(producto);
+      console.log('Push nuevo - allProducts ahora:', allProducts.length);
     } else {
       allProducts[idx] = producto;
+      console.log('Update en idx', idx);
     }
 
     saveProducts();
+    console.log('Guardado en localStorage');
+
     renderAdminList();
+    console.log('Render llamado');
 
     // SweetAlert2 éxito
     const isNew = idx === -1;
@@ -257,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btn.classList.contains('edit-btn')) {
       openModal(index);
-    }
+    } 
     else if (btn.classList.contains('delete-btn')) {
       const productoNombre = allProducts[index]?.nombre || 'este producto';
 
@@ -298,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `productos_actualizados_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `productos_actualizados_${new Date().toISOString().slice(0,10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   });

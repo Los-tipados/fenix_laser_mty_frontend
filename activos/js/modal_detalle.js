@@ -94,8 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Añadiendo al carrito:", product.nombre, "- Precio:", product.precio);
             // Aquí va tu lógica real de agregar al carrito
             // Ejemplo: agregarAlCarrito(product);
+            agregarAlCarrito(product);
+            Swal.fire({
+              icon: 'success',
+              title:'¡Añadido!',
+              text: 'Se ha añadido al carrito de compras',
+              timer: 1500,
+              showConfirmButton: false,
+              toast:true,
+              position:'top-end'
+            });
 
-            
+            modal.hide();
           });
         }
 
