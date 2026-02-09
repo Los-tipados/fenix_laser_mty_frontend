@@ -19,3 +19,19 @@
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.55);
   }
 }
+/* Forzar espacio en Galería para móviles */
+@media (max-width: 768px) {
+    /* Seleccionamos el primer h1 que aparece después del navbar */
+    body h1.text-center:first-of-type {
+        margin-top: 120px !important; /* Aumentamos a 120px para estar seguros */
+        display: block !important;
+        position: relative !important;
+        z-index: 1;
+    }
+
+    /* Ajuste para el subtítulo para que no quede pegado al h1 */
+    body h4.text-center {
+        margin-top: 20px !important;
+        padding: 0 20px !important;
+    }
+}
