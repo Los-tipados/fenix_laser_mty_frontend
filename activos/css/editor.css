@@ -345,6 +345,10 @@ body, html {
         flex-grow: 1;
         padding-right: 15px;
         scrollbar-width: none; /* Oculta scrollbar */
+
+        touch-action: pan-x; 
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
     }
 
     .top-navbar::-webkit-scrollbar { display: none; }
