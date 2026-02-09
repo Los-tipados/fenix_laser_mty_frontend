@@ -319,6 +319,10 @@ body, html {
         padding-top: 20px; 
         /* MUY IMPORTANTE: Margen inferior para que el canvas no quede tapado por la barra */
         padding-bottom: 80px; 
+
+        /* CRUCIAL: No mover la pantalla mientras se diseña */
+        touch-action: none; 
+        overflow: hidden;
     }
 
     /* 4. Toolbar Superior */
