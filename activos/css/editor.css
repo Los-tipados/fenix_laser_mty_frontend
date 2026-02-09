@@ -446,7 +446,12 @@ body, html {
         
         /* Forza a iOS a renderizar el fondo de la app */
         .main-app {
-            background-color: var(--night) !important;
+            background: linear-gradient(
+             90deg,
+             var(--night),
+             var(--brown)
+            );
+
         }
 
         /* En iPhone, el cristal necesita un empujoncito para verse */
@@ -461,13 +466,14 @@ body, html {
         }
 
         .sidebar-panel {
-            background-color: var(--night) !important; /* Color sólido de tu paleta */
+          background-color: var(--night-opaco) !important; 
+            -webkit-backdrop-filter: blur(15px); 
             -webkit-transform: translateZ(0); /* Despierta la aceleración de video en iOS */
         }
 
         .top-navbar {
-            background-color: var(--night-opaco) !important;
-            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--night-opaco) !important; 
+            -webkit-backdrop-filter: blur(15px); 
             backdrop-filter: blur(10px);
         }
 
