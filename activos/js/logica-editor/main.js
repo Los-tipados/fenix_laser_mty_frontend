@@ -2,6 +2,24 @@ import { CONFIG } from './config.js';
 import * as CanvasLogic from './canvas-logic.js';
 import * as UIManager from './ui-manager.js';
 
+async function precargarFuentes() {
+    console.log("Iniciando precarga de fuentes...");
+    
+    // Obtenemos el array de fuentes de tu CONFIG
+    const promesas = CONFIG.fuentes.map(fuente => {
+        // Intentamos cargar la fuente programáticamente
+        return document.fonts.load(`1em "${fuente}"`)
+            .then(() => console.log(`✅ ${fuente} lista`))
+            .catch(err => console.warn(`Error cargando ${fuente}:`, err));
+    });
+
+    // Esperamos a que todas intenten cargar
+    await Promise.all(promesas);
+    console.log(" Todas las fuentes están disponibles para el Canvas");
+}
+
+
+
 window.onload = () => {
     // 1. Inicialización limpia
     CanvasLogic.initCanvas(UIManager.updateUI, UIManager.clearUIIndicator);
@@ -11,6 +29,7 @@ window.onload = () => {
     // Carga inicial del primer producto
     CanvasLogic.changeCanvasBackground(CONFIG.productos[0].url);
 
+    precargarFuentes(); 
     // 2. GESTIÓN DE TECLADO (Solo para móviles)
     if (window.visualViewport) {
         window.visualViewport.addEventListener('resize', () => {
@@ -70,5 +89,5 @@ function actualizarDimensionesCanvas() {
     CanvasLogic.resizeBackground();
     CanvasLogic.canvas.renderAll();
     
-    console.log(`[Layout] Ajustado a ${newWidth}x${newHeight}`);
+    //console.log(`[Layout] Ajustado a ${newWidth}x${newHeight}`);
 }
