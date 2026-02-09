@@ -103,13 +103,15 @@ export function renderToolbar() {
         `;
     }
 
-    // Los eventos son los mismos para ambos, así que se quedan fuera del IF
-    document.getElementById('font-down').onclick = () => CanvasLogic.changeFontSize(-2, updateUI);
-    document.getElementById('font-up').onclick = () => CanvasLogic.changeFontSize(2, updateUI);
-    document.getElementById('btn-bold').onclick = () => CanvasLogic.toggleFormat('bold');
-    document.getElementById('btn-italic').onclick = () => CanvasLogic.toggleFormat('italic');
-    document.getElementById('btn-delete').onclick = () => CanvasLogic.deleteObject();
-    document.getElementById('btn-export').onclick = () => CanvasLogic.exportDesign();
+    
+    // --- ASIGNACIÓN SEGURA (USANDO ?.) ---
+    // Con el punto y signo de interrogación, si el botón no está en el HTML, no se rompe nada.
+    document.getElementById('font-down')?.addEventListener('click', () => CanvasLogic.changeFontSize(-2, updateUI));
+    document.getElementById('font-up')?.addEventListener('click', () => CanvasLogic.changeFontSize(2, updateUI));
+    document.getElementById('btn-bold')?.addEventListener('click', () => CanvasLogic.toggleFormat('bold'));
+    document.getElementById('btn-italic')?.addEventListener('click', () => CanvasLogic.toggleFormat('italic'));
+    document.getElementById('btn-delete')?.addEventListener('click', () => CanvasLogic.deleteObject());
+    document.getElementById('btn-export')?.addEventListener('click', () => CanvasLogic.exportDesign());
 }
 
 /**
