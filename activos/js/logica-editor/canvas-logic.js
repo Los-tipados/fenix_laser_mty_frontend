@@ -36,6 +36,32 @@ export function initCanvas(onSelection, onCleared) {
         backgroundColor: null // Transparente
     });
 
+// === FIX PARA MÓVIL: REPARACIÓN TRAS TECLADO ===
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            // Si el alto del viewport vuelve a ser casi el total de la ventana (teclado cerrado)
+            if (window.visualViewport.height >= window.innerHeight * 0.85) {
+                
+                // 1. Reset de posición (evita que la Navbar se quede cortada)
+                window.scrollTo(0, 0);
+                
+                // 2. Recalcular coordenadas del canvas (corrige el bug de puntero/zoom)
+                canvas.calcOffset();
+                
+                // 3. Re-ajustar el fondo para que no se vea "cortado"
+                // Usamos tu función existente que ya tiene la lógica de escalado
+                resizeBackground();
+                
+                canvas.renderAll();
+                console.log("Sistema: Vista restaurada tras cierre de teclado.");
+            }
+        });
+    }
+
+
+
+
+
     // ... resto de tus eventos ...
     canvas.on('selection:created', onSelection);
     canvas.on('selection:updated', onSelection);
