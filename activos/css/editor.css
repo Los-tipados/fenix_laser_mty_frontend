@@ -268,6 +268,11 @@ body, html {
         left: 0;
         /* Aseguramos que los iconos se distribuyan bien */
         justify-content: space-around; 
+
+        /* BLOQUEO TOTAL DE ZOOM: Aquí el usuario solo toca botones */
+        touch-action: none; 
+        user-select: none;
+        background-color: var(--glass-bg);
     }
 
     .icon-unit {
