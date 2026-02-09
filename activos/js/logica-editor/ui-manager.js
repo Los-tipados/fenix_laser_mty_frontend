@@ -52,7 +52,7 @@ export function renderToolbar() {
                     <button class="btn-tool round" id="font-up">+</button>
                 </div>
 
-                <div class="divider"></div>
+                
 
                 <div class="tool-group">
                     <button class="btn-tool square" id="btn-bold"><b>B</b></button>
@@ -60,7 +60,7 @@ export function renderToolbar() {
                     <button class="btn-tool danger" id="btn-delete">🗑️</button>
                 </div>
 
-                <div class="divider"></div>
+                
 
                 <div class="tool-group">
                     <button class="btn-tool secondary" id="btn-editor" onclick="history.back()">Salir</button>
