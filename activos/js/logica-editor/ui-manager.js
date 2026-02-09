@@ -48,10 +48,7 @@ export function renderToolbar() {
             <div class="toolbar-scroll-container">
                 <div class="tool-group">
                     <button class="btn-tool round" id="font-down">−</button>
-                    <div class="size-badge">
-                        <small>TAM</small>
-                        <span id="size-indicator">30</span>
-                    </div>
+                   
                     <button class="btn-tool round" id="font-up">+</button>
                 </div>
 
