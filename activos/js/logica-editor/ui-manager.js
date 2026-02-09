@@ -233,11 +233,13 @@ function attachPanelEvents(type) {
  */
 export function updateUI() {
     const obj = CanvasLogic.canvas.getActiveObject();
-    if (obj && obj.fontSize) {
-        document.getElementById('size-indicator').innerText = Math.round(obj.fontSize);
+    const indicator = document.getElementById('size-indicator');
+    
+    // Solo actualizamos si el objeto existe Y el indicador está en el DOM
+    if (obj && obj.fontSize && indicator) {
+        indicator.innerText = Math.round(obj.fontSize);
     }
 }
-
 /**
  * Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
  */
