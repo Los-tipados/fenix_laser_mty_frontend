@@ -136,15 +136,35 @@ export function addImage(url) {
 }
 
 /**
- * Cambia la familia tipográfica del objeto de texto actualmente seleccionado.
- * @param {string} font - Nombre de la fuente (ej. 'Verdana').
+ * Cambia la familia tipográfica asegurando que la fuente esté cargada
+ * antes de renderizar para evitar fallos visuales en el canvas.
+ * @param {string} font - Nombre de la fuente (ej. 'Bungee').
  */
-export function changeFont(font) {
+export async function changeFont(font) {
     const obj = canvas.getActiveObject();
-    // Verificamos que el objeto seleccionado admita propiedades de texto
+    
+    // 1. Verificamos que el objeto sea de tipo texto
     if (obj && (obj.type === 'i-text' || obj.type === 'text')) {
-        obj.set('fontFamily', font);
-        canvas.renderAll();
+        
+        try {
+            // 2. FORZADO: Esperamos a que el navegador tenga la fuente lista
+            // '1em' es el tamaño base para la comprobación
+            if (document.fonts) {
+                await document.fonts.load(`1em "${font}"`);
+            }
+
+            // 3. Una vez confirmada la carga, aplicamos y renderizamos
+            obj.set('fontFamily', font);
+            canvas.renderAll();
+            
+            console.log(`Fuente aplicada: ${font}`);
+        } catch (error) {
+            console.error(`Error al cargar la fuente ${font}:`, error);
+            
+            // Fallback: Aplicar de todos modos si la API falla
+            obj.set('fontFamily', font);
+            canvas.renderAll();
+        }
     }
 }
 
