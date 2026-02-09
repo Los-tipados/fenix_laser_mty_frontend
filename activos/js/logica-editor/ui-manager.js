@@ -243,10 +243,14 @@ export function updateUI() {
     }
 }
 /**
- * Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
+ * Limpia el indicador. Si no existe en el DOM, no hace nada.
  */
 export function clearUIIndicator() {
-    document.getElementById('size-indicator').innerText = '--';
+    const indicator = document.getElementById('size-indicator');
+    
+    if (indicator) {
+        indicator.innerText = '--';
+    }
 }
 
 /**
