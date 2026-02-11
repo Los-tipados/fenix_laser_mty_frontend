@@ -1,3 +1,7 @@
+   window.loadGlobalModal = function(callback) {
+          if (typeof callback === 'function') callback();
+      }
+
 // modal_galeria.js - Versión INFORMATIVA (Sin botones y sin precios)
 console.log("modal_galeria.js → cargado (Versión Limpia)");
 
