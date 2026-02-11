@@ -1,5 +1,5 @@
-// modal_galeria.js - Versión con Botón de Carrito pero SIN PRECIOS
-console.log("modal_galeria.js → cargado (Versión con Carrito)");
+// modal_galeria.js - Versión INFORMATIVA (Sin botones y sin precios)
+console.log("modal_galeria.js → cargado (Versión Limpia)");
 
 document.addEventListener('DOMContentLoaded', () => {
   window.loadGlobalModal(() => {
@@ -31,43 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${product.descripcion || 'Descripción no disponible'}
                 </p>
                 
-                <div class="badges-container mb-4">
+                <div class="badges-container">
                   <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1OPZkmtlTN9Pqo6YQyU3H7MtJVswAaNMV" alt="Envíos"></div>
                   <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1CJalKdsJKGFan4UWgaF5d4Pgynf8y5MS" alt="Grabado"></div>
                   <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1LPp8G3PkhAmC5iWsqJwWG9kdOdRyiTMr" alt="Seguridad"></div>
-                </div>
-                
-                <div class="buttons-container d-flex flex-column flex-md-row gap-2">
-                  <button class="btn btn-add-cart flex-fill" id="modalAddToCart">
-                    AÑADIR AL CARRITO
-                  </button>
-                  
-                  <a href="/paginas/editor.html" class="flex-fill">
-                    <button class="btn btn-personalizar w-100">
-                      PERSONALIZAR AHORA
-                    </button>
-                  </a>
                 </div>
               </div>
             </div>
           </div>
         `;
 
-        // Listener para el carrito
-        const addBtn = modalContent.querySelector('#modalAddToCart');
-        if (addBtn) {
-          addBtn.addEventListener('click', () => {
-            console.log("Añadido al carrito desde Galería:", product.nombre);
-            // Si tu sistema de carrito necesita un precio base aunque no se vea:
-            // agregarAlCarrito(product); 
-          });
-        }
-
         modal.show();
       }, 300);
     };
 
-    // Listener de clics
+    // Listener de clics para abrir el modal
     document.addEventListener('click', function(e) {
       const btn = e.target.closest('.btn-ver-detalle');
       if (!btn) return;
