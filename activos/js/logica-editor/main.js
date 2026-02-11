@@ -2,6 +2,8 @@ import { CONFIG } from './config.js';
 import * as CanvasLogic from './canvas-logic.js';
 import * as UIManager from './ui-manager.js';
 
+//codigo hecho por Erik
+
 async function precargarFuentes() {
     console.log("Iniciando precarga de fuentes...");
     
