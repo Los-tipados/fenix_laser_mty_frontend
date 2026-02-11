@@ -53,7 +53,7 @@ export function initCanvas(onSelection, onCleared) {
                 resizeBackground();
                 
                 canvas.renderAll();
-                console.log("Sistema: Vista restaurada tras cierre de teclado.");
+               // console.log("Sistema: Vista restaurada tras cierre de teclado.");
             }
         });
     }
@@ -157,7 +157,7 @@ export async function changeFont(font) {
             obj.set('fontFamily', font);
             canvas.renderAll();
             
-            console.log(`Fuente aplicada: ${font}`);
+            //console.log(`Fuente aplicada: ${font}`);
         } catch (error) {
             console.error(`Error al cargar la fuente ${font}:`, error);
             
