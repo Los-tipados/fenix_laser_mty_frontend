@@ -53,7 +53,7 @@ export function initCanvas(onSelection, onCleared) {
                 resizeBackground();
                 
                 canvas.renderAll();
-                console.log("Sistema: Vista restaurada tras cierre de teclado.");
+               // console.log("Sistema: Vista restaurada tras cierre de teclado.");
             }
         });
     }
@@ -157,7 +157,7 @@ export async function changeFont(font) {
             obj.set('fontFamily', font);
             canvas.renderAll();
             
-            console.log(`Fuente aplicada: ${font}`);
+            //console.log(`Fuente aplicada: ${font}`);
         } catch (error) {
             console.error(`Error al cargar la fuente ${font}:`, error);
             
@@ -175,10 +175,31 @@ export async function changeFont(font) {
  */
 export function changeFontSize(delta, callbackUI) {
     const obj = canvas.getActiveObject();
+    
+    // Solo procedemos si hay un objeto con propiedad fontSize
     if (obj && obj.fontSize) {
-        obj.set('fontSize', obj.fontSize + delta);
+        const MIN_SIZE = 8;   // Evita que el texto desaparezca
+        const MAX_SIZE = 300; // Evita que el texto bloquee todo el canvas
+
+        // Calculamos el nuevo tamaño sumando el delta
+        let newSize = obj.fontSize + delta;
+
+        // "Clamp": Forzamos que el tamaño esté entre 8 y 300
+        // Math.max(8, ...) asegura que no sea menor a 8
+        // Math.min(..., 300) asegura que no sea mayor a 300
+        newSize = Math.max(MIN_SIZE, Math.min(MAX_SIZE, newSize));
+
+        // Aplicamos el cambio al objeto de Fabric.js
+        obj.set('fontSize', newSize);
+        
+        // Es vital llamar a setCoords() para que los controles (la cajita) 
+        // se ajusten al nuevo tamaño del texto
+        obj.setCoords();
+        
         canvas.renderAll();
-        if(callbackUI) callbackUI();
+
+        // Si existe un callback (como updateUI), lo ejecutamos
+        if (callbackUI) callbackUI();
     }
 }
 

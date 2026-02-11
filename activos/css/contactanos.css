@@ -154,6 +154,32 @@ color: var(--offwhite);
 
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 768px) {
+  body .header-container {
+    /* 1. margin-top: 100px !important; */
+    /* Crea un espacio externo de 100px arriba del encabezado. 
+       El '!important' se usa para ganar la "pelea" contra los estilos de Bootstrap 
+       y asegurar que el texto baje sí o sí. */
+        margin-top: 100px !important;
+        /* 2. display: block !important; */
+    /* Asegura que el contenedor se comporte como un bloque sólido que ocupa todo el ancho. 
+       Esto evita que otros elementos (como el menú flotante) intenten encimarse o 
+       fluir a los lados del encabezado. */
+        display: block !important;
+        /* 3. clear: both !important; */
+    /* Es una instrucción que dice: "No permitas elementos flotantes a mis lados". 
+       Obliga al contenedor a posicionarse debajo de cualquier elemento que esté 
+       flotando arriba (útil si el menú tiene propiedades de 'float' o 'fixed'). */
+        clear: both !important;
+    }
+ .header-container {
+        /* Ajusta a 80px o 100px según el grosor de tu menú */
+        padding-top: 90px !important;
+    }
+
+    .titulo-contactanos {
+        margin-top: 0 !important; /* Reseteamos márgenes extra */
+        margin-bottom: 1rem;
+    }
     .mapa-contenedor {
         margin-top: 20px;
     }

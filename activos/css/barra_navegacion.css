@@ -63,4 +63,9 @@ svg:hover {
   }
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+
 /*para actualzizar*/

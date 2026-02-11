@@ -2,20 +2,22 @@ import { CONFIG } from './config.js';
 import * as CanvasLogic from './canvas-logic.js';
 import * as UIManager from './ui-manager.js';
 
+//codigo hecho por Erik
+
 async function precargarFuentes() {
-    console.log("Iniciando precarga de fuentes...");
+    //console.log("Iniciando precarga de fuentes...");
     
     // Obtenemos el array de fuentes de  CONFIG
     const promesas = CONFIG.fuentes.map(fuente => {
         // Intentamos cargar la fuente 
         return document.fonts.load(`1em "${fuente}"`)
-            .then(() => console.log(`✅ ${fuente} lista`))
+           /* .then(() => console.log(`✅ ${fuente} lista`)) */
             .catch(err => console.warn(`Error cargando ${fuente}:`, err));
     });
 
     // Esperamos a que todas intenten cargar
     await Promise.all(promesas);
-    console.log(" Todas las fuentes están disponibles para el Canvas");
+    //console.log(" Todas las fuentes están disponibles para el Canvas");
 }
 
 

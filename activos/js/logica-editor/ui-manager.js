@@ -48,14 +48,11 @@ export function renderToolbar() {
             <div class="toolbar-scroll-container">
                 <div class="tool-group">
                     <button class="btn-tool round" id="font-down">−</button>
-                    <div class="size-badge">
-                        <small>TAM</small>
-                        <span id="size-indicator">30</span>
-                    </div>
+                   
                     <button class="btn-tool round" id="font-up">+</button>
                 </div>
 
-                <div class="divider"></div>
+                
 
                 <div class="tool-group">
                     <button class="btn-tool square" id="btn-bold"><b>B</b></button>
@@ -63,7 +60,7 @@ export function renderToolbar() {
                     <button class="btn-tool danger" id="btn-delete">🗑️</button>
                 </div>
 
-                <div class="divider"></div>
+                
 
                 <div class="tool-group">
                     <button class="btn-tool secondary" id="btn-editor" onclick="history.back()">Salir</button>
@@ -103,13 +100,15 @@ export function renderToolbar() {
         `;
     }
 
-    // Los eventos son los mismos para ambos, así que se quedan fuera del IF
-    document.getElementById('font-down').onclick = () => CanvasLogic.changeFontSize(-2, updateUI);
-    document.getElementById('font-up').onclick = () => CanvasLogic.changeFontSize(2, updateUI);
-    document.getElementById('btn-bold').onclick = () => CanvasLogic.toggleFormat('bold');
-    document.getElementById('btn-italic').onclick = () => CanvasLogic.toggleFormat('italic');
-    document.getElementById('btn-delete').onclick = () => CanvasLogic.deleteObject();
-    document.getElementById('btn-export').onclick = () => CanvasLogic.exportDesign();
+    
+    // --- ASIGNACIÓN SEGURA (USANDO ?.) ---
+    // Con el punto y signo de interrogación, si el botón no está en el HTML, no se rompe nada.
+    document.getElementById('font-down')?.addEventListener('click', () => CanvasLogic.changeFontSize(-2, updateUI));
+    document.getElementById('font-up')?.addEventListener('click', () => CanvasLogic.changeFontSize(2, updateUI));
+    document.getElementById('btn-bold')?.addEventListener('click', () => CanvasLogic.toggleFormat('bold'));
+    document.getElementById('btn-italic')?.addEventListener('click', () => CanvasLogic.toggleFormat('italic'));
+    document.getElementById('btn-delete')?.addEventListener('click', () => CanvasLogic.deleteObject());
+    document.getElementById('btn-export')?.addEventListener('click', () => CanvasLogic.exportDesign());
 }
 
 /**
@@ -233,16 +232,22 @@ function attachPanelEvents(type) {
  */
 export function updateUI() {
     const obj = CanvasLogic.canvas.getActiveObject();
-    if (obj && obj.fontSize) {
-        document.getElementById('size-indicator').innerText = Math.round(obj.fontSize);
+    const indicator = document.getElementById('size-indicator');
+    
+    // Solo actualizamos si el objeto existe Y el indicador está en el DOM
+    if (obj && obj.fontSize && indicator) {
+        indicator.innerText = Math.round(obj.fontSize);
     }
 }
-
 /**
- * Limpia los indicadores de la interfaz cuando no hay ningún objeto seleccionado.
+ * Limpia el indicador. Si no existe en el DOM, no hace nada.
  */
 export function clearUIIndicator() {
-    document.getElementById('size-indicator').innerText = '--';
+    const indicator = document.getElementById('size-indicator');
+    
+    if (indicator) {
+        indicator.innerText = '--';
+    }
 }
 
 /**

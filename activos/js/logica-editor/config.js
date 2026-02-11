@@ -26,9 +26,8 @@ export const CONFIG = {
         'Montserrat',       // La reina de la versatilidad moderna
         
         /* --- BÁSICAS --- */
-        'Arial', 
-        'Impact', 
-        'Georgia'
+        'Arial'
+        
     ],
     productos: [
         { id: 'p1', nombre: 'Caja', url: 'https://i.ibb.co/JwT7G5nb/box-real.webp'},
