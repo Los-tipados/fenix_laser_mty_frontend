@@ -14,6 +14,23 @@ border-bottom: 1px solid #ffffff; /* grosor, estilo y color */
 .custom-navbar .nav-link:hover {
   color: #ffb703;
 }
+.custom-navbar a.position-relative {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-left: 0 !important; /* Quitamos el margen izquierdo solo aquí */
+    margin-right: 5px; /* Si quieres espacio, úsalo a la derecha */
+}
+/* Contenedor del carrito */
+.cart-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff !important;
+    overflow: visible !important; 
+}
 
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.5);
@@ -64,3 +81,19 @@ svg:hover {
 }
 
 /*para actualzizar*/
+.cart-badge {
+    /* Bdge como círculo perfecto */
+    min-width: 18px;
+    height: 18px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px !important;
+    font-weight: bold;
+    /* Ajuste de posición para que no se pierda en Desktop */
+    top: 0 !important;
+    right: 0 !important;
+    transform: translate(25%, -25%) !important; 
+    z-index: 100;
+    border: 1px solid white; /* Lo hace resaltar sobre el fondo oscuro */
+}
