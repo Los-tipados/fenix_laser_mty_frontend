@@ -64,3 +64,28 @@ svg:hover {
 }
 
 /*para actualzizar*/
+
+
+/* Aseguramos que el contenedor del icono tenga posición relativa */
+.position-relative {
+    position: relative !important;
+}
+
+/* Estilo del Badge */
+.cart-badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.6em;
+    background-color: #ff4757 !important; /* Rojo vibrante */
+    color: white !important;
+    font-weight: bold;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 9999;}
+
+/* Si usas SVGs en lugar de iconos de fuente */
+svg {
+    color: white; /* O el color que desees */
+    width: 28px;
+    height: 28px;
+}

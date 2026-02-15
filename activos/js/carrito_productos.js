@@ -12,6 +12,12 @@ function cargarCarrito() {
 
 function guardarCarrito(carrito) {
     localStorage.setItem('carritoFenixLaser', JSON.stringify(carrito));
+    
+    // DISPARA EVENTO PERSONALIZADO PARA SINCRONIZAR LA NAVBAR
+    const evento = new CustomEvent('carritoActualizado', {
+        detail: { carrito: carrito }
+    });
+    document.dispatchEvent(evento);
 }
 
 function actualizarBadge(carrito) {
@@ -108,28 +114,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function renderizarCarrito() {
     const contenedor = document.getElementById('carrito-items');
+    const resumenItemsElemento = document.getElementById('resumen-items');
     const totalFinalElemento = document.getElementById('cart-total');
+    const totalItemsElemento = document.getElementById('cart-items-count');
+    
     if (!contenedor) return;
 
     const carrito = cargarCarrito();
 
+    // Renderizar la sección principal (productos)
     contenedor.innerHTML = `
         <div class="d-flex align-items-center mb-4">
-            <a href="/paginas/catalogo.html" class="regresar" style="text-decoration:none; color: #cc3333; font-weight: bold;">← Regresar</a>
+            <a href="/paginas/catalogo.html" class="regresar" style="text-decoration:none; color: #cc3333; font-weight: bold;">�� Regresar</a>
             <h4 class="ms-4 mb-0">Carrito de Compras</h4>
         </div>
         <hr>`;
 
     if (carrito.length === 0) {
         contenedor.innerHTML += '<p class="text-center my-5">El carrito está vacío.</p>';
+        
+        // Limpiar resumen
+        if (resumenItemsElemento) resumenItemsElemento.innerHTML = '';
         if (totalFinalElemento) totalFinalElemento.textContent = "$0.00";
+        if (totalItemsElemento) totalItemsElemento.textContent = "0 productos";
         return;
     }
 
+    // Renderizar productos en la columna principal
     let totalGlobal = 0;
+    let totalProductos = 0;
+    
     carrito.forEach(item => {
+        totalProductos += item.cantidad;
         const subtotal = item.precio * item.cantidad;
         totalGlobal += subtotal;
+        
         const row = document.createElement('div');
         row.className = "row mb-4 border-bottom pb-3 align-items-center";
         row.innerHTML = `
@@ -146,5 +165,22 @@ function renderizarCarrito() {
         contenedor.appendChild(row);
     });
 
+    // Renderizar lista de items en el resumen
+    if (resumenItemsElemento) {
+        resumenItemsElemento.innerHTML = '';
+        carrito.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            const itemElement = document.createElement('div');
+            itemElement.className = "d-flex justify-content-between mb-2 small";
+            itemElement.innerHTML = `
+                <span>${item.nombre} ${item.cantidad > 1 ? `(x${item.cantidad})` : ''}</span>
+                <span>$${subtotal.toFixed(2)}</span>
+            `;
+            resumenItemsElemento.appendChild(itemElement);
+        });
+    }
+
+    // Actualizar el resumen
+    if (totalItemsElemento) totalItemsElemento.textContent = `${totalProductos} producto${totalProductos !== 1 ? 's' : ''}`;
     if (totalFinalElemento) totalFinalElemento.textContent = `$${totalGlobal.toFixed(2)}`;
 }
