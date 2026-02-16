@@ -18,6 +18,12 @@ async function loadProducts() {
       const res = await fetch(JSON_PATH);
       if (!res.ok) throw new Error('No se pudo cargar productos.json');
       allProducts = await res.json();
+      // Asignar id temporal a productos que no lo tengan (parche para datos viejos)
+      allProducts.forEach((p, i) => {
+        if (!p.id) {
+          p.id = Date.now().toString() + '-' + i;  // id único
+        }
+      });
       saveProducts(); // Guardamos copia inicial
     } catch (err) {
       console.error('Error al cargar JSON original:', err);
@@ -91,20 +97,22 @@ function openModal(index = -1) {
     document.getElementById('visibleRecomendados').checked = false;
     document.getElementById('rating').value = '4.5';
     idxInput.value = '-1';
+    document.getElementById('id').value = '';
   } else {
     const p = allProducts[index];
     title.textContent = 'Editar Producto';
     idxInput.value = index;
 
-    document.getElementById('nombre').value       = p.nombre       || '';
-    document.getElementById('img').value          = p.img          || '';
-    document.getElementById('precio').value       = p.precio       || '';
-    document.getElementById('descripcion').value  = p.descripcion  || '';
-    document.getElementById('categoria').value    = p.categoria    || '';
-    document.getElementById('rating').value       = p.rating       || '4.5';
-    document.getElementById('etiquetas').value    = (p.etiquetas || []).join(', ');
-    document.getElementById('visibleCatalogo').checked    = p.visibleCatalogo    !== false;
+    document.getElementById('nombre').value = p.nombre || '';
+    document.getElementById('img').value = p.img || '';
+    document.getElementById('precio').value = p.precio || '';
+    document.getElementById('descripcion').value = p.descripcion || '';
+    document.getElementById('categoria').value = p.categoria || '';
+    document.getElementById('rating').value = p.rating || '4.5';
+    document.getElementById('etiquetas').value = (p.etiquetas || []).join(', ');
+    document.getElementById('visibleCatalogo').checked = p.visibleCatalogo !== false;
     document.getElementById('visibleRecomendados').checked = !!p.visibleRecomendados;
+    document.getElementById('id').value = p.id || '';
   }
 
   modal.show();
@@ -185,37 +193,58 @@ document.addEventListener('DOMContentLoaded', () => {
       isValid = false;
     }
 
+    console.log('Submit iniciado - idx:', document.getElementById('edit-index').value);  // Log antes de idx para ver si llega
+
+    const idx = parseInt(document.getElementById('edit-index').value);
+    console.log('Idx declarado:', idx);  // Log después de declarar idx
+
     if (!isValid) {
+      console.log('Validación falló - chequea campos con is-invalid');
       form.querySelector('.is-invalid')?.focus();
       return;
     }
 
-    // Guardar
-    const idx = parseInt(document.getElementById('edit-index').value);
+    console.log('Validación pasó - creando producto');
+
+    const idInput = document.getElementById('id');
+    let id = idInput.value.trim();
+
+    if (idx === -1) {
+      // Nuevo producto: generar id único si no existe
+      id = id || Date.now().toString();
+    } 
 
     const producto = {
-      nombre:       nombre.value.trim(),
-      img:          img.value.trim(),
-      precio:       precioVal,
-      descripcion:  document.getElementById('descripcion').value.trim(),
-      categoria:    document.getElementById('categoria').value.trim().toLowerCase(),
-      rating:       ratingVal,
-      visibleCatalogo:    document.getElementById('visibleCatalogo').checked,
+      id: id,
+      nombre: nombre.value.trim(),
+      img: img.value.trim(),
+      precio: precioVal,
+      descripcion: document.getElementById('descripcion').value.trim(),
+      categoria: document.getElementById('categoria').value.trim().toLowerCase(),
+      rating: ratingVal,
+      visibleCatalogo: document.getElementById('visibleCatalogo').checked,
       visibleRecomendados: document.getElementById('visibleRecomendados').checked,
-      etiquetas:    document.getElementById('etiquetas').value
-                        .split(',')
-                        .map(t => t.trim())
-                        .filter(t => t)
+      etiquetas: document.getElementById('etiquetas').value
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t)
     };
+
+    console.log('Producto a guardar:', producto);  // Ver el objeto
 
     if (idx === -1) {
       allProducts.push(producto);
+      console.log('Push nuevo - allProducts ahora:', allProducts.length);
     } else {
       allProducts[idx] = producto;
+      console.log('Update en idx', idx);
     }
 
     saveProducts();
+    console.log('Guardado en localStorage');
+
     renderAdminList();
+    console.log('Render llamado');
 
     // SweetAlert2 éxito
     const isNew = idx === -1;
