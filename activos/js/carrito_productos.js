@@ -1,10 +1,11 @@
-// --- 1. PERSISTENCIA Y LÓGICA DE DATOS ---
+// --- 1. FUNCIONES GLOBALES (Deben estar disponibles para el Modal) ---
 
 function cargarCarrito() {
     try {
         const saved = localStorage.getItem('carritoFenixLaser');
         return saved ? JSON.parse(saved) : [];
     } catch (error) {
+        console.error("Error al parsear el carrito:", error);
         return [];
     }
 }
@@ -19,27 +20,27 @@ function guardarCarrito(carrito) {
     document.dispatchEvent(evento);
 }
 
-// --- 2. ACTUALIZACIÓN DEL BADGE (NAVBAR) ---
-
 function actualizarBadge(carrito) {
-    // Buscamos todos los badges (móvil y desktop)
+    // Buscamos todos los posibles badges (ID y Clase)
     const badges = document.querySelectorAll('#cart-badge, .cart-badge');
     const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
 
     badges.forEach(badge => {
         if (totalItems > 0) {
             badge.textContent = totalItems;
-            badge.style.setProperty('display', 'flex', 'important');
+            badge.style.setProperty('display', 'block', 'important'); // Forzamos que se vea
+            badge.classList.remove('d-none'); // Por si Bootstrap lo está ocultando
         } else {
             badge.style.display = 'none';
         }
     });
 }
 
-// --- 3. FUNCIONES DE ACCIÓN ---
-
 function agregarAlCarrito(product) {
+    console.log("Intentando agregar producto:", product);
     let carrito = cargarCarrito();
+    
+    // Usamos == para comparar IDs por si vienen como string o número
     const existing = carrito.find(item => item.id == product.id);
 
     if (existing) {
@@ -56,8 +57,10 @@ function agregarAlCarrito(product) {
 
     guardarCarrito(carrito);
     actualizarBadge(carrito);
+    console.log("Carrito actualizado:", carrito);
 }
 
+// Estas funciones se usan dentro de la página del carrito
 function cambiarCantidad(id, cambio) {
     let carrito = cargarCarrito();
     const producto = carrito.find(item => item.id == id);
@@ -80,7 +83,34 @@ function eliminarDelCarrito(id) {
     actualizarBadge(carrito);
 }
 
-// --- 4. RENDERIZADO DE LA INTERFAZ ---
+// --- 2. EXPOSICIÓN GLOBAL (VITAL PARA EL MODAL) ---
+window.agregarAlCarrito = agregarAlCarrito;
+window.actualizarBadge = actualizarBadge;
+window.cambiarCantidad = cambiarCantidad;
+window.eliminarDelCarrito = eliminarDelCarrito;
+
+// --- 3. LÓGICA DE INTERFAZ (DOM) ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carrito = cargarCarrito();
+    actualizarBadge(carrito);
+
+    // Solo si estamos en la página del carrito ejecutamos el render
+    if (document.getElementById('carrito-items')) {
+        renderizarCarrito();
+        
+        const btnVaciar = document.getElementById('vaciar-carrito');
+        if (btnVaciar) {
+            btnVaciar.addEventListener('click', () => {
+                if (confirm('¿Vaciar todo el carrito?')) {
+                    localStorage.removeItem('carritoFenixLaser');
+                    renderizarCarrito();
+                    actualizarBadge([]);
+                }
+            });
+        }
+    }
+});
 
 function renderizarCarrito() {
     const contenedor = document.getElementById('carrito-items');
@@ -122,19 +152,15 @@ function renderizarCarrito() {
         const row = document.createElement('div');
         row.className = "row mb-4 border-bottom pb-3 align-items-center";
         row.innerHTML = `
-            <div class="col-2"><img src="${item.img}" class="img-fluid rounded shadow-sm"></div>
+            <div class="col-2"><img src="${item.img}" class="img-fluid rounded"></div>
             <div class="col-3"><h6>${item.nombre}</h6></div>
             <div class="col-3 d-flex justify-content-center">
                 <button class="btn btn-sm btn-outline-dark" onclick="cambiarCantidad(${item.id}, -1)">-</button>
-                <span class="mx-3 fw-bold">${item.cantidad}</span>
+                <span class="mx-2">${item.cantidad}</span>
                 <button class="btn btn-sm btn-outline-dark" onclick="cambiarCantidad(${item.id}, 1)">+</button>
             </div>
-            <div class="col-3 text-center"><h6>$${filaTotal.toFixed(2)}</h6></div>
-            <div class="col-1 text-end">
-                <button class="btn btn-link text-danger" onclick="eliminarDelCarrito(${item.id})">
-                    <i class="bi bi-trash3-fill"></i>
-                </button>
-            </div>
+            <div class="col-3 text-center"><h6>$${subtotal.toFixed(2)}</h6></div>
+            <div class="col-1"><button class="btn btn-link text-danger" onclick="eliminarDelCarrito(${item.id})">🗑</button></div>
         `;
         contenedor.appendChild(row);
     });
