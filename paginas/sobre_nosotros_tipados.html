@@ -45,6 +45,16 @@
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
 
 <main>
+<!-- Header Title -->
+<header class="w-full py-6 flex items-center justify-center border-b border-white/10 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+  <div class="flex items-center gap-3">
+    <div class="p-2 bg-primary rounded-lg text-white">
+      <span class="material-symbols-outlined block">terminal</span>
+    </div>
+    <h1 class="text-3xl font-bold tracking-tight">DevTeam <span class="text-primary">Tipados</span></h1>
+  </div>
+</header>
+
 <!-- Hero Section -->
 <section class="relative pt-20 pb-32 overflow-hidden">
 <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(19,127,236,0.1),transparent_70%)]"></div>
@@ -72,14 +82,14 @@
   Ver nuestro trabajo
   <span class="material-symbols-outlined">arrow_forward</span>
 </a></button>
-<button class="px-8 py-4 rounded-xl font-bold border border-white/10 hover:bg-white/5 transition-all">
-                                Conoce al equipo
-                            </button>
+<a href="#team" class="px-8 py-4 rounded-xl font-bold border border-white/10 hover:bg-white/5 transition-all">
+    Conoce al equipo
+</a>
 </div>
 </div>
 <div class="relative group">
 <div class="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-<div class="relative rounded-2xl overflow-hidden border border-white/10 aspect-video lg:aspect-square bg-slate-800" data-alt="Team of developers collaborating in a modern office space" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASarRlRQv4qk-vct8wtZMJ-KKRCfuys8EtpdglcEOeJHe0Z5CVjKt1N0locvJOEg7WMlc9JkkAFNicv_Ixt37MQJN6XCOf33Pg_e5NrZm-2nRL-NTqxHI7UPnPWs7UH08PC_53-PmkJtHRZzBWue_hheMhtGuu125ORfR8vdhD9jI2WDh0eKvRhCnUx73pofYQqdF_N8QZUAQ7YEf_acSgu08HPOt7Bq3Upx_O5JGJsje1DnCaELNOhKaMfF7wW_nbaUzP-8_hvPE"); background-size: cover; background-position: center;'>
+<div class="relative rounded-2xl overflow-hidden border border-white/10 aspect-video lg:aspect-square bg-slate-800" data-alt="Team of developers collaborating" style='background-image: url("https://lh3.googleusercontent.com/u/0/d/1EAGPBrXj3C2e7lqyQQXk8DyL1QK3iWOl"); background-size: cover; background-position: center;'> 
 </div>
 </div>
 </div>
@@ -99,7 +109,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Headshot of Alex, Lead Architect with a friendly smile" src="https://media.licdn.com/dms/image/v2/D4E03AQFZwx1SOpGP-w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723961647857?e=1772668800&v=beta&t=BBx7Ci0FfEcBmH967cvNV-Xwv_jSGtMafrwk1UWCxSg"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/Dammtz" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -118,7 +128,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Portrait of Sarah, UI/UX Designer looking thoughtfully at the camera" src="https://media.licdn.com/dms/image/v2/C5603AQEQsyEkpU534Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1659042985556?e=1772668800&v=beta&t=O_scS-lxwT_S6fXB5xmTVukhjOb-DHWMbdJtOaXZt8E"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/hayoungpark97" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -137,7 +147,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Professional photo of Marcus, Backend Engineer in a casual hoodie" src="https://media.licdn.com/dms/image/v2/D4E03AQFkhf3JoNswqQ/profile-displayphoto-crop_800_800/B4EZvcigvrIIAM-/0/1768931596192?e=1772668800&v=beta&t=2Ry2cV1Upe9lww1o5DaOIqkSKFos8pJz52zQSub23lA"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/rea-barajas" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -156,7 +166,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Portrait of Elena, Frontend Specialist smiling confidently" src="https://media.licdn.com/dms/image/v2/D4E03AQGcqJSJ1S_5lg/profile-displayphoto-crop_800_800/B4EZu1VnrtKYAI-/0/1768273903581?e=1772668800&v=beta&t=OcDYM28n0SuRyT3LKK9l7V6PAaz86T8qYBUBpOazW6M"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/genasPaoli" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -175,7 +185,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Headshot of James, DevOps Engineer in a tech-ready workspace" src="https://media.licdn.com/dms/image/v2/D5603AQGXn6eZVuXRRA/profile-displayphoto-crop_800_800/B56ZsOpCxHJAAM-/0/1765477202088?e=1772668800&v=beta&t=DHMF4ziuw8tBEp5Z_mpxvNsH-xlp5_iE5uzyJf_Y2MU"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/erik-perez-1" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -194,7 +204,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Portrait of Priya, QA Automation Engineer" src="https://media.licdn.com/dms/image/v2/D4E03AQEzwiunVu6G5w/profile-displayphoto-crop_800_800/B4EZsOdmAnGcAM-/0/1765474197852?e=1772668800&v=beta&t=LyRaF9lNHTNIu0D5G2hK9u53HWTMTqhlgjWcMuUMpP8"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/gtorres4590-dev" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -213,7 +223,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Portrait of David, Full Stack Engineer in an outdoor setting" src="https://media.licdn.com/dms/image/v2/D5603AQH3dgFHD_xuPg/profile-displayphoto-crop_800_800/B56ZsRFv1WG8AI-/0/1765518279260?e=1772668800&v=beta&t=jMCrnY8tzlAL1zqpdzw8kVRC7PiDmcDZ79w5OXPiy7U"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/AlexisUriel394255" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
@@ -232,7 +242,7 @@
 <div class="group flex flex-col">
 <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-800 relative">
 <img alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" data-alt="Headshot of Maria, Security Expert with a bright background" src="https://media.licdn.com/dms/image/v2/D4E35AQEiLy0vKARqYg/profile-framedphoto-shrink_400_400/B4EZwLOnnGKAAc-/0/1769714907871?e=1771884000&v=beta&t=XTKOilmMLdHcBQN6NaMfEzpi8QRGc8F1l2Ye4J3CIqE"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity flex items-center justify-center gap-4">
+<div class="absolute inset-0 bg-primary/20 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity flex items-end justify-center gap-4 pb-4">
 <!-- Github -->
 <a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center hover:bg-primary transition-colors" href="https://github.com/ricardomillan13/" target="_blank" rel="noopener noreferrer">
 <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
