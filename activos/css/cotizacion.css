@@ -52,15 +52,6 @@
   margin-bottom: 8px;
 }
 
-/* Inputs, Selects y Textareas */
-.input-custom{
-  background: rgba(255, 255, 255, 0.10) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  border-radius: 8px !important;  /* igual que contactanos */
-  color: var(--offwhite) !important;
-  padding: 12px 15px;
-}
-
 .input-custom::placeholder{
   color: rgba(242, 240, 241, 0.65);
 }
@@ -130,4 +121,82 @@
   background-repeat: no-repeat;
   background-position: right 0.9rem center;
   background-size: 16px 16px;
+}
+
+/* Inputs, Selects y Textareas */
+
+.input-custom.custom-select{
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 8px !important;  /* igual que contactanos */
+  color: var(--offwhite) !important;
+  padding: 12px 15px;
+} 
+
+/* ──────────────────────────────────────────────── */
+/* SELECT ESTÁNDAR: Override con alta especificidad */
+/* ──────────────────────────────────────────────── */
+
+/* Base: fondo blanco, texto oscuro, flecha naranja */
+.input-custom.custom-select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  width: 100% !important;               /* ← importante: ocupa toda la columna */
+  max-width: none !important;           /* ← evita que se limite artificialmente */
+  box-sizing: border-box !important;    /* asegura que padding no desborde */
+
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 1px solid #d1d5db !important;
+
+  /* Flecha naranja - ajusta posición si es necesario */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E86C1A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;  /* un poco más ajustado */
+  background-size: 16px !important;
+
+  padding: 0.75rem 2.5rem 0.75rem 0.9rem !important;   /* espacio para flecha a la derecha */
+  border-radius: 8px !important;
+
+  transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+
+/* Mantén los otros :hover, :focus, option, etc. como estaban */
+
+/* Hover: borde naranja (igual que tu caja de "Detalles del Proyecto") */
+.input-custom.custom-select:hover {
+  border-color: var(--orange) !important;
+}
+
+/* Focus: borde + sombra naranja (consistente con tus otros inputs) */
+.input-custom.custom-select:focus {
+  background-color: #ffffff !important;  /* mantiene blanco */
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18) !important;  /* opacidad como en .input-custom:focus */
+}
+
+/* Placeholder (opción inicial "Selecciona un producto.") */
+.input-custom.custom-select option[value=""][selected],
+.input-custom.custom-select option[disabled] {
+  color: #6b7280 !important;  /* gris medio estándar – o var(--letraformularios) para coherencia */
+}
+
+/* Opciones: fondo blanco, texto oscuro */
+.input-custom.custom-select option {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Hover en opciones: naranja claro (no saturado para look estándar) */
+.input-custom.custom-select option:hover {
+  background-color: rgba(232, 108, 26, 0.1) !important;  /* naranja suave */
+}
+
+/* Opción seleccionada: naranja sólido con texto blanco */
+.input-custom.custom-select option:checked,
+.input-custom.custom-select option[aria-selected="true"] {
+  background-color: var(--orange) !important;
+  color: #ffffff !important;
 }
