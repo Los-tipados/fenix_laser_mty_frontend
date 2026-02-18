@@ -50,3 +50,78 @@ document.addEventListener('carritoActualizado', () => {
 
 // Escuchar cambios de otros tabs/windows
 window.addEventListener('storage', window.actualizarBadgeNavbar);
+
+
+
+
+
+
+
+//Funcion para status de login
+document.addEventListener('DOMContentLoaded', () => {
+    const autenticado = localStorage.getItem('autenticado');
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    const btnInicio = document.getElementById('btnInicio');
+    const btnRegistro = document.getElementById('btnRegistro');
+    const mensajeBienvenida = document.getElementById('mensajeBienvenida');
+    const btnLogout = document.getElementById('btnLogout');
+
+    if (autenticado === 'true' && usuario) {
+        btnInicio.classList.add("oculto");
+        btnRegistro.classList.add("oculto");
+        mensajeBienvenida.classList.remove("oculto");
+        mensajeBienvenida.textContent = "Bienvenido de nuevo " + usuario.nombre;
+        btnLogout.classList.remove("oculto");
+    } else {
+        btnInicio.classList.remove("oculto");
+        btnRegistro.classList.remove("oculto");
+        mensajeBienvenida.classList.add("oculto");
+        btnLogout.classList.add("oculto");
+    }
+
+    // Evento de logout
+    btnLogout.addEventListener('click', () => {
+        /*localStorage.removeItem('token'); Solo si se agrega token*/
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('autenticado');
+        window.location.href = '/login.html'; // redirige al login
+    });
+});
+
+
+
+
+
+
+/*
+// Otra manera mas sencilla de status 
+function actualizarEstadoSesion() {
+    const usuario = localStorage.getItem("usuario");
+    const mensajeBienvenida = document.getElementById("mensajeBienvenida");
+    const btnLogout = document.getElementById("btnLogout");
+
+    if (usuario) {
+        mensajeBienvenida.textContent = `¡Hola de nuevo ${usuario}!`;
+        mensajeBienvenida.classList.remove("oculto");
+        btnLogout.classList.remove("oculto");
+    } else {
+        mensajeBienvenida.classList.add("oculto");
+        btnLogout.classList.add("oculto");
+    }
+}
+
+// Actualizar estado de sesión al cargar la página
+document.addEventListener("DOMContentLoaded", actualizarEstadoSesion);
+
+// Escuchar cambios en el almacenamiento local (para actualizaciones de sesión)
+window.addEventListener('storage', actualizarEstadoSesion);
+
+// Función para cerrar sesión
+document.getElementById("btnLogout").addEventListener("click", () => {
+    localStorage.removeItem("usuario");
+    actualizarEstadoSesion();
+    // Redirigir a la página de inicio o de inicio de sesión
+    window.location.href = "/paginas/index.html";
+});
+*/
