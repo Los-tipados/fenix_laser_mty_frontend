@@ -1,3 +1,6 @@
+// =============================================
+//  FUNCIÓN GENÉRICA DE NOTIFICACIÓN (SweetAlert2)
+// =============================================
 function notificar(titulo, mensaje, icono) {
     Swal.fire({
         title: titulo,
@@ -6,22 +9,70 @@ function notificar(titulo, mensaje, icono) {
     });
 }
 
+// =============================================
+//  MOSTRAR ERROR EN UN CAMPO
+// =============================================
+function mostrarError(id, mensaje) {
+    const elemento = document.getElementById(id);
+    elemento.classList.add('is-invalid');
 
+    // Construye el id del div de error: ej. "nombre" -> "errorNombre"
+    const errorDivId = 'error' + id.charAt(0).toUpperCase() + id.slice(1);
+    const errorDiv = document.getElementById(errorDivId);
+    if (errorDiv) {
+        errorDiv.innerText = mensaje;
+    }
+}
 
-document.getElementById('registroForm').addEventListener('submit', function(e) {
+// =============================================
+//  LIMPIAR FORMULARIO Y ESTILOS DE ERROR
+// =============================================
+function limpiarFormulario() {
+    const formulario = document.getElementById('registroForm');
+
+    // 1. Limpia los valores de todos los inputs
+    formulario.reset();
+
+    // 2. Elimina las clases de error (is-invalid)
+    const inputs = formulario.querySelectorAll('.form-control');
+    inputs.forEach(input => input.classList.remove('is-invalid'));
+}
+
+// =============================================
+//  DESHABILITAR / HABILITAR BOTÓN DE SUBMIT
+//  (evita múltiples clicks mientras se procesa)
+// =============================================
+function setBotonCargando(cargando) {
+    const boton = document.querySelector('#registroForm button[type="submit"]');
+    if (!boton) return;
+
+    if (cargando) {
+        boton.disabled = true;
+        boton.dataset.textoOriginal = boton.innerText;
+        boton.innerText = 'Registrando...';
+    } else {
+        boton.disabled = false;
+        boton.innerText = boton.dataset.textoOriginal || 'Registrarse';
+    }
+}
+
+// =============================================
+//  EVENTO SUBMIT DEL FORMULARIO
+// =============================================
+document.getElementById('registroForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    
-    // Limpiar estados previos
+
+    // --- Limpiar estados previos de validación ---
     const inputs = this.querySelectorAll('.form-control');
     inputs.forEach(input => input.classList.remove('is-invalid'));
-    
+
     let esValido = true;
 
-    // Obtener valores
-    const nombre = document.getElementById('nombre').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
+    // --- Obtener valores ---
+    const nombre          = document.getElementById('nombre').value.trim();
+    const telefono        = document.getElementById('telefono').value.trim();
+    const email           = document.getElementById('email').value.trim();
+    const password        = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     // --- VALIDACIONES ---
@@ -47,58 +98,65 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
         esValido = false;
     }
 
-    if (password !== confirmPassword || confirmPassword === "") {
+    if (confirmPassword === '' || password !== confirmPassword) {
         mostrarError('confirmPassword', 'Las contraseñas no coinciden.');
         esValido = false;
     }
 
-    // --- CREACIÓN DEL OBJETO JSON ---
-    if (esValido) {
-        // Creamos el objeto con la estructura deseada
-        const usuarioData = {
-            nombre_completo: nombre,
-            telefono: telefono,
-            email: email, // Este actúa como nombre de usuario
-            password: password
-        };
+    // --- Si hay errores, detener aquí ---
+    if (!esValido) return;
 
-        // Convertimos el objeto a una cadena JSON (opcional, dependiendo de cómo lo envíes)
-        const usuarioJSON = JSON.stringify(usuarioData);
+    // --- CREACIÓN DEL OBJETO DE DATOS ---
+    const usuarioData = {
+        nombre:    nombre,     
+        correo:    email,      
+        telefono:  telefono,
+        password:  password,
+        fecha_registro:   new Date().toISOString()  // Fecha automática en formato ISO 8601
+    };
 
-        console.log("Objeto JSON creado con éxito:");
-        console.log(usuarioJSON);
+    // console.log('Objeto JSON a enviar:', JSON.stringify(usuarioData));
 
-// --- LLAMADA A LA FUNCIÓN DE LIMPIEZA ---
+    // --- LLAMADA A LA API ---
+    // ⚠️ Hay que cambiar esta URL según el entorno (desarrollo / producción)
+    const url = 'http://localhost:8080/api/v1/new-user/';
+
+    // Deshabilitar botón mientras se procesa la petición
+    setBotonCargando(true);
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuarioData)
+        });
+
+        // Validar que el servidor respondió con un status OK (200-299)
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            const mensajeError = errorData?.message || `Error del servidor: ${response.status}`;
+            throw new Error(mensajeError);
+        }
+
+        const data = await response.json();
+        // console.log('Usuario guardado correctamente:', data);
+
+        // Solo limpiar y notificar éxito si el servidor confirmó la operación
         limpiarFormulario();
+        notificar('¡Registro exitoso!', 'Ahora eres parte de Fenix Laser', 'success');
 
-        notificar("¡Registro exitoso!","Ahora eres parte de Fenix Laser","success");
-       
-        
-        // Aquí podrías usar fetch() para enviar usuarioJSON a tu servidor
+    } catch (error) {
+        // Notificar al usuario si hubo un error de red o del servidor
+       // console.error('Error al registrar usuario:', error);
+        notificar(
+            'Error al registrar',
+            error.message || 'Hubo un problema al conectar con el servidor. Intenta de nuevo.',
+            'error'
+        );
+    } finally {
+        // Siempre rehabilitar el botón al terminar, sin importar el resultado
+        setBotonCargando(false);
     }
 });
-
-function mostrarError(id, mensaje) {
-    const elemento = document.getElementById(id);
-    elemento.classList.add('is-invalid');
-    const errorDiv = document.getElementById('error' + id.charAt(0).toUpperCase() + id.slice(1));
-    if (errorDiv) {
-        errorDiv.innerText = mensaje;
-    }
-}
-
-
-
-// Función para resetear los campos y quitar estilos de error
-function limpiarFormulario() {
-    const formulario = document.getElementById('registroForm');
-    
-    // 1. Borra el texto de todos los inputs
-    formulario.reset();
-
-    // 2. (Opcional) Elimina las clases de borde rojo (is-invalid) si quedaron algunas
-    const inputs = formulario.querySelectorAll('.form-control');
-    inputs.forEach(input => {
-        input.classList.remove('is-invalid');
-    });
-}
