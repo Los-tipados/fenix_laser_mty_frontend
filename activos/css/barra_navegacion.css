@@ -64,3 +64,26 @@ svg:hover {
 }
 
 /*para actualzizar*/
+
+.position-relative {
+    position: relative !important;
+}
+
+/* Estilo del Badge */
+.cart-badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.6em;
+    background-color: #ff4757 !important; /* Rojo vibrante */
+    color: white !important;
+    font-weight: bold;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 9999;}
+
+
+svg {
+    color: white; 
+    width: 28px;
+    height: 28px;
+}

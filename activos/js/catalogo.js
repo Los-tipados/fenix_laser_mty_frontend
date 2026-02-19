@@ -39,7 +39,7 @@ function getItemsPerSlide() {
 // ==============================
 function createCard(product, isCatalog = true) {
     const cardHTML = `
-        <div class="card h-100">
+        <div class="card h-100 ${isCatalog ? '' : 'card-carousel'}">
             <img src="${product.img}" class="card-img-top" alt="${product.nombre}">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.nombre}</h5>
@@ -51,7 +51,7 @@ function createCard(product, isCatalog = true) {
                     <small class="text-white-50 ms-1">(${product.rating || 0})</small>
                 </div>
                 <p class="card-text flex-grow-1">${product.descripcion}</p>
-                ${isCatalog ? '<a href="#" class="btn btn-outline-warning mt-auto">Ver detalle</a>' : ''}
+                ${isCatalog ? '<a href="/paginas/modal_detalle.html" class="btn btn-outline-warning mt-auto btn-ver-detalle">Ver detalle</a>' : ''}
             </div>
         </div>
     `;
@@ -60,6 +60,9 @@ function createCard(product, isCatalog = true) {
     wrapper.className = isCatalog
         ? 'col-12 col-sm-6 col-md-6 col-lg-4 mb-4'
         : '';
+
+    wrapper.dataset.product = JSON.stringify(product);
+
     wrapper.innerHTML = cardHTML;
 
     return wrapper;
@@ -90,12 +93,12 @@ function renderCarousel(products) {
         recommended.slice(i, i + itemsPerSlide).forEach(product => {
             const col = document.createElement('div');
 
-            col.className =
+            col.className = 
                 itemsPerSlide === 1
                     ? 'col-12'
                     : itemsPerSlide === 2
-                        ? 'col-12 col-md-6'
-                        : 'col-12 col-md-6 col-lg-4';
+                        ? 'col-12 col-sm-6'
+                        : 'col-12 col-sm-6 col-lg-3';
 
             col.appendChild(createCard(product, false));
             row.appendChild(col);
@@ -148,7 +151,7 @@ function renderCatalog(products) {
 // ==============================
 // FETCH + EVENTOS
 // ==============================
-fetch('../activos/data/productos.json')
+fetch('/activos/data/productos.json')
     .then(res => res.json())
     .then(products => {
         allProducts = products;

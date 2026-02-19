@@ -3,6 +3,7 @@
 /* =========================
    VARIABLES
 ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root{
   --red: #C62828;
@@ -16,6 +17,7 @@
   --fuente-principal: 'Montserrat', sans-serif;
   --letraformularios: #D7D7D7;
   --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.18);
   --night-opaco: #1f1c2d93;
   --brown-opaco: #85382893;
 
@@ -28,6 +30,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+*:not([class*="fa-"]):not(.fa) {
+  font-family: var(--fuente-principal);
 }
 
 /* =========================
@@ -57,9 +62,9 @@ h1{
   margin: 6rem 0 1.5rem;
 }
 
-h2{
+/*h2{
   margin: 0.5rem 0 1.5rem;
-}
+}*/
 
 h2, h3, h4, h5, h6{
     font-family: var(--fuente-principal);
@@ -70,22 +75,3 @@ h2, h3, h4, h5, h6{
 p{
     color: var(--offwhite);
 }
-
-
-/*.form-label {
-    color: var(--offwhite);
-}
-
-.form-text
- {
-      color: var(--offwhite);
-
-}
-
-.div.mb-3.form-check{
-      color: var(--offwhite);
-
-}
-
-
-

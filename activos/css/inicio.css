@@ -1,27 +1,36 @@
 /* ================= COLORES ================= */
+h1 {
+  font-weight: 300;
+  text-align: left;
+}
+
 .text-orange {
   color: #E86C1A;
+  font-weight: 750;
 }
 
 .btn-catalogo { /*btn-orange*/
-  background-color: #ff7a00;
+  background-color: #E86C1A;
   color: #fff;
   border: none;
 }
 
 .btn-catalogo:hover {
-  background-color: #E86C1A;
+  background-color: #F2A23A;
 }
 
-.btn-outline-ver-todo {
-  border: 1px solid #ff7a00;
-  color: #ff7a00;
-}
-
-.btn-outline-ver-todo:hover {
-  background-color: #ff7a00;
+.btn-regalo-light {
+  border: 1px solid #E86C1A;
+  background-color: #f2a23a10;
   color: #fff;
 }
+
+.btn-regalo-light:hover {
+  background-color: #E86C1A;
+  color: #fff;
+}
+
+
 
 /* ================= HERO ================= */
 .hero-section {
@@ -52,55 +61,62 @@ h2{
 }
 
 .card-img-top{
-  height: 180px;          /* altura fija de la imagen */
-  object-fit: fill;      /* se ajusta sin deformarse */
+  height: 180px;    
   width: 100%;
   object-position: center;
 }
 
-.card-body{
-  height: 100px;
+.h-100 {
+  height: 100%;
+  color: #f2a23a10;
 }
 
-
 .products-section .card {
+
   border: none;
   transition: transform 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 .products-section .card:hover {
   transform: translateY(-6px);
 }
 
-/* ================= FLECHAS CARRUSEL ================= */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
+/* ================= FLECHAS CARRUSEL que se muestren fuera de cards ================= */
+.carousel-control-prev{
+display: flex;
+align-items: center;
+justify-content: flex-start; 
+flex-wrap: wrap;;
 }
 
-.carousel-control-prev {
-  left: -60px;
-}
 
 .carousel-control-next {
-  right: -60px;
+display: flex;
+align-items: center;
+justify-content: flex-end; 
+flex-wrap: wrap;
 }
+
+
 
 /* Estilo flechas */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: var(--brown-opaco);
+  background-color: var(--night-opaco);
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background-size: 50% 50%;
+  background-size: 45% 45%;
 }
 
 /* ============== POR QUE ELEGIRNOS =================*/
 
-/*.btn{
-  margin-bottom: 20px;
-}*/ 
+svg {
+  color: var(--orange);
+  margin-right: 6px;
+}
 
 
 /* ============== PROCESO =================*/
@@ -124,33 +140,60 @@ h2{
 /* Mobile */
 @media (max-width: 767.98px) {
   .video-small {
-    max-width: 100%;
+    max-width: 70%;
+    margin: 10px auto;
   }
 }
 
 
-/* ================= MOBILE ================= */
-@media (max-width: 767.98px) {
+/* ================= MOBILE ================= --*/
+ 
 
-  /* Ocultar flechas en móvil */
-  .carousel-control-prev,
-  .carousel-control-next {
+/* Menos de 577px → desactivar carrusel y mostrar solo las 4 cards del primer slide */
+@media (max-width: 767px) {
+ 
+  .hero-section {
+    text-align: center;
+  }
+
+   /* Ocultar controles del carrusel */
+  #productsCarousel .carousel-control-prev,
+  #productsCarousel .carousel-control-next {
+    display: none !important;
+  }
+
+  /* Ocultar todos los slides excepto el primero */
+  #productsCarousel .carousel-inner .carousel-item {
     display: none;
   }
 
-  .hero-section {
-    text-align: center;
+  #productsCarousel .carousel-inner .carousel-item:first-child {
+    display: block;
+  }
+
+  /* Mostrar las cards en cuadrícula normal */
+  #productsCarousel .carousel-inner .carousel-item:first-child .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #productsCarousel .carousel-inner .carousel-item:first-child .col-md-3 {
+    flex: 0 0 50%; /* 2 por fila en pantallas pequeñas */
+    max-width: 50%;
   }
 }
 
 /* ================= RESEÑAS ================= */
 
 .reviews-section {
-  background: linear-gradient(90deg, #1f1c2d, #853728);
+  
+  margin: 50px;
+
 }
 
-.review-card {
-  max-width: 360px;
+.review-card, 
+.subscribe-card {
+  max-width: 420px;
   border-radius: 20px;
   background: #f2f0f1;
   border: none;
@@ -187,20 +230,15 @@ h2{
   font-size: 0.9rem;
 }
 
-/* Flechas */
-.reviews-section .carousel-control-prev-icon,
-.reviews-section .carousel-control-next-icon {
-  background-color: var(--brown-opaco);
-  border-radius: 50%;
-  width: 60px;
-  height: 30px;
-}
 
 /* Suscripción */
+
+
 .subscribe-card {
   max-width: 350px;
   border-radius: 20px;
   border: none;
+
 }
 
 .sub-text{
@@ -211,7 +249,7 @@ h2{
 @media (max-width: 768px) {
   .review-card,
   .subscribe-card {
-    max-width: 100%;
+    margin: 0 auto 40px;
   }
 
   .reviews-section h4 {

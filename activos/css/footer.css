@@ -3,11 +3,18 @@
   background-color: var(--night);
   color: var(--offwhite);
   font-family: var(--fuente-principal);
+  /* Activamos Flexbox en el padre */
+  display: flex;
+  flex-direction: column; /* Apila los elementos (container, iconos, copyright) */
+  align-items: center;
+  text-align: center;
 }
 /* Aqui son es el contenedor de los iconos que sean flexibles y su espaciado */
 .contenedor-iconos {
   display: flex;
   gap: 15px;
+  width: 100%; /* Asegura que el div use el ancho disponible */
+  justify-content: center;
 }
 /* Imagen del mapa con borde redondeado */
 .card-imagen {

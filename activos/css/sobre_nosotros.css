@@ -70,6 +70,19 @@
 
 /* Desktop: video más pequeño que su columna */
 @media (min-width: 769px) {
+  .nosotros-wrapper {
+        position: relative !important;
+        top: 90px !important; /* Desplaza TODO el bloque hacia abajo */
+        display: block !important;
+        padding-bottom: 100px !important; /* Compensa el movimiento abajo para no tapar el footer */
+    }
+
+    /* Aseguramos que el título respire */
+    .titulo-nosotros {
+        display: block !important;
+        margin: 0 auto 20px !important;
+        padding-top: 20px !important;
+    }
   .contenedor-video {
     display: flex;
     justify-content: center;   /* centra horizontal */
@@ -198,6 +211,7 @@ Sección CEO
 }
 
 @media (max-width: 768px) {
+
   .seccion-ceo {
   flex-direction: column;
 }
