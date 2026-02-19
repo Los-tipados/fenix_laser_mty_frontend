@@ -1,19 +1,20 @@
-window.actualizarBadgeNavbar = function() {
+// ========================================
+// BADGE DEL CARRITO
+// ========================================
+window.actualizarBadgeNavbar = function () {
     const saved = localStorage.getItem('carritoFenixLaser');
     const carrito = saved ? JSON.parse(saved) : [];
     const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
-    
+
     const badges = document.querySelectorAll('.cart-badge');
 
     if (badges.length === 0) {
-        // Los badges aún no existen, reintentar
         setTimeout(window.actualizarBadgeNavbar, 50);
         return;
     }
 
     badges.forEach(badge => {
         badge.textContent = totalItems;
-        
         if (totalItems > 0) {
             badge.classList.remove('d-none');
             badge.style.setProperty('display', 'flex', 'important');
@@ -24,70 +25,77 @@ window.actualizarBadgeNavbar = function() {
     });
 };
 
-// Carga dinámica de la navbar
-document.addEventListener("DOMContentLoaded", () => {
-    const navbarContainer = document.getElementById("navbar");
+// ========================================
+// FUNCIÓN DE ESTADO DE SESIÓN
+// Se llama DESPUÉS de que la navbar está inyectada
+// ========================================
+function actualizarEstadoSesion() {
+    const autenticado = localStorage.getItem('autenticado');
+    const usuario     = JSON.parse(localStorage.getItem('usuario'));
+
+    const btnInicio          = document.getElementById('btnInicio');
+    const btnRegistro        = document.getElementById('btnRegistro');
+    const mensajeBienvenida  = document.getElementById('mensajeBienvenida');
+    const btnLogout          = document.getElementById('btnLogout');
+
+    // Verificar que los elementos existen antes de manipularlos
+    if (!btnInicio || !btnRegistro || !mensajeBienvenida || !btnLogout) {
+        console.warn('Elementos de sesión no encontrados en la navbar');
+        return;
+    }
+
+    if (autenticado === 'true' && usuario) {
+        // Usuario autenticado: ocultar login/registro, mostrar nombre y logout
+        btnInicio.classList.add('d-none');
+        btnRegistro.classList.add('d-none');
+        mensajeBienvenida.classList.remove('d-none');
+        mensajeBienvenida.textContent = `¡Hola, ${usuario.nombre}!`;
+        btnLogout.classList.remove('d-none');
+    } else {
+        // Sin sesión: mostrar login/registro, ocultar nombre y logout
+        btnInicio.classList.remove('d-none');
+        btnRegistro.classList.remove('d-none');
+        mensajeBienvenida.classList.add('d-none');
+        btnLogout.classList.add('d-none');
+    }
+
+    // Evento de cerrar sesión
+    btnLogout.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('autenticado');
+        window.location.href = '/index.html';
+    });
+}
+
+// ========================================
+// CARGA DINÁMICA DE LA NAVBAR
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const navbarContainer = document.getElementById('navbar');
     if (!navbarContainer) return;
 
-    fetch("/paginas/barra_de_navegacion.html")
+    fetch('/paginas/barra_de_navegacion.html')
         .then(res => res.text())
         .then(html => {
             navbarContainer.innerHTML = html;
-            console.log("Navbar inyectada");
-            
-            // Actualizar inmediatamente y con reintentos
+
+            // Badge del carrito — después de inyectar la navbar
             window.actualizarBadgeNavbar();
             setTimeout(window.actualizarBadgeNavbar, 100);
             setTimeout(window.actualizarBadgeNavbar, 300);
+
+            // Estado de sesión — después de inyectar la navbar
+            actualizarEstadoSesion();
         })
-        .catch(error => console.error("Error cargando navbar:", error));
+        .catch(error => console.error('Error cargando navbar:', error));
+
 });
 
-// Escuchar eventos personalizados del carrito
-document.addEventListener('carritoActualizado', () => {
-    window.actualizarBadgeNavbar();
-});
-
-// Escuchar cambios de otros tabs/windows
+// ========================================
+// EVENTOS EXTERNOS
+// ========================================
+document.addEventListener('carritoActualizado', () => window.actualizarBadgeNavbar());
 window.addEventListener('storage', window.actualizarBadgeNavbar);
-
-
-
-
-
-
-
-//Funcion para status de login
-document.addEventListener('DOMContentLoaded', () => {
-    const autenticado = localStorage.getItem('autenticado');
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
-
-    const btnInicio = document.getElementById('btnInicio');
-    const btnRegistro = document.getElementById('btnRegistro');
-    const mensajeBienvenida = document.getElementById('mensajeBienvenida');
-    const btnLogout = document.getElementById('btnLogout');
-
-    if (autenticado === 'true' && usuario) {
-        btnInicio.classList.add("oculto");
-        btnRegistro.classList.add("oculto");
-        mensajeBienvenida.classList.remove("oculto");
-        mensajeBienvenida.textContent = "Bienvenido de nuevo " + usuario.nombre;
-        btnLogout.classList.remove("oculto");
-    } else {
-        btnInicio.classList.remove("oculto");
-        btnRegistro.classList.remove("oculto");
-        mensajeBienvenida.classList.add("oculto");
-        btnLogout.classList.add("oculto");
-    }
-
-    // Evento de logout
-    btnLogout.addEventListener('click', () => {
-        /*localStorage.removeItem('token'); Solo si se agrega token*/
-        localStorage.removeItem('usuario');
-        localStorage.removeItem('autenticado');
-        window.location.href = '/login.html'; // redirige al login
-    });
-});
 
 
 
