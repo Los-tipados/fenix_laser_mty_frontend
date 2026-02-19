@@ -1,66 +1,112 @@
-// modal_galeria.js - Versión con Botón de Carrito pero SIN PRECIOS
-   window.loadGlobalModal = function(callback) {
-          if (typeof callback === 'function') callback();
-      }
+// modal_galeria.js - Versión con HTML idéntico a modal_detalle
+window.loadGlobalModal = function(callback) {
+    if (typeof callback === 'function') callback();
+};
 
-
-console.log("modal_galeria.js → cargado (Versión con Carrito)");
+console.log("modal_galeria.js → Cargado con estilo de tienda");
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.loadGlobalModal(() => {
-    const modalElement = document.getElementById('detalleProductoModal');
-    if (!modalElement) return;
+    window.loadGlobalModal(() => {
+        const modalElement = document.getElementById('detalleProductoModal');
+        if (!modalElement) return;
+        const modal = new bootstrap.Modal(modalElement);
+        const modalContent = document.getElementById('modalContent');
+        const modalLoading = document.getElementById('modalLoading');
 
-    const modal = new bootstrap.Modal(modalElement);
-    const modalContent = document.getElementById('modalContent');
-    const modalLoading = document.getElementById('modalLoading');
+        window.mostrarDetalleGaleria = function(product) {
+            modalLoading.classList.remove('d-none');
+            modalContent.innerHTML = '';
 
-    window.mostrarDetalleGaleria = function(product) {
-      modalLoading.classList.remove('d-none');
-      modalContent.innerHTML = '';
+            setTimeout(() => {
+                modalLoading.classList.add('d-none');
 
-      setTimeout(() => {
-        modalLoading.classList.add('d-none');
+                // Mismo cálculo de precios que el otro modal
+                const precioBase = product.precio || 0;
+                const precioViejo = Math.round(precioBase * 1.25);
 
-        modalContent.innerHTML = `
-          <div class="product-detail-wrapper px-3 py-4">
-            <div class="row align-items-center g-4">
-              <div class="col-lg-6 text-center">
-                <img src="${product.img}" alt="${product.nombre}" class="product-img-main img-fluid">
-              </div>
-              
-              <div class="col-lg-6">
-                <h1 class="poker-title mb-3">${product.nombre.toUpperCase()}</h1>
-                
-                <p class="product-description mb-4">
-                  ${product.descripcion || 'Descripción no disponible'}
-                </p>
-                
-                <div class="badges-container">
-                  <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1OPZkmtlTN9Pqo6YQyU3H7MtJVswAaNMV" alt="Envíos"></div>
-                  <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1CJalKdsJKGFan4UWgaF5d4Pgynf8y5MS" alt="Grabado"></div>
-                  <div class="badge-promo"><img src="https://lh3.googleusercontent.com/u/0/d/1LPp8G3PkhAmC5iWsqJwWG9kdOdRyiTMr" alt="Seguridad"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
+                // HTML EXACTAMENTE IGUAL AL DE LA TIENDA
+                modalContent.innerHTML = `
+                    <div class="product-detail-wrapper px-3 py-4">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6 text-center text-lg-start">
+                                <img 
+                                    src="${product.img}" 
+                                    alt="${product.nombre}" 
+                                    class="product-img-main img-fluid"
+                                >
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <h1 class="poker-title mb-3">${product.nombre.toUpperCase()}</h1>
+                                
+                          
 
-        modal.show();
-      }, 300);
-    };
+                                <p class="product-description mb-4">
+                                    ${product.descripcion || 'Descripción no disponible'}
+                                </p>
+                                
+                                <div class="badges-container mb-4">
+                                    <div class="badge-promo">
+                                        <img src="https://lh3.googleusercontent.com/u/0/d/1OPZkmtlTN9Pqo6YQyU3H7MtJVswAaNMV" alt="Envíos $250">
+                                    </div>
+                                    <div class="badge-promo">
+                                        <img src="https://lh3.googleusercontent.com/u/0/d/1CJalKdsJKGFan4UWgaF5d4Pgynf8y5MS" alt="Grabado GRATIS">
+                                    </div>
+                                    <div class="badge-promo">
+                                        <img src="https://lh3.googleusercontent.com/u/0/d/1LPp8G3PkhAmC5iWsqJwWG9kdOdRyiTMr" alt="Pagos SEGUROS">
+                                    </div>
+                                </div>
+                                
+                                <div class="buttons-container">
+                                    <a href="/paginas/catalogo.html">
+                                        <button class="btn btn-personalizar">
+                                           Ir a Catalogo
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
 
-    // Listener de clics para abrir el modal
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.btn-ver-detalle');
-      if (!btn) return;
-      const container = btn.closest('[data-product]');
-      if (container) {
-        try {
-          const product = JSON.parse(container.dataset.product);
-          window.mostrarDetalleGaleria(product);
-        } catch (err) { console.error("Error JSON:", err); }
-      }
+                // Mantenemos la lógica de añadir al carrito por si lo usas en galería
+                const addBtn = modalContent.querySelector('#modalAddToCart');
+                if (addBtn) {
+                    addBtn.addEventListener('click', () => {
+                        if(typeof agregarAlCarrito === 'function') {
+                            agregarAlCarrito(product);
+                            Swal.fire({
+                                icon: 'success',
+                                title:'¡Añadido!',
+                                text: 'Se ha añadido al carrito desde la galería',
+                                timer: 1500,
+                                showConfirmButton: false,
+                                toast:true,
+                                position:'top-end'
+                            });
+                        }
+                        modal.hide();
+                    });
+                }
+
+                modal.show();
+            }, 200);
+        };
+
+        // Lógica de activación por clic en imagen (sin cambiar)
+        document.addEventListener('click', function(e) {
+            const imagenClickeada = e.target.closest('.contenedor-img');
+            if (imagenClickeada) {
+                const contenedorConDatos = imagenClickeada.closest('[data-product]');
+                if (contenedorConDatos) {
+                    try {
+                        const productData = JSON.parse(contenedorConDatos.dataset.product);
+                        window.mostrarDetalleGaleria(productData);
+                    } catch (err) {
+                        console.error("Error al procesar los datos del producto:", err);
+                    }
+                }
+            }
+        });
     });
-  });
 });
