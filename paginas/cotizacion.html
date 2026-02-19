@@ -64,6 +64,37 @@
                         <i class="bi bi-box-seam"></i> Detalles del Proyecto
                     </div>
 
+
+                    <!-- Detalles del Proyecto -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label label-custom">Tipo de producto *</label>
+                                <select class="form-select input-custom custom-select" name="tipo_producto" id="tipo_producto" required>
+                        <option value="" selected disabled hidden>Selecciona un producto.</option>
+                        <option value="grabado_madera">Grabado en madera</option>
+                        <option value="grabado_acrilico">Grabado en acrílico</option>
+                        <option value="corte_mdf">Corte MDF</option>
+                        <option value="corte_acrilico">Corte acrílico</option>
+                        <option value="llaveros">Llaveros personalizados</option>
+                        <option value="letreros">Letreros / señalética</option>
+                        <option value="souvenirs">Souvenirs / eventos</option>
+                        <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                      
+
+                    <!-- Cantidad  -->
+                            <div class="col-md-6">
+                                <label class="form-label label-custom">Cantidad aproximada</label>
+                                <select class="form-select input-custom" name="cantidad" id="cantidad">
+                        <option value="" selected disabled hidden>Selecciona cantidad</option>
+                        <option value="1-5">1–5 piezas</option>
+                        <option value="6-10">6–10 piezas</option>
+                    <!-- ... resto ... -->
+                        </select>
+                       </div>
+                    </div>
+                    <!--
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label label-custom">Tipo de producto *</label>
@@ -91,9 +122,11 @@
                                 <option value="100+">Más de 100</option>
                             </select>
                         </div>
+
+                        -->
                         <div class="col-12">
                             <label class="form-label label-custom">Descripción del proyecto *</label>
-                            <textarea name="descripcion" class="form-control input-custom" rows="4"
+                            <textarea name="descripcion" class="form-control input-custom text-white" rows="4"
                                 placeholder="Describe tu proyecto: cantidad de piezas, dimensiones, tipo de diseño, fecha de entrega deseada..." required></textarea>
                         </div>
                     </div>

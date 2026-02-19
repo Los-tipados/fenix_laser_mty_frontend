@@ -2,20 +2,10 @@
     color: #ffffff; /* Define el color del texto de la etiqueta en blanco */
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-body { 
-   background: url("/activos/imagenes/fondos/bateFondo.png");
-   min-height: 90vh; 
-   /* Hace que el body tenga al menos el alto total de la ventana del navegador */
-   background-position: center;
-   background-size: cover;
-   /*Escala la imagen para cubrir toda la pantalla */
-   background-repeat: no-repeat;
-   /* Evita que la imagen de fondo se repita */
+body {
+  background: url("/activos/imagenes/fondos/bateFondo.png")
+              center/cover no-repeat fixed;
 }
 
 .login-card {
@@ -40,7 +30,6 @@ body {
     /* Cambia el color del texto a blanco */
 
     margin: 6rem 0 1.5rem;
-
 }
 
 .form-control{
