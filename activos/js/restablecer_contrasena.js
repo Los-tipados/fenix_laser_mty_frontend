@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // --- VALIDACIÓN DE LONGITUD (Mínimo 8 caracteres) ---
+        if (pass1.length < 8) {
+            notificar("Contraseña corta", "La contraseña debe tener al menos 8 caracteres por seguridad.", "warning");
+            return;
+        }
+
         // --- VALIDACIÓN DE IGUALDAD ---
         if (pass1 !== pass2) {
             notificar("No coinciden", "Las contraseñas no son iguales. Por favor, verifícalas.", "error");
