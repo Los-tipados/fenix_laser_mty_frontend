@@ -2,10 +2,6 @@
     color: #ffffff; /* Define el color del texto de la etiqueta en blanco */
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
 body {
   background: url("/activos/imagenes/fondos/bateFondo.png")
@@ -33,7 +29,7 @@ body {
     color: white;
     /* Cambia el color del texto a blanco */
 
-    margin-top: 3rem;
+    margin: 6rem 0 1.5rem;
 }
 
 .form-control{

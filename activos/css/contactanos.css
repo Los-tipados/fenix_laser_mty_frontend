@@ -231,3 +231,27 @@ color: var(--offwhite);
     width: 100%;
   }
 }
+
+/* Custom SweetAlert2 para éxito (estilo similar a tu captura) */
+.custom-success-modal-white {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  border: none !important;
+}
+
+.custom-ok-btn-white {
+  background: #6f42c1 !important;     /* morado de tu imagen – ajusta si tienes el código exacto */
+  color: white !important;
+  border: none !important;
+  padding: 12px 50px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-ok-btn-white:hover {
+  background: #5a3ea8 !important;     /* un poco más oscuro al hover */
+  transform: translateY(-2px) !important;
+}
