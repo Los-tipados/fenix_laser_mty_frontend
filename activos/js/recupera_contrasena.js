@@ -40,7 +40,7 @@ document.getElementById('btnVerificar').addEventListener('click', async () => {
             }).then((result) => {
                 // Cuando el usuario haga clic en el botón de la alerta
                 if (result.isConfirmed) {
-                    window.location.href = "TU_PAGINA_DE_RESTABLECER.html"; 
+                    window.location.href = "/paginas/restablecer_contrasena.html"; 
                 }
             });
             
