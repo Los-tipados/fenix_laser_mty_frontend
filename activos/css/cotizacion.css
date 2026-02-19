@@ -20,15 +20,16 @@
 }
 
 .section-title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 .section-title i {
-    color: #ff6a00; /* Color naranja de los iconos */
+  color: #ff6a00;
+  /* Color naranja de los iconos */
 }
 
 /* =========================
@@ -42,37 +43,51 @@
   border: 1px solid var(--glass-border);
   border-radius: 15px;
   color: var(--offwhite);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Etiquetas (Labels) */
+/* Etiquetas (Labels) 
 .label-custom{
-  color: var(--letraformularios);
+  color: var(--offwhite);
   font-size: 0.9rem;
   margin-bottom: 8px;
+}*/
+.input-custom {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--offwhite);
 }
 
-/* Inputs, Selects y Textareas */
-.input-custom{
-  background: rgba(255, 255, 255, 0.10) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  border-radius: 8px !important;  /* igual que contactanos */
-  color: var(--offwhite) !important;
-  padding: 12px 15px;
-}
-
-.input-custom::placeholder{
+.input-custom::placeholder {
   color: rgba(242, 240, 241, 0.65);
 }
 
-.input-custom:focus{
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(232, 108, 26, 0.65) !important;
+.input-custom:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(232, 108, 26, 0.65);
+  /* tu naranja */
   box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
+  color: var(--offwhite);
+}
+
+/* Autocompletado de Chrome (para evitar fondo blanco) */
+.cotizacion-card input:-webkit-autofill {
+  background-color: rgba(255, 255, 255, 0.10) !important;
+  border-color: rgba(232, 108, 26, 0.65);
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
+  color: var(--offwhite) !important;
+  -webkit-text-fill-color: var(--offwhite);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.input-custom option {
+  background: rgb(105, 105, 105) !important;
+  color: #f2f0f1 !important;
 }
 
 /* Área de carga de archivos (Dashed Border) */
-.upload-area{
+.upload-area {
   border: 1px dashed rgba(255, 255, 255, 0.22);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
@@ -80,14 +95,14 @@
   transition: all 0.3s ease;
 }
 
-.upload-area:hover{
+.upload-area:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(232, 108, 26, 0.55);
   box-shadow: 0 0 0 0.18rem rgba(232, 108, 26, 0.10);
 }
 
 /* Botón de envío con degradado */
-.btn-submit{
+.btn-submit {
   background: var(--orange);
   border: none;
   border-radius: 10px;
@@ -98,36 +113,117 @@
   transition: transform 0.2s ease;
 }
 
-.btn-submit:hover{
+
+.btn-submit:hover {
+  background-color: #F2A23A;
   transform: scale(1.02);
   color: white;
 }
 
 .fa-solid {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    color: #E86C1A;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  color: #E86C1A;
 }
 
 .bi-file-text {
-    color: #E86C1A;
-    margin-right: 10px;
+  color: #E86C1A;
+  margin-right: 10px;
 }
 
-.bi-box-seam{
-    color: #E86C1A;
-    margin-right: 10px;
+.bi-box-seam {
+  color: #E86C1A;
+  margin-right: 10px;
 }
 
-.bi-paperclip{
-    color: #E86C1A;
-    margin-right: 10px;
+.bi-paperclip {
+  color: #E86C1A;
+  margin-right: 10px;
 }
 
-.form-select{
+.form-select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23E86C1A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.9rem center;
   background-size: 16px 16px;
 }
+
+/* Inputs, Selects y Textareas */
+
+.input-custom.custom-select {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 8px !important;
+  /* igual que contactanos */
+  color: var(--offwhite) !important;
+  padding: 12px 15px;
+}
+
+/* ──────────────────────────────────────────────── */
+/* SELECT ESTÁNDAR: Override con alta especificidad */
+/* ──────────────────────────────────────────────── */
+
+/* Base: fondo blanco, texto oscuro, flecha naranja 
+.input-custom.custom-select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  width: 100% !important;               /* ← importante: ocupa toda la columna 
+  max-width: none !important;           /* ← evita que se limite artificialmente 
+  box-sizing: border-box !important;    /* asegura que padding no desborde 
+
+  background-color: #cc4848;
+  color: #1a1a1a !important;
+  border: 1px solid #d1d5db !important;
+
+  /* Flecha naranja - ajusta posición si es necesario 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E86C1A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;  /* un poco más ajustado 
+  background-size: 16px !important;
+
+  padding: 0.75rem 2.5rem 0.75rem 0.9rem !important;   /* espacio para flecha a la derecha 
+  border-radius: 8px !important;
+
+  transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+
+/* Mantén los otros :hover, :focus, option, etc. como estaban */
+
+/* Hover: borde naranja (igual que tu caja de "Detalles del Proyecto") 
+.input-custom.custom-select:hover {
+  border-color: var(--orange) !important;
+}
+
+/* Focus: borde + sombra naranja (consistente con tus otros inputs) 
+.input-custom.custom-select:focus {
+  background-color: #ffffff !important;  /* mantiene blanco 
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18) !important;  /* opacidad como en .input-custom:focus 
+}
+
+/* Placeholder (opción inicial "Selecciona un producto.") 
+.input-custom.custom-select option[value=""][selected],
+.input-custom.custom-select option[disabled] {
+  color: #6b7280 !important;  /* gris medio estándar – o var(--letraformularios) para coherencia 
+}
+
+/* Opciones: fondo blanco, texto oscuro 
+.input-custom.custom-select option {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}*/
+
+/* Hover en opciones: naranja claro (no saturado para look estándar) 
+.input-custom.custom-select option:hover {
+  background-color: rgba(232, 108, 26, 0.1) !important;  /* naranja suave 
+}*/
+
+/* Opción seleccionada: naranja sólido con texto blanco 
+.input-custom.custom-select option:checked,
+.input-custom.custom-select option[aria-selected="true"] {
+  background-color: var(--orange) !important;
+  color: #ffffff !important;
+}*/

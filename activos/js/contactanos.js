@@ -1,36 +1,88 @@
+// contactanos.js
+
 const form = document.getElementById("contactForm");
-const alertBox = document.getElementById("formAlert");
 const btnSend = document.getElementById("btn-submit");
 
-function showAlert(message, type = "ok") {
-  alertBox.textContent = message;
-  alertBox.style.color = type === "ok" ? "#1F1C2D" : "#b00020";
-  alertBox.style.background = type === "ok" ? "rgba(242,162,58,0.25)" : "rgba(255,107,107,0.18)";
-  alertBox.style.border = type === "ok" ? "1px solid rgba(242,162,58,0.28)" : "1px solid rgba(255,107,107,0.28)";
-  alertBox.style.padding = "10px 12px";
-  alertBox.style.borderRadius = "10px";
-}
+// Configuración de Toast para ERRORES (arriba-derecha, no modal)
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
 
-function clearAlert() {
-  alertBox.textContent = "";
-  alertBox.removeAttribute("style");
-}
+const showErrorToast = (title, text = "") => {
+  Toast.fire({
+    icon: "error",
+    title,
+    text,
+    iconColor: "#C62828",           // --red
+    color: "#ffffff",
+    background: "rgba(198, 40, 40, 0.18)",
+  });
+};
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+const showSuccessModal = () => {
+  Swal.fire({
+    title: "¡Registro exitoso!",
+    html: `
+      <div style="text-align: center; margin: 20px 0;">
+        <div style="
+          width: 90px; 
+          height: 90px; 
+          margin: 0 auto 25px; 
+          border-radius: 50%; 
+          border: 5px solid #28a745; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center;
+          font-size: 60px; 
+          color: #28a745;
+          background: #ffffff;
+          box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+        ">
+          ✓
+        </div>
+        <p style="color: #000000; font-size: 1.4rem; font-weight: 700; margin: 0 0 12px;">
+          ¡Registro exitoso!
+        </p>
+        <p style="color: #333333; font-size: 1.05rem; margin: 0;">
+          Ahora eres parte de Fenix Laser
+        </p>
+      </div>
+    `,
+    icon: "none",
+    showConfirmButton: true,
+    confirmButtonText: "OK",
+    confirmButtonColor: "#6f42c1",      // morado/azul como en tu imagen (puedes cambiar por #5a3ea8 o el hex exacto)
+    background: "#ffffff",              // fondo completamente blanco
+    color: "#000000",
+    backdrop: "rgba(0,0,0,0.55)",       // fondo oscuro semi-transparente para destacar el modal blanco
+    customClass: {
+      popup: "custom-success-modal-white",
+      confirmButton: "custom-ok-btn-white"
+    },
+    padding: "2.8rem 2rem",
+    width: "420px",                     // ancho similar al de tu captura
+  });
+};
 
-function normalizePhone(phone) {
-  return phone.replace(/[^\d+]/g, "");
-}
+// Validaciones helpers
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const normalizePhone = (phone) => phone.replace(/[^\d+]/g, "");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  clearAlert();
 
-  const endpoint = form.action; // https://formspree.io/f/mlggeqbj
+  const endpoint = form.action;
   if (!endpoint) {
-    showAlert("Falta configurar el endpoint de Formspree.", "error");
+    showErrorToast("Error de configuración", "Falta el endpoint.");
     return;
   }
 
@@ -39,20 +91,19 @@ form.addEventListener("submit", async (e) => {
   const phone = document.getElementById("phone").value.trim();
   const message = document.getElementById("message").value.trim();
 
-
   if (fullName.length < 3) {
-    showAlert("Por favor escribe tu nombre completo (mínimo 3 caracteres).", "error");
+    showErrorToast("Nombre incompleto", "Escribe tu nombre completo (mínimo 3 caracteres).");
     return;
   }
 
   if (!isValidEmail(email)) {
-    showAlert("Por favor escribe un correo válido (ej: nombre@correo.com).", "error");
+    showErrorToast("Correo inválido", "Escribe un correo válido.");
     return;
   }
 
   const cleanPhone = normalizePhone(phone);
   if (cleanPhone.length < 10) {
-    showAlert("Por favor escribe un teléfono válido con lada (mínimo 10 dígitos).", "error");
+    showErrorToast("Teléfono inválido", "Escribe un teléfono válido con lada (mínimo 10 dígitos).");
     return;
   }
 
@@ -71,16 +122,14 @@ form.addEventListener("submit", async (e) => {
     const data = await res.json().catch(() => ({}));
 
     if (res.ok) {
-      showAlert("¡Mensaje enviado! Te contactaremos pronto ", "ok");
+      showSuccessModal();
       form.reset();
     } else {
-      const msg =
-        data?.errors?.[0]?.message ||
-        "No se pudo enviar. Intenta de nuevo en unos minutos.";
-      showAlert(msg, "error");
+      const msg = data?.errors?.[0]?.message || "No se pudo enviar. Intenta de nuevo.";
+      showErrorToast("Error al enviar", msg);
     }
   } catch (err) {
-    showAlert("Error de red. Revisa tu conexión e intenta otra vez.", "error");
+    showErrorToast("Error de conexión", "Revisa tu internet.");
   } finally {
     btnSend.disabled = false;
     btnSend.textContent = "Enviar Mensaje";
