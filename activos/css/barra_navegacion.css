@@ -87,3 +87,25 @@ svg {
     width: 28px;
     height: 28px;
 }
+
+/* Ocultar cuando no esta logeado */
+.oculto {
+    display: none;
+    list-style: none;
+}
+
+/* Estilo para el mensaje de bienvenida */
+#mensajeBienvenida {
+    color: white;
+}
+
+/* Estilo para boton de cerrar sesión 
+#btnLogout {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+*/

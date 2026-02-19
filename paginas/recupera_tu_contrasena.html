@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/activos/css/iniciar_sesion.css">
     <link rel="stylesheet" href="/activos/css/barra_navegacion.css">
         <link rel="stylesheet" href="/activos/css/footer.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -39,13 +40,13 @@
                         <!-- Título principal -->
 
 
-                        <form>
+                        <form >
                             <!-- Formulario de recuperación de cuenta -->
                             <div class="mb-4 text-start">
                                 <!-- Campo de correo -->
                                 <label class="form-label fw-bold">Correo electrónico</label>
                                 <!-- Etiqueta del input -->
-                                <input type="email" class="form-control" placeholder="tunombre@email.com">
+                                <input type="email" id="correoInput" class="form-control text-white" placeholder="tunombre@email.com" required>
                                 <!-- Input para correo -->
                             </div>
                             
@@ -54,7 +55,7 @@
                                 <a href="/paginas/iniciar_sesion.html" class="text-white">¿Ya tienes cuenta?</a>
                             </div>
 
-                            <button class="btn btn-ejemplo text-white mb-4 b boton-ejemplo">Verificar datos</button>
+                            <button type="button" id="btnVerificar"  class="btn btn-ejemplo text-white mb-4 b boton-ejemplo">Verificar datos</button>
                         </form>
 
                          <!-- 
@@ -90,9 +91,10 @@
         </div>
 
     </main>
-
+  <script src="/activos/js/recupera_contrasena.js"></script>
     <!-- Barra de navegación -->
     <script src="/activos/js/barra_navegacion.js"></script>
+   
 </body>
 
 </html>
