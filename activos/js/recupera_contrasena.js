@@ -25,15 +25,24 @@ document.getElementById('btnVerificar').addEventListener('click', async () => {
 
     try {
         const respuesta = await fetch(`http://localhost:8080/api/v1/auth/check-email?correo=${correo}`);
-        
-        // Obtenemos el objeto { "exists": true/false }
         const data = await respuesta.json(); 
 
         if (data.exists) { 
-            notificar("¡Usuario encontrado!", "Ahora puedes cambiar tu contraseña.", "success");
-            
-            // Aquí puedes mostrar el siguiente div si lo tienes
-            // document.getElementById('seccionPassword').style.display = 'block';
+            // GUARDAR EL CORREO
+            localStorage.setItem('emailUsuarioParaRecuperar', correo);
+
+            // NOTIFICAR Y REDIRECCIONAR
+            Swal.fire({
+                title: "¡Usuario encontrado!",
+                text: "Serás redirigido para cambiar tu contraseña.",
+                icon: "success",
+                confirmButtonText: "Ir a restablecer"
+            }).then((result) => {
+                // Cuando el usuario haga clic en el botón de la alerta
+                if (result.isConfirmed) {
+                    window.location.href = "TU_PAGINA_DE_RESTABLECER.html"; 
+                }
+            });
             
         } else {
             notificar("No encontrado", "El correo no está registrado.", "error");
