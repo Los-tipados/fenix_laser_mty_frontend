@@ -44,19 +44,23 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label label-custom">Nombre Completo *</label>
-                            <input type="text" name="nombre" class="form-control input-custom" placeholder="Tu nombre" required>
+                            <input type="text" name="nombre" class="form-control input-custom" placeholder="Tu nombre"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label label-custom">Empresa (Opcional)</label>
-                            <input type="text" name="empresa" class="form-control input-custom" placeholder="Nombre de tu empresa">
+                            <input type="text" name="empresa" class="form-control input-custom"
+                                placeholder="Nombre de tu empresa">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label label-custom">Correo Electrónico *</label>
-                            <input type="email" name="correo" class="form-control input-custom" placeholder="tu@email.com" required>
+                            <input type="email" name="correo" class="form-control input-custom"
+                                placeholder="tu@email.com" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label label-custom">Teléfono *</label>
-                            <input type="tel" name="telefono" class="form-control input-custom" placeholder="+52 55 1234 5678" required>
+                            <input type="tel" name="telefono" class="form-control input-custom"
+                                placeholder="+52 55 1234 5678" required>
                         </div>
                     </div>
 
@@ -69,37 +73,9 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label label-custom">Tipo de producto *</label>
-                                <select class="form-select input-custom custom-select" name="tipo_producto" id="tipo_producto" required>
-                        <option value="" selected disabled hidden>Selecciona un producto.</option>
-                        <option value="grabado_madera">Grabado en madera</option>
-                        <option value="grabado_acrilico">Grabado en acrílico</option>
-                        <option value="corte_mdf">Corte MDF</option>
-                        <option value="corte_acrilico">Corte acrílico</option>
-                        <option value="llaveros">Llaveros personalizados</option>
-                        <option value="letreros">Letreros / señalética</option>
-                        <option value="souvenirs">Souvenirs / eventos</option>
-                        <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                      
-
-                    <!-- Cantidad  -->
-                            <div class="col-md-6">
-                                <label class="form-label label-custom">Cantidad aproximada</label>
-                                <select class="form-select input-custom" name="cantidad" id="cantidad">
-                        <option value="" selected disabled hidden>Selecciona cantidad</option>
-                        <option value="1-5">1–5 piezas</option>
-                        <option value="6-10">6–10 piezas</option>
-                    <!-- ... resto ... -->
-                        </select>
-                       </div>
-                    </div>
-                    <!--
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label label-custom">Tipo de producto *</label>
-                            <select class="form-select input-custom" name="tipo_producto" id="tipo_producto" required>
-                                <option value="" selected disabled hidden>Selecciona un producto.</option>
+                            <select class="form-select input-custom custom-select" name="tipo_producto"
+                                id="tipo_producto" required>
+                                <option value="selected disabled hidden">Selecciona un producto.</option>
                                 <option value="grabado_madera">Grabado en madera</option>
                                 <option value="grabado_acrilico">Grabado en acrílico</option>
                                 <option value="corte_mdf">Corte MDF</option>
@@ -110,48 +86,48 @@
                                 <option value="otro">Otro</option>
                             </select>
                         </div>
+
+
+                        <!-- Cantidad  -->
                         <div class="col-md-6">
                             <label class="form-label label-custom">Cantidad aproximada</label>
                             <select class="form-select input-custom" name="cantidad" id="cantidad">
                                 <option value="" selected disabled hidden>Selecciona cantidad</option>
                                 <option value="1-5">1–5 piezas</option>
                                 <option value="6-10">6–10 piezas</option>
-                                <option value="11-25">11–25 piezas</option>
-                                <option value="26-50">26–50 piezas</option>
-                                <option value="51-100">51–100 piezas</option>
-                                <option value="100+">Más de 100</option>
+                                <!-- ... resto ... -->
                             </select>
                         </div>
-
-                        -->
-                        <div class="col-12">
-                            <label class="form-label label-custom">Descripción del proyecto *</label>
-                            <textarea name="descripcion" class="form-control input-custom text-white" rows="4"
-                                placeholder="Describe tu proyecto: cantidad de piezas, dimensiones, tipo de diseño, fecha de entrega deseada..." required></textarea>
-                        </div>
                     </div>
-
-                    <div class="mt-4">
-                        <label class="form-label label-custom">
-                            <i class="bi bi-paperclip"></i> 
-                            Archivos de referencia(opcional)
-                        </label>
-
-                        <input type="file" name="archivos" multiple hidden id="fileInput">
-
-                        <div class="upload-area text-center p-4" onclick="document.getElementById('fileInput').click()">
-                            <i class="bi bi-file-earmark-plus fs-2"></i>
-                            <p class="mb-0 mt-2">Haz clic o arrastra tus archivos aquí.</p>
-                            <small>PNG, JPG, PDF, AI, SVG, PDF (máx. 10 MB cada uno, hasta 5 archivos)</small>
-                        </div>
-                        <div id="fileList" class="mt-2 text-white-50 small"></div>
+                    <div class="col-12">
+                        <label class="form-label label-custom">Descripción del proyecto *</label>
+                        <textarea name="descripcion" class="form-control input-custom text-white" rows="4"
+                            placeholder="Describe tu proyecto: cantidad de piezas, dimensiones, tipo de diseño, fecha de entrega deseada..."
+                            required></textarea>
                     </div>
-
-                    <button type="submit" class="btn btn-submit w-100 mt-5 py-3">Solicitar cotización</button>
-                    <p class="text-center mt-3 text-white-50 small">Te responderemos en menos de 24 horas hábiles.
-                    </p>
-                </form>
             </div>
+            <!-- Detalles del Proyecto -->
+            <div class="mt-4">
+                <label class="form-label label-custom">
+                    <i class="bi bi-paperclip"></i>
+                    Archivos de referencia(opcional)
+                </label>
+
+                <input type="file" name="archivos" multiple hidden id="fileInput">
+
+                <div class="upload-area text-center p-4" onclick="document.getElementById('fileInput').click()">
+                    <i class="bi bi-file-earmark-plus fs-2"></i>
+                    <p class="mb-0 mt-2">Haz clic o arrastra tus archivos aquí.</p>
+                    <small>PNG, JPG, PDF, AI, SVG, PDF (máx. 10 MB cada uno, hasta 5 archivos)</small>
+                </div>
+                <div id="fileList" class="mt-2 text-white-50 small"></div>
+            </div>
+
+            <button type="submit" class="btn btn-submit w-100 mt-5 py-3">Solicitar cotización</button>
+            <p class="text-center mt-3 text-white-50 small">Te responderemos en menos de 24 horas hábiles.
+            </p>
+            </form>
+        </div>
         </div>
         <!-- Footer (carga dinámica) -->
         <div id="footer-container"></div>

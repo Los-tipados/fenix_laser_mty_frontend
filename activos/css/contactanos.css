@@ -37,6 +37,7 @@ color: var(--offwhite);
   color: rgba(242, 240, 241, 0.92); /* offwhite */
 }
 
+
 .formulario-card .form-control{
   background: rgba(255, 255, 255, 0.10);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -52,6 +53,16 @@ color: var(--offwhite);
   border-color: rgba(232, 108, 26, 0.65); /* tu naranja */
   box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
   color: var(--offwhite);
+}
+
+/* Autocompletado de Chrome (para evitar fondo blanco) */
+.formulario-card input:-webkit-autofill {
+  background-color: rgba(255, 255, 255, 0.10) !important;
+  border-color: rgba(232, 108, 26, 0.65); /* tu naranja */
+  box-shadow: 0 0 0 0.2rem rgba(232, 108, 26, 0.18);
+  color: var(--offwhite) !important;
+  -webkit-text-fill-color: var(--offwhite);
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .form-label {
